@@ -1,0 +1,27 @@
+\begin{question}
+
+Nell'ambito di una ricerca più ampia, Williams, Gonzalez, Neighbors, Nesse, Abelson, Sweetman, e Jackson (2007) hanno stimato che, per gli americani caucasici di età uguale o maggiore di 18 anni, il tasso di prevalenza del disturbo depressivo maggiore sia pari al 17.9 percento. Supponiamo di esaminare un campione di 891 adulti americani caucasici. Usando l'approssimazione normale alla binomiale, si calcoli la probabilità che, in tale campione, più di 150 individui manifestino il disturbo depressivo maggiore.
+
+ \begin{answerlist}
+   \item 0.78
+   \item 0.65
+   \item 0.46
+   \item 0.39
+   \item 0.24
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+1 - pnorm(150.5, 891*0.179, sqrt(891*0.179*(1-0.179)))
+[1] 0.7839347
+
+1 - pbinom(150, 891, 0.179)
+[1] 0.7828846
+
+\end{solution}
+
+ \exname{norm bino 1}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

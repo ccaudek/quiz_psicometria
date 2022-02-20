@@ -1,0 +1,32 @@
+\begin{question}
+Ad   un   gruppo   di   neo-mamme   viene chiesto  di  poter  studiare  il  sonno  dei loro   bambini. 
+Lo sperimentatore vuole misurare il tempo trascorso dormendo.
+I bambini vengono suddivisi in tre gruppi: pre-termine,   nati   a   termine,   nati   atermine con problemi al parto.
+Indicare la variabile indipendente precisandone la scala di misura.
+
+\begin{answerlist}
+  \item La caratteristica alla nascita (pre-termine, termine, con problemi) è la variabile indipendente. È una variabile non manipolabile. La scala di misura è nominale.
+  \item La caratteristica alla nascita (pre-termine, termine, con problemi) è la variabile indipendente. È una variabile non manipolabile. La scala di misura è ordinale.
+  \item La caratteristica alla nascita (pre-termine, termine, con problemi) è la variabile indipendente. È una variabile manipolabile. La scala di misura è nominale.
+  \item Il sonno (tempo trascorso dormendo nelle 24 ore) è la variabile indipendente. È una variabile non manipolabile. La scala di misura è a rapporti continua - quantificazione con uno zero reale, non sono definiti i valori negativi.
+  \item Il sonno (tempo trascorso dormendo nelle 24 ore) è la variabile indipendente. È una variabile manipolabile. La scala di misura è a rapporti continua - quantificazione con uno zero reale, non sono definiti i valori negativi.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item Vero. La caratteristica alla nascita (pre-termine, termine, con problemi) è la variabile indipendente. È una variabile non manipolabile. La scala di misura è nominale.
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\exname{var_indip_1}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

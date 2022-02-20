@@ -1,0 +1,37 @@
+\begin{question}
+L'università di Firenze vuole sapere quali dormitori preferiscono gli studenti. L'amministrazione conta il numero di domande per ciascun dormitorio. Gli amministratori assegnano un rango a ciascun dormitorio in base al numero di domande ricevute.
+ 
+Si scelga la scala di misurazione appropriata.
+
+\begin{answerlist}
+  \item ordinale
+  \item nominale
+  \item intervalli
+  \item approssimativamente ad intervalli
+  \item rapporti
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+I numeri in questo sistema di classificazione identificano soltanto una relazione d'ordine tra le osservazioni.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+\end{answerlist}
+
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_9}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

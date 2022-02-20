@@ -1,0 +1,37 @@
+\begin{question}
+
+La scatola A contiene 1 pallina bianca e 9 nere.
+La scatola B contiene 7 palline bianche e 3 nere.
+Qualcuno sceglie una scatola a caso, lanciando una moneta, e da questa estrae una pallina a caso.
+Qual è la probabilità che la pallina sia nera?
+
+ \begin{answerlist}
+   \item 0.60
+   \item 0.50
+   \item 0.40
+   \item 0.30
+   \item 0.20
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+
+Bisogna applicare la formula della probabilità totale:
+
+9/10 * 1/2 + 3/10 * 1/2
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+\end{answerlist}
+
+\end{solution}
+
+ \exname{prob_tot_1}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

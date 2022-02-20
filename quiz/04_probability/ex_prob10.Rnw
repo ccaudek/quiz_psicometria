@@ -1,0 +1,46 @@
+\begin{question}
+Siano $A$ e $B$ due eventi dello spazio campione tali che $P(A) = 0.7$ e
+$P(A \cup B) = 0.8$. Si determini $P(B)$ nel caso in cui $A$ e $B$ sono indipendenti.
+\begin{answerlist}
+  \item 0.15
+  \item 0.25
+  \item 0.33
+  \item 0.52
+  \item 0.66
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Se A e B sono indipendenti si ha che: 
+
+P(A|B) = P(A); P(B|A) = P(B);
+
+da cui 
+
+P(A∩B) = P(A)·P(B) 
+
+e poiché: 
+
+P(A∪B) = P(A) + P(B) − P(A∩B) 
+
+otteniamo che:
+
+P(A∪B) = P(A) + P(B) − P(A)·P(B) = P(A) + (1−P(A))·P(B), 
+
+quindi:
+
+0.8 = 0.7 + (1−0.7) P(B) ⇒ P(B) = 0.33.
+
+\begin{answerlist}
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta corretta.
+  \item Risposta errata.
+  \item Risposta errata.
+\end{answerlist}
+\end{solution}
+
+\exname{A e B cond 2}
+\extype{mchoice}
+\exsolution{00100}
+\exshuffle{TRUE}

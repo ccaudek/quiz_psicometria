@@ -1,0 +1,56 @@
+\begin{question}
+
+Due scatole, chiamate A, B, contengono 10 palline ciascuna.
+La scatola A contiene 1 pallina bianca e 9 nere.
+La scatola B contiene 7 palline bianche e 3 nere.
+Qualcuno sceglie una scatola a caso e da questa estrae una pallina a caso.
+
+La pallina estratta è nera.
+
+Ci chiediamo da quale scatola sia stata estratta.
+
+Formuliamo due ipotesi.
+
+Ipotesi A: la pallina proviene dalla scatola A.
+
+Ipotesi B: la pallina proviene dalla scatola B.
+
+Alla luce dei dati che abbiamo osservato (sappiamo che è stata estratta una pallina nera), quante volte risulta più probabilile l'ipotesi A rispetto all'ipotesi B?
+
+
+ \begin{answerlist}
+   \item 3.0
+   \item 2.5
+   \item 2.0
+   \item 1.5
+   \item 3.5
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+
+La probabilità P(A | nero) (ovvero, la probabilità dell'ipotesi A) è
+
+(1/2 * 9/10) / (9/10 * 1/2 + 3/10 * 1/2)
+
+La probabilità P(B | nero) (ovvero, la probabilità dell'ipotesi B) è
+
+(3/10 * 1/2) / (9/10 * 1/2 + 3/10 * 1/2)
+
+Quindi: 0.75 / 0.25 = 3
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+\end{answerlist}
+
+\end{solution}
+
+ \exname{bayes_7}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

@@ -1,0 +1,24 @@
+\begin{question}
+
+Si faccia riferimento all'esampio relativo al lancio del mappamondo discusso nelle dispense. Supponiamo che ci siano due mappamondi, uno per la Terra e uno per Marte. Il mappamondo terrestre è coperto per il 70 percento di acqua. Il mappamondo di Marte è coperto al 100 percento di terra. Supponiamo che uno di questi due mappamondi - non sappiamo quale - sia stato lanciato in aria e abbia prodotto un'osservazione "terra". Supponiamo che ogni mappamondo abbia la stessa probabilità di essere lanciato in aria. Si trovi la probabilità a posteriori che a produrre l'osservazione "terra" sia stato il mappamondo che rappresenta la Terra.
+
+\begin{answerlist}
+ \item 0.23
+ \item 0.15
+ \item 0.34
+ \item 0.41
+ \item 0.52
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+(0.3 * 0.5) / (0.3 * 0.5 + 1.0 * 0.5)
+\end{verbatim}
+\end{solution}
+
+\exname{rethinking_cap2_7}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}

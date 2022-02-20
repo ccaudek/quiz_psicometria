@@ -1,0 +1,32 @@
+\begin{question}
+A 360   soggetti   anziani   che   hanno recentemente  vissuto  situazioni  di  forte stress    (es.    un    grave    lutto)    viene somministrato  un  Test  sulla  depressione (conpunteggio da -10 a +10). Lo  stesso test   viene   presentato   a   240   soggetti anziani,  aventi  la  stessa  età  media  dei precedenti, che non sono stati toccati da esperienze 
+particolarmete stressanti.
+Indicare la variabile dipendente precisandone la scala di misura.
+
+\begin{answerlist}
+  \item La variabile dipendente è la depressione, ovvero i punteggi del Test (da -10 a +10). Il livello di scala è a intervalli; i valori di segno negativo indicano che esiste un punto zero arbitrario.
+
+  \item La variabile dipendente è la depressione, ovvero i punteggi del Test (da -10 a +10). Il livello di scala è a rapporti; il fatto che esiste un punto zero indica che possiamo individuare un'origine non arbitraria della scala.
+  \item La variabile dipendente è la depressione, ovvero i punteggi del Test (da -10 a +10). Il livello di scala è ordinale; il fatto che esiste un punto zero indica l'assenza della caratteristica misurata; tra gli altri valori della scala possiamo però solo rilevare una relazione d'ordine.
+  \item Le situazioni stressanti (presenza/assenza) definiscono la variabile dipendente. Il livello di misura è quello della scala nominale dicotomica.
+  \item Le situazioni stressanti (presenza/assenza) definiscono la variabile dipendente. Il livello di misura è quello della scala ordinale dicotomica.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item Vero. La variabile dipendente è la depressione, ovvero i punteggi del Test (da -10 a +10). Il livello di scala è a intervalli; i valori di segno negativo indicano che esiste un punto zero arbitrario.
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\exname{var_indip_3}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

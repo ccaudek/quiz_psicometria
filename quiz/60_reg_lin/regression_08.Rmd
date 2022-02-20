@@ -1,0 +1,29 @@
+Question
+========
+Il coefficiente $B$ nel modello $Y_i = A + B X_i + E_i$ e il coefficiente di correlazione di Pearson $r$ tra $X$ e $Y$ sono simili nel senso che
+
+Answerlist
+----------
+* entrambi hanno lo stesso segno.
+* entrambi non dipendono dall'unità di misura delle variabili.
+* entrambi assumono valori compresi tra -1 e +1.
+* sono entrambi uguali a 1 quanto l'associazione tra $X$ e $Y$ assume l'intensità maggiore.
+* innalzati al quadrato, possono essere entrambi interpretati quali "riduzioni proporzionali dell'errore di previsione".
+
+Solution
+========
+
+Answerlist
+----------
+* True. 
+* False. 
+* False. 
+* False. 
+* False. 
+
+Meta-information
+================
+exname: regression_08
+extype: schoice
+exsolution: 10000
+exshuffle: 5

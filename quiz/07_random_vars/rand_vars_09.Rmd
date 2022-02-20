@@ -1,0 +1,45 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library("prob")
+sc <- NULL
+while(is.null(sc)) {
+  xx <- sample(1:5, 40, replace = TRUE)
+  x <- sort(unique(xx))
+  px <- table(xx) / 40
+  pmf <- tibble(x, px)
+  ex <- sum(pmf$x * pmf$px)
+  ex2 <- sum(pmf$x^2 * pmf$px)
+  sol <- sqrt(ex2 - ex^2)
+  sc <- num_to_schoice(sol, range = c(0, 4), delta = 0.3)
+}
+```
+
+Question
+========
+Si consideri la variabile casuale $X$: `r pmf$x`, con distribuzione di massa: `r pmf$px`. Si calcoli la deviazione standard di $X$. 
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```
+xx <- sample(1:5, 40, replace = TRUE)
+x <- sort(unique(xx))
+px <- table(xx) / 40
+pmf <- tibble(x, px)
+ex <- sum(pmf$x * pmf$px)
+ex2 <- sum(pmf$x^2 * pmf$px)
+sol <- sqrt(ex2 - ex^2)
+```
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+  
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: rv_09

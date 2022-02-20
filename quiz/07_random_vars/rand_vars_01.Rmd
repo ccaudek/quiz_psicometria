@@ -1,0 +1,57 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library("prob")
+sc <- NULL
+while(is.null(sc)) {
+  S <- rolldie(2, nsides = 6, makespace = TRUE)
+  S <- addrv(S, Y = X1 * X2)
+  # head(S)
+  YY <- unique(S$Y)
+  max_y <- max(YY)
+  # tab <- table(S$Y) / 36
+  
+  t_low <- sample(1:5, 1)
+  t_high <- sample(8:max_y, 1)
+  
+  S1 <- S %>%
+    dplyr::filter(
+      Y >= t_low & Y <= t_high
+    )
+  sol <- sum(S1$probs)
+  sc <- num_to_schoice(sol, range = c(0, 1), delta = 0.03)
+}
+```
+
+Question
+========
+Vengono lanciati due dadi a sei facce. Sia la variabile casuale $Y$ il prodotto dei punti dei 2 dadi. Si calcoli la probabilità dell'evento ($Y \geq$ `r t_low` e $Y \leq$ `r t_high`).
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```
+S <- rolldie(2, nsides = 6, makespace = TRUE)
+S <- addrv(S, Y = X1 * X2)
+YY <- unique(S$Y)
+max_y <- max(YY)
+t_low <- sample(1:5, 1)
+t_high <- sample(8:max_y, 1)
+S1 <- S %>%
+  dplyr::filter(
+    Y >= t_low & Y <= t_high
+  )
+sol <- sum(S1$probs)
+```
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: rv_01

@@ -1,0 +1,29 @@
+Question
+========
+La correlazione $r = 0.3$ può essere interpretata nel modo seguente:
+
+Answerlist
+----------
+* Una riduzione del 9\% nell'errore che si commette nel predire $y$ a partire da $x$, rispetto all'errore che si commette nel predire $y$ a partire da $\bar{y}$.
+* Una riduzione del 30\% nell'errore che si commette nel predire $y$ a partire da $x$,  rispetto all'errore che si commette nel predire $y$ a partire da $\bar{y}$.
+* Una riduzione del 9\% nell'errore che si commette nel predire $y$ a partire da $x$, rispetto all'errore che si commette nel predire $x$ a partire da $y$.
+* $y$ cambia in media di 0.3 unità per ciascun cambiamento unitario di $x$.
+* Nel 9\% dei casi $\hat{y}=y$.
+
+Solution
+========
+
+Answerlist
+----------
+* True. 
+* False. 
+* False. 
+* False. 
+* False. 
+
+Meta-information
+================
+exname: regression_06
+extype: schoice
+exsolution: 10000
+exshuffle: 5

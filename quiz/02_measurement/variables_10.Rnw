@@ -1,0 +1,37 @@
+\begin{question}
+Durante un colloquio clinico, ai sopravvissuti a un tornado viene chiesto di dichiarare "no" o "sì" se hanno avuto sintomi specifici di Disturbo Post-Traumatico da Stress (PTSD) nella settimana passata. L'intervistatore somma il numero totale di risposte "sì" per creare una scala di sintomi PTSD totali.
+ 
+Si scelga la scala di misurazione appropriata.
+
+\begin{answerlist}
+  \item rapporti
+  \item ordinale
+  \item nominale
+  \item intervalli
+  \item approssimativamente ad intervalli
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+Il conteggio del numero di risposte "sì" crea una scala con le proprietà di identità, grandezza, intervalli uguali e zero assoluto. Il punteggio "0" è un vero zero (assenza della proprietà) e indica che la persona intervistata ha riferito di non aver avuto alcun sintomo di PTSD nell'ultima settimana.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+\end{answerlist}
+
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_10}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

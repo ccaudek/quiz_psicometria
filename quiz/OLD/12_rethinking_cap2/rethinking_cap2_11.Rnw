@@ -1,0 +1,46 @@
+\begin{question}
+
+Ad un bambino di 5 anni vengono sottoposti 12 problemi. Le sue risposte (C = risposta corretta, S = risposta sbagliata) sono le seguenti: C, C, S, C, S, C, C, C, C, S, S, S. Utilizzando una distribuzione a priori uniforme (Beta di parametri alpha = 1 e beta = 1), si calcoli la distribuzione a posteriori per la probabilità $p$ di rispondere correttamente. Si usi il metodo dell'approssimazione numerica. Sotto quale valore di $p$ si trova il 20 percento dell'area della distribuzione a posteriori?
+
+\begin{answerlist}
+ \item 0.46
+ \item 0.07
+ \item 0.16
+ \item 0.24
+ \item 0.31
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+# Packages
+suppressPackageStartupMessages(library("tidyverse")) 
+
+# Grid
+n_points <- 1e4
+p_grid <- seq(from = 0, to = 1, length.out = n_points)
+# Prior
+alpha <- 1
+beta <- 1
+prior <- dbeta(p_grid, alpha, beta) / sum(dbeta(p_grid, alpha, beta))
+# Likelihood
+k <- 7
+n <- 12
+likelihood <- dbinom(k, size = n, prob = p_grid)
+# Unstandardized posterior
+unstd_posterior <- likelihood * prior
+# Posterior distribution
+posterior <- unstd_posterior / sum(unstd_posterior)
+
+n_samples <- 1e5
+samples <- sample(p_grid, prob = posterior, size = n_samples, replace = TRUE)
+
+quantile(samples, 0.2)
+\end{verbatim}
+\end{solution}
+
+\exname{rethinking_cap2_11}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}

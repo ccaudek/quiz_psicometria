@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/moodlequiz/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q1 : _Users_corrado_OneDrive - unifi.it_teaching_lecture_notes_2019-20_Psicometria_quiz_10_rethinking_cap2_rethinking_cap2_16 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[<p>
+<p>Questi dati indicano il genere (maschio=1, femmina=0) del primo nato e del secondo nato in 100 famiglie che hanno due figli.</p>
+<p>birth1 &lt;- c(1,0,0,0,1,1,0,1,0,1,0,0,1,1,0,1,1,0,0,0,1,0,0,0,1,0, 0,0,0,1,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,0,0,1,1,0,1,0,0,0,0,0,0,0, 1,1,0,1,0,0,1,0,0,0,1,0,0,1,1,1,1,0,1,0,1,1,1,1,1,0,0,1,0,1,1,0, 1,0,1,1,1,0,1,1,1,1)</p>
+<p>birth2 &lt;- c(0,1,0,1,0,1,1,1,0,0,1,1,1,1,1,0,0,1,1,1,0,0,1,1,1,0, 1,1,1,0,1,1,1,0,1,0,0,1,1,1,1,0,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1, 1,1,1,0,1,1,0,1,1,0,1,1,1,0,0,0,0,0,0,1,0,0,0,1,1,0,0,1,0,0,1,1, 0,0,0,1,1,1,0,0,0,0)</p>
+<p>Si usi il metodo dell’approssimazione numerica. Si assuma una distribuzione a priori uniforme (Beta di parametri alpha = 1 e beta = 1) e si trovi la distribuzione a posteriori per il parametro <span class="math inline">\(p\)</span> (probabilità di figlio maschio). Usando la funzione sample(), si estraggano 10000 campioni casuali dalla distribuzione a posteriori del parametro <span class="math inline">\(p\)</span>. Si usino tali campioni per stimare l’intervallo di credibilità a densità a posteriori più alta dell’89 percento.</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<pre><code># Packages
+library(&quot;tidyverse&quot;)
+library(&quot;rethinking&quot;)
+
+birth1 &lt;- c(1,0,0,0,1,1,0,1,0,1,0,0,1,1,0,1,1,0,0,0,1,0,0,0,1,0,
+            0,0,0,1,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,0,0,1,1,0,1,0,0,0,0,0,0,0,
+            1,1,0,1,0,0,1,0,0,0,1,0,0,1,1,1,1,0,1,0,1,1,1,1,1,0,0,1,0,1,1,0,
+            1,0,1,1,1,0,1,1,1,1)
+
+birth2 &lt;- c(0,1,0,1,0,1,1,1,0,0,1,1,1,1,1,0,0,1,1,1,0,0,1,1,1,0,
+            1,1,1,0,1,1,1,0,1,0,0,1,1,1,1,0,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,
+            1,1,1,0,1,1,0,1,1,0,1,1,1,0,0,0,0,0,0,1,0,0,0,1,1,0,0,1,0,0,1,1,
+            0,0,0,1,1,1,0,0,0,0)
+
+# Grid
+n_points &lt;- 1e4
+p_grid &lt;- seq(from = 0, to = 1, length.out = n_points)
+# Prior
+alpha &lt;- 1
+beta &lt;- 1
+prior &lt;- dbeta(p_grid, alpha, beta) / sum(dbeta(p_grid, alpha, beta))
+# Likelihood
+k &lt;- sum(birth1 + birth2)
+n &lt;- length(birth1) + length(birth2)
+likelihood &lt;- dbinom(k, size = n, prob = p_grid)
+# Unstandardized posterior
+unstd_posterior &lt;- likelihood * prior
+# Posterior distribution
+posterior &lt;- unstd_posterior / sum(unstd_posterior)
+
+n_samples &lt;- 1e6
+samples &lt;- sample(p_grid, prob = posterior, size = n_samples, replace = TRUE)
+
+HPDI(samples, prob = 0.89)</code></pre>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>false</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="-25" format="html">
+<text><![CDATA[<p>
+[0.41, 0.68]
+</p>]]></text>
+</answer>
+<answer fraction="-25" format="html">
+<text><![CDATA[<p>
+[0.56, 0.64]
+</p>]]></text>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+[0.50, 0.61]
+</p>]]></text>
+</answer>
+<answer fraction="-25" format="html">
+<text><![CDATA[<p>
+[0.49, 0.56]
+</p>]]></text>
+</answer>
+<answer fraction="-25" format="html">
+<text><![CDATA[<p>
+[0.45, 0.58]
+</p>]]></text>
+</answer>
+</question>
+
+</quiz>

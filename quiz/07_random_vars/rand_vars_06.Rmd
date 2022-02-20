@@ -1,0 +1,62 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library("prob")
+sc <- NULL
+while(is.null(sc)) {
+  S <- rolldie(2, nsides = 6, makespace = TRUE)
+  S <- addrv(S, FUN = max, invars = c("X1", "X2"), name = "Y")
+  S <- addrv(S, W = X1 + X2)
+  
+  J <- marginal(S, vars = c("Y", "W"))
+  
+  ty_low <- sample(2:(max_y - 1), 1)
+  tw_low <- sample(2:(max_w - 1), 1)
+  
+  S1 <- S %>%
+    dplyr::filter(
+      Y <= ty_low & W >= tw_low 
+    )
+  sol <- sum(S1$probs)
+  sc <- num_to_schoice(sol, range = c(0, 1), delta = 0.1)
+}
+```
+
+Question
+========
+Vengono lanciati due dadi a sei facce. Sia la variabile casuale $Y$ il valore massimo ottenuto nel lancio dei 2 dadi; sia $W$ la somma dei punti dei due dadi. Si calcoli la probabilità dell'evento ($Y \leq$ `r ty_low` e $W \geq$ `r tw_low`).
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+S <- rolldie(2, nsides = 6, makespace = TRUE)
+
+  S <- addrv(S, FUN = max, invars = c("X1", "X2"), name = "Y")
+  
+  S <- addrv(S, W = X1 + X2)
+  
+  J <- marginal(S, vars = c("Y", "W"))
+  
+  ty_low <- sample(2:(max_y - 1), 1)
+  
+  tw_low <- sample(2:(max_w - 1), 1)
+  
+  S1 <- S %>%
+    dplyr::filter(
+      Y <= ty_low & W >= tw_low 
+    )
+    
+  sol <- sum(S1$probs)
+
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+  
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: rv_06

@@ -1,0 +1,80 @@
+\begin{question}
+
+Ad un bambino di 8 anni vengono sottoposti 7 problemi. Le sue risposte (C = risposta corretta, S = risposta sbagliata) sono le seguenti: C, C, S, C, S, C, C. Utilizzando una distribuzione a priori Beta di parametri alpha = 2 e beta = 20, si calcoli la moda della distribuzione a posteriori per la probabilità di rispondere correttamente. Si usi il metodo dell'approssimazione numerica.
+
+\begin{answerlist}
+ \item 0.22
+ \item 0.31
+ \item 0.42
+ \item 0.56
+ \item 0.63
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+# Packages
+suppressPackageStartupMessages(library("tidyverse")) 
+suppressPackageStartupMessages(library("patchwork"))
+
+# Grid
+n_points <- 1e4
+p_grid <- seq(from = 0, to = 1, length.out = n_points)
+
+# Prior
+alpha <- 2
+beta <- 20
+prior2 <- dbeta(p_grid, alpha, beta) / sum(dbeta(p_grid, alpha, beta))
+sum(prior2)
+
+# Likelihood
+k <- 5
+n <- 7
+likelihood <- dbinom(k, size = n, prob = p_grid)
+
+# Unstandardized posterior
+unstd_posterior <- likelihood * prior2
+
+# Posterior distribution
+posterior <- unstd_posterior / sum(unstd_posterior)
+
+df <- data.frame(p_grid, posterior)
+df[which.max(df$posterior), ]$p_grid
+
+p1 <- data.frame(p_grid, prior2) %>% 
+  ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=prior2)) +
+  geom_line()+
+  geom_segment(color = "#8184FC") + 
+  #ylim(0, 0.17) +
+  labs(
+    x = "",
+    y = "Probabilità a priori"
+  )
+
+p2 <- data.frame(p_grid, likelihood) %>% 
+  ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=likelihood)) +
+  geom_segment(color = "#8184FC") +
+  # ylim(0, 0.17) +
+  labs(
+    x = "",
+    y = "Verosimiglianza"
+  )
+
+p3 <- data.frame(p_grid, posterior) %>% 
+  ggplot(aes(x=p_grid, xend=p_grid, y=0, yend=posterior)) +
+  geom_segment(color = "#8184FC") +
+  # ylim(0, 0.17) +
+  labs(
+    x = "Parametro \U03B8",
+    y = "Probabilità a posteriori"
+  )
+
+p1 / p2 / p3
+\end{verbatim}
+\end{solution}
+
+\exname{rethinking_cap2_5}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}

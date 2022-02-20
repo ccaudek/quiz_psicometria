@@ -1,0 +1,38 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  y <- round(rchisq(n = 10, df = 3), 1)
+  sol <- var(y) * (length(y) - 1) / (length(y))
+  sc <- num_to_schoice(sol, range = c(0.1, 5), delta = 0.1, digits = 3)
+}
+```
+
+Question
+========
+Per i seguenti dati
+
+`r y`
+
+si calcoli la varianza quale statistica campionaria (non come stimatore).
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```{r distplot, echo = FALSE, results = "hide", fig.path = "", fig.cap = ""}
+var(y) * (length(y) - 1) / (length(y))
+```
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: var_campionaria
+

@@ -1,0 +1,65 @@
+```{r data generation, echo = FALSE, results = "hide"}
+
+library("prob")
+sc <- NULL
+while(is.null(sc)) {
+  
+  n1 <- sample(1:5, 1)
+  n2 <- 6 - n1
+  x <- c(sample(1:2, 1), rep(3, n1), rep(5, n2), sample(6: 9, 1))
+  XX <- sort(unique(x))
+  tab <- table(x) / length(x)
+  pmf <- tibble(
+    x = XX,
+    px =tab
+  )
+  entropy <- function(p) {
+    -sum(p * log2(p))
+  }
+  sol <- entropy(pmf$px)
+  sc <- num_to_schoice(sol, range = c(0.5, 3), delta = 0.5, digits = 4)
+}
+```
+
+Question
+========
+Si consideri la variabile casuale $X$ con supporto `r pmf$x` e distribuzione di massa di probabilità uguale a `r pmf$px`. Si calcoli l'entropia di $X$.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+
+Solution
+========
+
+  n1 <- sample(1:5, 1)
+  
+  n2 <- 6 - n1
+  
+  x <- c(sample(1:2, 1), rep(3, n1), rep(5, n2), sample(6: 9, 1))
+  
+  XX <- sort(unique(x))
+  
+  tab <- table(x) / length(x)
+  
+  pmf <- tibble(
+    x = XX,
+    px =tab
+  )
+  
+  entropy <- function(p) {
+    -sum(p * log2(p))
+  }
+  
+  sol <- entropy(pmf$px)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: entropy_03

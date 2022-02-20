@@ -1,0 +1,28 @@
+\begin{question}
+
+Indichiamo con X il numero di teste su 800 lanci di una moneta che dà testa con
+probabilità p = 0.5. Usando l'approssimazione normale calcolare P(370 < X < 430).
+
+ \begin{answerlist}
+   \item 0.526
+   \item 0.661
+   \item 0.718
+   \item 0.832
+   \item 0.963
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+p <- 1 / 2
+pnorm(429.5, 800*p, sqrt(800*p*(1-p))) - pnorm(370.5, 800*p, sqrt(800*p*(1-p)))
+[1] 0.9630182
+
+pbinom(429, 800, 0.5) - pbinom(370, 800, 0.5)
+[1] 0.9630842
+ \end{solution}
+
+ \exname{norm bino 7}
+ \extype{mchoice}
+ \exsolution{00001}
+ \exshuffle{TRUE}

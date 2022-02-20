@@ -1,0 +1,37 @@
+\begin{question}
+Tutti i nuovi pazienti in centro di salute mentale ricevono una Check list di sintomi e devono segnalare la frequenza con cui hanno manifestato ciascun sintomo nell'ultima settimana. I pazienti assegnano un indice di frequenza a ciascun sintomo (0 - per niente, 1 - a volte, 2 - spesso, 3 - quasi sempre).
+ 
+Si scelga la scala di misurazione appropriata.
+
+\begin{answerlist}
+  \item ordinale
+  \item intervalli
+  \item nominale
+  \item rapporti
+  \item approssimativamente ad intervalli
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+Questa scala di valutazione ha la proprietà di identità e ordine. Ogni numero identifica un livello di frequenza su una scala ordinata.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+\end{answerlist}
+
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_13}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

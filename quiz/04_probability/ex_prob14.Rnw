@@ -1,0 +1,21 @@
+\begin{question}
+Un'urna contiene 6 gettoni neri, 5 rossi e 4 bianchi. Estraendo un gettone a caso,
+calcolare la probabilità di estrarre un gettone rosso o bianco.
+
+\begin{answerlist}
+  \item 11/15
+  \item 8/15
+  \item 9/15
+  \item 10/15
+  \item 12/15
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+5/15 + 4/15 = 9/15.
+\end{solution}
+
+\exname{gettoni n r b 2}
+\extype{mchoice}
+\exsolution{00100}
+\exshuffle{TRUE}

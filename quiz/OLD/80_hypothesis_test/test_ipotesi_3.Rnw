@@ -1,0 +1,36 @@
+\begin{question}
+
+In  un  campione  di  15  bambini  di una scuola  di  Firenze  il  tempo  medio  passato  a guardare  la  televisione è di 27.50  ore  a  settimana,  con  varianza  campionaria  di  16  ore. Supponiamo che l'Ordine degli Psicologi raccomandi un massimo di 25 ore  per  settimana.  Il  preside della scuola  afferma  che il comportamento dei suoi bambini è coerente con la raccomandazione dell'Ordine degli Psicologi: il tempo speso a guardare la TV dai bambini non è tanto superiore né tanto inferiore a 25 ore per settimana.  Usando  un  livello  di  significatività  del 5 percento, si  può  concludere  che  il preside abbia ragione? Si assuma che il tempo speso a guardare la TV dai bambini sia distribuito secondo una normale.
+
+\begin{answerlist}
+   \item Non si può rifiutare H_0 perché la statistica test non cade nella regione di rifiuto. L'affermazione del preside è coerente con i dati, fissato alpha = 0.05.
+   \item Si può rifiutare H_0 perché la statistica test cade nella regione di rifiuto. L'affermazione del preside non è coerente con i dati, fissato alpha = 0.05.
+   \item Non si può rifiutare H_0 perché la statistica test cade nella regione di rifiuto. L'affermazione del preside è coerente con i dati, fissato alpha = 0.05.
+   \item Si può rifiutare H_0 perché la statistica test non cade nella regione di rifiuto. L'affermazione del preside non è coerente con i dati, fissato alpha = 0.05.
+   \item Si può rifiutare H_0 perché il valore-p è maggiore dell'intervallo di confidenza. L'affermazione del preside non è coerente con i dati, fissato alpha = 0.05.
+\end{answerlist}
+
+ \end{question}
+
+\begin{solution}
+Il test è bidirezionale. H_0: mu = 25; H_1: mu diverso da 25
+La regione di rifiuto di H_0 è posta nelle due code della distribuzione della statistica test.  Il valore critico della regione di rifiuto nella coda sinistra è
+qt(.025, 15-1)
+[1] -2.144787
+e nella coda destra è
+qt(.975, 15-1)
+[1] 2.144787
+Il valore della statistica test è
+T <- (27.5 - 25) / sqrt(16/15)
+T
+[1] 2.420615
+La statistica test cade nella regione di rifiuto di H_0 e dunque rifiutiamo H_0. Concludiamo che le evidenze empiriche sono incompatibili con le affermazioni del preside.  In maniera equivalente, calcoliamo il valore-p:
+2 * (1 - pt(T, 15-1))
+[1] 0.02967278
+Il fatto che il valore-p sia minore di alpha = 0.05, test bilaterale, ci consente di rifiutare H_0.
+\end{solution}
+
+\exname{test_ipotesi 3}
+\extype{mchoice}
+\exsolution{01000}
+\exshuffle{TRUE}

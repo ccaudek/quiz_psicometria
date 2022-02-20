@@ -1,0 +1,31 @@
+\begin{question}
+
+Un medico è chiamato per visitare un bambino malato. Il medico è informato a priori
+che il 90 percento dei bambini malati in quella zona hanno l'influenza, mentre per
+l'altro 10 percento sono malati di morbillo. Poniamo che F indichi un bambino
+con influenza, M con il morbillo. Supponiamo per semplicità che non ci siano altre
+malattie in quel quartiere. Posto che la probabilità di avere un'eruzione
+cutanea (rash, R) sia P(R|M) = 0.95 per il morbillo e P(R|F) = 0.08 per
+l'influenza, qual è la probabilità che un bambino con rash sia affetto da morbillo?
+ \begin{answerlist}
+   \item 0.57
+   \item 0.17
+   \item 0.36
+   \item 0.72
+   \item 0.09
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+
+   Dati disponibili: P(R|M) = 0.95 ; P(R|F) = 0.08; P(F) = 0.90 ; P(M) = 0.10.
+   Applicando il teorema di Bayes, otteniamo:
+   P(M|R) = 0.95 · 0.10/(0.95 · 0.10 + 0.08 · 0.90) = 0.57.
+
+ \end{solution}
+
+ \exname{bayes 2}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

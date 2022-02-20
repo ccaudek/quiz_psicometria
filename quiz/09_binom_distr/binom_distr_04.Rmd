@@ -1,0 +1,53 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+
+  # numero di dadi
+  n_old <- sample(30:50, 1)
+  # x = numero di successi
+  x_old <- sample(3:(n-2), size = 1)
+  # prob successo
+  p <- x_old / n_old 
+  # nuovi lanci
+  n_new <- sample(10:20, 1)
+  x_new <- sample(2:(n_new - 2), 1)
+  # P(x)
+  sol <- n_new * p
+  sc <- num_to_schoice(sol, range = c(1, n_new), delta = 1)
+}
+```
+
+Question
+========
+Un dado truccato viene lanciato `r n_old` volte e il risultato "6" viene osservato `r x_old` volte. Supponiamo che il dado genga lanciato altre `r n_new` volte; si trovi il valore atteso del risultato "6".
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```
+  # numero di dadi
+  n_old <- sample(30:50, 1)
+  # x = numero di successi
+  x_old <- sample(3:(n-2), size = 1)
+  # prob successo
+  p <- x_old / n_old 
+  # nuovi lanci
+  n_new <- sample(10:20, 1)
+  x_new <- sample(2:(n_new - 2), 1)
+  # P(x)
+  sol <- n_new * p
+```
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: binom_distr_04

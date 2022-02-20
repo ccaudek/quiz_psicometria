@@ -1,0 +1,31 @@
+Question
+========
+Per un campione di osservazioni, la retta di regressione è definita dalla seguente equazione: $\hat{Y} = 9.9 + 2.5X$, con $X$ = successo scolastico e $Y$ = autostima. Due individui differiscono di 20 unità sulla variabile "successo scolastico."  Si trovi la differenza prevista sulla variabile "autostima".
+
+Answerlist
+----------
+* 50.0.
+* 59.9.
+* 63.1.
+* 61.7.
+* 64.5.
+
+Solution
+========
+
+2.5 * 20 
+
+Answerlist
+----------
+* True. 
+* False. 
+* False. 
+* False. 
+* False. 
+
+Meta-information
+================
+exname: regression_10
+extype: schoice
+exsolution: 10000
+exshuffle: 5

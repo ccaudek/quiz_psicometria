@@ -1,0 +1,88 @@
+\begin{question}
+
+In un progetto sulla suscettibilità alle fake news sul Covid-19 sono stati somministrati alcuni questionari a 585 individui. Sono stati indagati vari fattori psicologici di protezione e di vulnerabilità. Una delle variabili di esito riguardava la capacità di discriminare tra 15 fake news e 15 notizie vere relative al Covid-19.  La capacità di discriminazione è stata misurata con un indice chiamato "truth discernment" (the extent to which misinformation is believed relative to accurate content. Discernment, is typically calculated as belief in true news minus belief in false news). Nel caso presente, sarà considerata come la variabile dipendente di un modello di regressione. Fornisco qui i valori di 200 soggetti selezionati a caso dal campione complessivo (valori più grandi significano una maggiore capacità di discriminare correttamente tra notizie vere e fake news):
+
+discernment <- c( 
+ 2.40, 1.87, 2.00, 1.53, 0.93, 1.33, 2.73, 2.13, 2.20, 2.00, 0.13, 1.00, 2.73, 1.53, 1.20, 2.67, 0.73,
+ 1.00, 2.20, 2.67, 2.00, 2.27, 1.73, 2.27, 2.27, 3.40, 1.13, 1.53, 0.27, 2.47, 3.00, 2.33, 2.20, 1.93,
+ 2.47, 2.73, 1.67, 2.40, 2.80, 2.07, 2.20, 1.93, 2.13, 1.33, 2.87, 1.73, 2.33, 2.33, 3.20, 2.20, 1.13,
+ 2.20, 1.00, 1.60, 3.07, 1.80, 1.73, 1.73, 1.40, 1.73, 2.27, 2.27, 2.20, 1.80, 3.20, 2.27, 2.73, 0.27,
+ 2.20, 1.93, 1.73, 2.13, 1.13, 2.67, 2.60, 1.27, 0.33, 1.27, 0.40, 1.93, 1.73, 1.47, 2.20, 0.60, 2.20,
+ 1.20, 3.13, 1.33, 2.00, 2.87, 2.13, 2.13, 0.40, 1.73, 2.20, 1.87, 2.20, 1.13, 1.47, 2.07, 2.07, 1.53,
+ 2.80, 1.80, 1.53, 2.67, 2.67, 1.67, 1.60, 2.60, 3.27, 2.60, 0.20, 2.87, 2.07, 1.73, 1.80, 2.27, 2.07,
+ 2.67, 1.80, 2.07, 1.40, 3.27, 1.27, 2.40, 1.80, 1.80, 3.00, 2.13, 2.07, 2.40, 2.00, 2.27, 2.33, 1.07,
+ 2.00, 0.93, 1.80, 3.00, 1.60, 1.40, 1.93, 2.80, 2.87, 1.73, 2.93, 3.47, 2.73, 1.60, 2.60, 2.13, 2.20,
+ 1.87, 2.20, 2.07, 2.20, 1.87, 2.80, 0.87, 1.73, 2.07, 1.00, 2.53, 1.87, 2.67, 2.20, 1.33, 1.73, 2.07,
+ 3.47, 1.93, 2.53, 1.07, 2.47, 1.87, 2.13, 3.13, 0.80, 1.67, 1.93, 2.00, 1.73, 2.33, 2.47, 2.67, 1.20,
+ 2.80, 2.67, 1.93, 2.20, 2.53, 1.40, 2.47, 1.07, 1.60, 0.40, 2.33, 2.07, 1.87
+)
+
+Si considerino due variabili indipendenti: pol e isyoung.
+
+pol: un indice che misura l'orientamento politico (i valori più piccoli significano "estrema destra", valori più grandi significano "estrema sinistra"):
+
+pol <- c(  
+  0.53,  1.13,  0.53, -1.88, -0.68, -0.68,  1.13, -1.28,  0.53, -1.88, -1.88, -1.88,  1.13, -0.07,
+ -0.07, -0.07, -1.88, -0.68,  1.13,  1.13, -1.28, -0.07,  0.53, -0.68,  1.13, -0.07, -0.68, -0.68,
+ -1.88,  1.13,  1.13,  0.53, -1.28,  0.53,  1.13,  0.53, -0.68,  1.73,  1.73, -0.68, -0.68, -0.68,
+  1.13,  0.53, -0.68, -1.28, -1.28,  1.13,  0.53, -0.68, -2.48,  0.53, -0.68,  0.53,  1.73, -0.68,
+ -1.88, -0.68,  1.13, -0.68,  1.13, -0.68,  1.13, -0.68,  1.13, -2.48,  1.13, -1.88,  1.13,  1.13,
+ -0.68,  0.53, -1.28,  1.13, -0.68, -0.68,  1.13, -0.68, -1.88,  0.53, -0.68,  0.53,  0.53, -0.68,
+ -1.28, -0.68,  1.13,  0.53, -0.68,  1.13,  1.13, -1.28, -0.68,  1.13,  0.53,  0.53,  1.13, -1.28,
+ -1.88,  0.53, -1.28,  1.13, -1.28, -0.68,  1.13, -1.28,  1.13, -0.68, -0.68,  1.13,  1.13,  0.53,
+ -0.68,  0.53, -0.07, -0.07, -0.68,  1.13,  1.13,  1.13,  1.13, -0.68,  1.13, -0.07, -1.88, -1.88,
+ -0.07, -0.68,  1.13,  1.73, -0.68,  1.13,  1.13,  0.53,  0.53,  0.53, -1.28,  1.73,  1.13,  0.53,
+ -1.28, -0.68, -0.68,  0.53, -1.28,  1.13,  1.13,  1.13, -1.28, -0.68,  0.53, -0.68,  1.73,  1.13,
+  0.53,  1.13, -1.28,  1.13,  1.13, -0.68, -1.28, -1.28, -0.68,  0.53, -0.07, -0.68, -0.68, -1.28,
+  0.53, -1.28,  1.13, -0.68, -0.68, -0.68,  1.13,  0.53, -1.88,  1.13, -0.68,  1.13, -0.68, -0.68,
+ -0.68,  1.73,  1.73,  1.13, -0.68, -1.28,  1.13, -0.68, -1.28,  0.53,  1.13, -0.68, -0.68,  1.13,
+ -0.68,  1.13, -0.68,  0.53
+)
+
+isyoung: una variabile che assume valore 0 quando l'età del rispondente è minore del primo quartile della distribuzione delle età nel campione, e assume il valore 1 altrimenti:
+
+isyoung <- c(  
+ 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,
+ 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0,
+ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0,
+ 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0,
+ 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0,
+ 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+ 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1,
+ 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1
+)
+
+Si consideri il modello di regressione con interazione tra pol e isyoung.
+Si scelga l'interpretazione corretta dei risultati dell'analisi statistica.
+
+\begin{answerlist}
+ \item nel gruppo d'età meno giovane, un orientamento politico maggiormente orientato a sinistra è associato ad un livello di discernment più alto; per il gruppo d'età più giovane, l'orientamento politico non influenza il livello di discernment; 
+ \item un orientamento politico maggiormente orientato a sinistra migliora il livello di discernment in modo simile nei due gruppi.
+ \item un orientamento politico maggiormente orientato a sinistra peggiora il livello di discernment in modo simile nei due gruppi.
+ \item non c'è un effetto dell'orientamento politico su discernment; invece i più giovani ottengono risultati di discernment migliori dei meno giovani.
+ \item non c'è un effetto dell'orientamento politico su discernment; invece i più giovani ottengono risultati di discernment peggiori dei meno giovani.
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+
+library(sjPlot)
+library(sjmisc)
+
+dat <- data.frame(
+  discernment, isyoung, pol
+)
+
+m <- lm(discernment ~ pol * isyoung, data = dat)
+summary(m)
+
+plot_model(m, type = "pred", terms = c("pol", "isyoung"))
+\end{verbatim}
+\end{solution}
+
+\exname{interaction_2}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}

@@ -1,0 +1,37 @@
+\begin{question}
+Per l'ammissione ad un'università, agli studenti viene chiesto di completare il test  Graduate Record Examination (GRE). Questo è un test standardizzato. I punteggi possono variare da 200 a 800 con una media della popolazione di 500 e una deviazione standard della popolazione di 100.
+ 
+Si scelga la scala di misurazione appropriata.
+
+\begin{answerlist}
+  \item intervalli
+  \item approssimativamente ad intervalli
+  \item nominale
+  \item ordinale
+  \item rapporti
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+I punteggi GRE hanno la proprietà dell'eguaglianza degli intervalli tra i punti della scala.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+\end{answerlist}
+
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_6}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

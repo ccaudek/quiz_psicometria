@@ -1,0 +1,27 @@
+\begin{question}
+
+Si lancia una moneta equilibrata per 200 volte. Approssimando lo schema binomiale con quello gaussiano calcolare la probabilità che l'evento testa si verifichi più di 120 volte.
+
+ \begin{answerlist}
+   \item 0.002
+   \item 0.015
+   \item 0.027
+   \item 0.041
+   \item 0.063
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+p <- 1 / 2
+1 - pnorm(120.5, 200*p, sqrt(200*p*(1-p)))
+[1] 0.001870952
+
+1 - pbinom(120, 200, 0.5)
+1] 0.001817474
+\end{solution}
+
+ \exname{norm bino 6}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

@@ -1,0 +1,26 @@
+\begin{question}
+
+Il peso (in libbre) di 5 individui risulta essere pari a 46.95, 43.72, 64.78, 32.59, 54.63. Si trovi l'altezza prevista per i 5 individui ipotizzando una distribuzione a priori per $\alpha$ pari a Normal(178, 100), una distribuzione a priori per $\beta$ pari a Normal(0, 10) e una distribuzione a priori per $\sigma$ pari a Uniform(0, 50).
+
+
+ \begin{answerlist}
+   \item 3
+   \item 1
+   \item 2
+   \item 4
+   \item 5
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+\begin{verbatim}
+\library(rethinking)
+
+\end{verbatim}
+ \end{solution}
+
+ \exname{rethinking_cap4_4}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

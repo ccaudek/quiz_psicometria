@@ -1,0 +1,19 @@
+\begin{question}
+Da un mazzo di 52 carte (13 carte per ciascuno dei 4 semi) ne vengono estratte 5 in modo casuale. Quanti risultati diversi si possono ottenere?
+
+\begin{answerlist}
+  \item 2198960.
+  \item 2598960.
+  \item 2568960.
+  \item 2798960.
+  \item 2998960.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+choose(52, 5) = 2598960
+\end{solution}
+\exname{comb_die_pd_3}
+\extype{mchoice}
+\exsolution{01000}
+\exshuffle{TRUE}

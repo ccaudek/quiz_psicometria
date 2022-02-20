@@ -1,0 +1,31 @@
+\begin{question}
+Identifica il livello di misurazione della seguente variabile: classificazione
+nella quale un'unità di osservazione può appartenere a più di una classe.
+
+\begin{answerlist}
+   \item neppure a livello nominale
+   \item nominale
+   \item ordinale
+   \item ad intervalli
+   \item a rapporti
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item Vero. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_5}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

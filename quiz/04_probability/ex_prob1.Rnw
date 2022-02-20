@@ -1,0 +1,28 @@
+\begin{question}
+Si consideri l'esperimento casuale avente come risultati possibili i numeri 1, 2, 3, 4, 5
+di probabilità rispettivamente 0.2, 0.4, 0.1, 0.1, 0.2. Determinare la
+probabilità dell'evento A: "numero minore o uguale a 3."
+\begin{answerlist}
+  \item 0.7
+  \item 0.6
+  \item 0.5
+  \item 0.4
+  \item 0.3
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+A = {1, 2, 3} P(A) = 0.2 + 0.4 + 0.1 = 0.7
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+\end{answerlist}
+\end{solution}
+
+\exname{probabilità 1:5, prob 0.2, 0.4, 0.1, 0.1, 0.2}
+\extype{mchoice}
+\exsolution{10000}
+\exshuffle{TRUE}

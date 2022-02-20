@@ -1,0 +1,205 @@
+```{r data generation, echo = FALSE, results = "hide"}
+# Bivariate regression with dichotomous x.
+# Cohen's d.
+sc <- NULL
+while(is.null(sc)) {
+
+  library("tidyverse")
+  library("rstan")
+  library("cmdstanr")
+  library("rio")
+  library("here")
+  library("posterior")
+  
+  rstan_options(auto_write = TRUE) 
+  options(mc.cores = parallel::detectCores()) 
+  # Sys.setenv(LOCAL_CPPFLAGS = "-march=native") 
+
+  d <- rio::import(here::here("quiz", "60_reg_lin", "data", "MehrSongSpelke_exp_1.csv"))
+  
+  d3 <- d %>% 
+    dplyr::filter(exp1 == 1 | exp2 == 1 | exp3 == 1) %>% 
+    select(exp1, exp2, exp3, babylike5)
+
+  d3 <- d3 %>% 
+    mutate(
+      exp = ifelse(exp1 == 1, 1, ifelse(exp2 == 1, 2, 3))
+    ) %>% 
+    dplyr::select(babylike5, exp)
+  
+  dd <- na.omit(d3)
+  # table(d3$exp)
+  
+  data_grp <- list(
+    N = nrow(dd),
+    K = length(unique(dd$exp)),
+    x = dd$exp,
+    y = dd$babylike5
+  )
+  
+  modelString <- "
+   // Comparison of k groups with common variance (ANOVA)
+   data {
+     int<lower=0> N;            // number of observations
+     int<lower=0> K;            // number of groups
+     int<lower=1,upper=K> x[N]; // discrete group indicators
+     vector[N] y;               // real valued observations
+   }
+   parameters {
+     vector[K] mu;        // group means
+     real<lower=0> sigma; // common standard deviation
+     real<lower=1> nu;
+  }
+  model {
+     mu ~ normal(0, 5);
+     sigma ~ exponential(1);
+     nu ~ gamma(2, 0.1);
+     y ~ student_t(nu, mu[x], sigma); 
+   }
+   "
+  writeLines(modelString, con = "aov.stan")
+  
+  file <- file.path("aov.stan")
+  mod <- cmdstan_model(file)
+  
+  fit <- mod$sample(
+    data = data_grp,
+    iter_sampling = 4000L,
+    iter_warmup = 2000L,
+    seed = 123,
+    chains = 4L
+  )
+  
+  # fit$summary()
+  stanfit <- rstan::read_stan_csv(fit$output_files())
+  
+  # posterior <- extract(stanfit, permuted = TRUE)
+  # temps <- tibble(posterior$mu) %>%
+  #   setNames(c("Exp 1", "Exp 2", "Exp 3"))
+  # bayesplot::mcmc_areas(temps, prob = 0.95) +
+  #   xlab("Gruppi")
+  
+  ci95 <- rstanarm::posterior_interval(
+    as.matrix(stanfit),
+    prob = 0.95
+  )
+  
+  lim_low <- ci95[2, 2]
+  sol <- as.numeric(lim_low)
+  sc <- num_to_schoice(sol, range = c(2, 4), delta = 0.2, digits = 3)
+
+}
+```
+
+Question
+========
+
+Si leggano i dati `MehrSongSpelke_exp_1.csv`. Si considerino i dati degli esperimenti 1, 2 e 3 (`exp1 == 1`, `exp2 == 1` e `exp3 == 1`). Esamineremo qui la variabile `babylike5`. Vogliamo trovare la media a posteriori della differenza tra le medie dei tre esperimenti (ANOVA). A questo fine adattiamo ai dati un modello bayesiano usando Stan, con le seguenti specifiche, `iter_sampling = 4000L`, `iter_warmup = 2000L`, `chains = 4L`, `seed = 123`. Nell'ANOVA bayesiana non assumeremo la gaussianità, ma assumeremo per $Y$ una distribuzione $t$ di Student, con un numero di gradi di libertà stimato dal modello. Per $\nu$ assumeremo una distribuzione a priori `nu ~ gamma(2, 0.1)`.
+
+Si noti che la variabile `babylike5` contiene dei valori mancanti, per cui prima di svolgere l'analisi statistica è necessario rimuovere le osservazioni mancanti dai dati.
+
+Si utilizzi un modello di regressione bayesiano che adotta `normal(0, 5)` quale distribuzione a priori per il parameto mu e `exponential(1)` per il parametro sigma.
+
+Si calcoli il limite superiore dell'intervallo di credibilità al 95% per la stima a posteriori della media di `babylike5` nel secondo esperimento.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+````
+  library("tidyverse")
+  library("rstan")
+  library("cmdstanr")
+  library("rio")
+  library("here")
+  library("posterior")
+  
+  rstan_options(auto_write = TRUE) 
+  options(mc.cores = parallel::detectCores()) 
+  # Sys.setenv(LOCAL_CPPFLAGS = "-march=native") 
+
+  d <- rio::import(here::here("quiz", "60_reg_lin", "data", "MehrSongSpelke_exp_1.csv"))
+  
+  d3 <- d %>% 
+    dplyr::filter(exp1 == 1 | exp2 == 1 | exp3 == 1) %>% 
+    select(exp1, exp2, exp3, babylike5)
+
+  d3 <- d3 %>% 
+    mutate(
+      exp = ifelse(exp1 == 1, 1, ifelse(exp2 == 1, 2, 3))
+    ) %>% 
+    dplyr::select(babylike5, exp)
+  
+  dd <- na.omit(d3)
+  # table(d3$exp)
+  
+  data_grp <- list(
+    N = nrow(dd),
+    K = length(unique(dd$exp)),
+    x = dd$exp,
+    y = dd$babylike5
+  )
+  
+  modelString <- "
+   // Comparison of k groups with common variance (ANOVA)
+   data {
+     int<lower=0> N;            // number of observations
+     int<lower=0> K;            // number of groups
+     int<lower=1,upper=K> x[N]; // discrete group indicators
+     vector[N] y;               // real valued observations
+   }
+   parameters {
+     vector[K] mu;        // group means
+     real<lower=0> sigma; // common standard deviation
+     real<lower=1> nu;
+  }
+  model {
+     mu ~ normal(0, 5);
+     sigma ~ exponential(1);
+     nu ~ gamma(2, 0.1);
+     y ~ student_t(nu, mu[x], sigma); 
+   }
+   "
+  writeLines(modelString, con = "aov.stan")
+  
+  file <- file.path("aov.stan")
+  mod <- cmdstan_model(file)
+  
+  fit <- mod$sample(
+    data = data_grp,
+    iter_sampling = 4000L,
+    iter_warmup = 2000L,
+    seed = 123,
+    chains = 4L
+  )
+  
+  # fit$summary()
+  stanfit <- rstan::read_stan_csv(fit$output_files())
+  
+  # posterior <- extract(stanfit, permuted = TRUE)
+  # temps <- tibble(posterior$mu) %>%
+  #   setNames(c("Exp 1", "Exp 2", "Exp 3"))
+  # bayesplot::mcmc_areas(temps, prob = 0.95) +
+  #   xlab("Gruppi")
+  
+  ci95 <- rstanarm::posterior_interval(
+    as.matrix(stanfit),
+    prob = 0.95
+  )
+  
+  lim_low <- ci95[2, 2]
+  sol <- as.numeric(lim_low)
+````
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: stan_reg_09

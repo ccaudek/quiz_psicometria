@@ -1,0 +1,22 @@
+\begin{question}
+Da un mazzo di 40 carte (10 carte per ciascuno dei 4 semi) ne vengono estratte 3 in modo casuale. Qual'e' la probabilita' che le 3 carte estratte abbiano lo stesso seme? (Suggerimento: la probabilità richiesta si calcola come rapporto tra il numero di casi favorevoli e il numero di casi possibili. Per il numero di casi possibili, ci si chiede quanti siano i modi di scegliere 3 carte da 40. Per il numero di casi favorevoli ci si chiede quanti siano i modi di scegliere 3 carte fra le 10 dello stesso seme -- si ricordi però che ci sono 4 semi.)
+
+\begin{answerlist}
+  \item 0.002
+  \item 0.023
+  \item 0.049
+  \item 0.142
+  \item 0.275
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Usando R:
+(4 * choose(10, 3)) / choose(40, 3)
+[1] 0.048583
+\end{solution}
+
+\exname{binomial_pd_1}
+\extype{mchoice}
+\exsolution{00100}
+\exshuffle{TRUE}

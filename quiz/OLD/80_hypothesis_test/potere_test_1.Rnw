@@ -1,0 +1,33 @@
+\begin{question}
+Una variabile casuale X segue la distribuzione normale con media sconosciuta e varianza uguale a 64. 
+Il campione è costituito da 16 osservazioni. Si sottopone a verifica l'ipotesi nulla $H_0: \mu = 0$ con un'ipotesi alternativa bilaterale. 
+Sia $\alpha$ = 0.05. 
+Si trovi il potere del test supponendo che il vero valore di $\mu$ sia 102. (Suggerimento: si trovino gli estremi della regione di rifiuto di $H_0$ e si usi questa informazione per calcolare la potenza del test quano l'ipotesi alternativa è vera)
+
+\begin{answerlist}
+   \item 0.17
+   \item 0.83
+   \item 0.02
+   \item 0.98
+   \item 0.36.
+\end{answerlist}
+
+ \end{question}
+
+\begin{solution}
+# beta = P(accettare H_0 quando è falsa).
+# Per trovare questo valore dobbiamo esprimere i valori critici della RR come funzione della media del campione:
+100 + c(-1, 1) * 1.96 * 8 / 4
+# I valori critici sono [96.08, 103.92]. Assumenda vera H_a, calcoliamo beta:
+beta <- pnorm(103.92, 102, 8 / 4)
+beta
+[1] 0.8314724
+# Il potere statistico è dunque
+1 - beta
+[1] 0.1685276
+\end{solution}
+
+\exname{potere_1}
+\extype{mchoice}
+\exsolution{10000}
+\exshuffle{TRUE}

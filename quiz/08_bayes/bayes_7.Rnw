@@ -1,0 +1,33 @@
+\begin{question}
+
+L'1 percento degli studenti dell'università di Montecalvo è laureato in psicologia. Il 90 percento dei laureati in psicologia dell'università di Montecalvo viene ammesso ad un corso di specializzazione post-laurea inerente le tecniche di Mindfulness. Solo il 30 percento dei laureati in un'area diversa dalla psicologia che provengono dall'università di Montecalvo è ammesso al corso di specializzazione sulla Mindfulness. Giovanna è una studentessa dell'università di Montecalvo ed è stata ammessa al corso di specializzazione sulla Mindfulness. Qual è la probabilità che Giovanna sia laureata in psicologia?
+
+ \begin{answerlist}
+   \item 0.029
+   \item 0.091
+   \item 0.132
+   \item 0.207
+   \item 0.362
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+
+Applicando il teorema di Bayes, otteniamo:
+(0.01 * 0.90) / (0.01 * 0.90 + 0.99 * 0.3) = 0.02941176
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+\end{answerlist}
+
+\end{solution}
+
+ \exname{bayes_7}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

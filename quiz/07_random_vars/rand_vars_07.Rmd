@@ -1,0 +1,60 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library("prob")
+sc <- NULL
+while(is.null(sc)) {
+  S <- rolldie(2, nsides = 6, makespace = TRUE)
+  S <- addrv(S, FUN = max, invars = c("X1", "X2"), name = "Y")
+  S <- addrv(S, FUN = min, invars = c("X1", "X2"), name = "W")
+  J <- marginal(S, vars = c("Y", "W"))
+  
+  # select random row
+  n_rows <- nrow(J)
+  rand_row <- sample(1:n_rows, 1)
+  
+  yrand <- J$Y[rand_row]
+  wrand <- J$W[rand_row]
+  
+  sol <- J[J$Y == yrand & J$W == wrand, ]$probs
+  sc <- num_to_schoice(sol, range = c(0, 1), delta = 0.1)
+}
+```
+
+Question
+========
+Vengono lanciati due dadi a sei facce. Sia la variabile casuale Y il valore massimo ottenuto nel lancio dei 2 dadi; sia W il valore minimo ottenuto nel lancio dei due dadi. Si calcoli la probabilità dell'evento congiunto Y =  `r yrand` e W =  `r wrand`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+  S <- rolldie(2, nsides = 6, makespace = TRUE)
+  
+  S <- addrv(S, FUN = max, invars = c("X1", "X2"), name = "Y")
+  
+  S <- addrv(S, FUN = min, invars = c("X1", "X2"), name = "W")
+  
+  J <- marginal(S, vars = c("Y", "W"))
+  
+  n_rows <- nrow(J)
+  
+  rand_row <- sample(1:n_rows, 1)
+  
+  yrand <- J$Y[rand_row]
+  
+  wrand <- J$W[rand_row]
+  
+  sol <- J[J$Y == yrand & J$W == wrand, ]$probs
+  
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+  
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: rv_07

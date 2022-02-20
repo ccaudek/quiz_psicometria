@@ -1,0 +1,33 @@
+\begin{question}
+Siano A e B due eventi dello spazio campione tali che $P(A)$ = 0.7 e $P(A \cup B)$ = 0.8. Si determini $P(B)$ nel caso in cui $A$ e $B$ sono incompatibili.
+\begin{answerlist}
+  \item 0.00
+  \item 0.25
+  \item 0.36
+  \item 0.42
+  \item 0.10
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Se A e B sono incompatibili si ha che: P(A∩B) = 0 e poiché:
+
+P(A∪B) = P(A) + P(B) − P(A∩B) 
+
+otteniamo che:
+
+0.8 = 0.7 + P(B) − 0 ⇒ P(B) = 0.1.
+
+\begin{answerlist}
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta corretta.
+\end{answerlist}
+\end{solution}
+
+\exname{A e B cond 1}
+\extype{mchoice}
+\exsolution{00001}
+\exshuffle{TRUE}

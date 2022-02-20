@@ -1,0 +1,23 @@
+\begin{question}
+Si lanciano due dadi non truccati.  Sia $E$ l'evento che la somma dei numeri usciti è dispari, $F$ l'evento che almeno uno dei due numeri usciti e' 1, $G$ l'evento che la somma dei numeri usciti è 5. 
+
+a) Scrivere in modo esplicito l'evento $E$ intersecato con $F$ e calcolarne la probabilità.
+
+b) Calcolare la probabilità degli eventi: $E o F$, $F e G$, $E e non F$, $E e F e G$.
+
+\begin{answerlist}
+  \item a: 10/36; b: P(E o F) = 19/36; P(F e G) = 6/36; P(E e nonF) = 1/3; P(E e F e G) = 12/36.
+  \item a: 9/36; b: P(E o F) = 20/36; P(F e G) = 5/36; P(E e nonF) = 1/3; P(E e F e G) = 5/36.
+  \item a: 8/36; b: P(E o F) = 21/36; P(F e G) = 4/36; P(E e nonF) = 1/3; P(E e F e G) = 4/36.
+  \item a: 7/36; b: P(E o F) = 22/36; P(F e G) = 3/36; P(E e nonF) = 1/3; P(E e F e G) = 1/36.
+  \item a: 6/36; b: P(E o F) = 23/36; P(F e G) = 2/36; P(E e nonF) = 1/3; P(E e F e G) = 2/36.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\end{solution}
+
+\exname{due_die_pd_2}
+\extype{mchoice}
+\exsolution{00001}
+\exshuffle{TRUE}

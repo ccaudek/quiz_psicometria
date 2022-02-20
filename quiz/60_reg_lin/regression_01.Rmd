@@ -1,0 +1,54 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+
+  b0_seq <- seq(20, 30, by=1)
+  b0 <- sample(b0_seq, 1)
+
+  b1_seq <- seq(-10, -1, by=0.1)
+  b1 <- sample(b1_seq, 1)
+  
+  months_number <- sample(2:24, 1)
+  
+  sol <- b1 * months_number 
+  sc <- num_to_schoice(sol, range = c(-240, 1), delta = 1, digits = 2)
+}
+```
+
+Question
+========
+Nel trattamento del Disturbo da Stress Post Traumatico (PTSD), è stato rilevato che la meditazione contribuisce ad alleviare i sintomi del PTSD. Nello specifico produce una diminuzione del numero di flashback esperiti dal paziente. In uno studio è stata trovata la seguente relazione lineare tra il numero di mesi di pratica di meditazione e il numero di flashback:
+
+numero_flashback = `r b0` + `r b1` mesi_meditazione + errore
+
+Nel caso di una pratica precedente corrispondente a `r months_number` mesi di meditazione da parte del paziente, si trovi il valore atteso della diminuzione del numero di flashback. 
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+
+Solution
+========
+
+  b0_seq <- seq(20, 30, by=1)
+  
+  b0 <- sample(b0_seq, 1)
+
+  b1_seq <- seq(-10, -1, by=0.1)
+  
+  b1 <- sample(b1_seq, 1)
+  
+  months_number <- sample(2:24, 1)
+  
+  sol <- b1 * months_number 
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: regression_01

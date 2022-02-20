@@ -1,0 +1,39 @@
+\begin{question}
+
+Si consideri la seguente funzione definita per $x \geq 0$:
+
+$$
+f(x) = x/4 \cdot e^{-x^2/8}
+$$
+
+Si calcoli il valore atteso.
+
+ \begin{answerlist}
+   \item 2.51
+   \item 1.12
+   \item 0.74
+   \item 3.42
+   \item 4.26
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+\begin{verbatim}
+f <- function(x) {
+  x/4 * exp(-x^2/8)
+}
+g <- function(x) x * f(x)
+EX <- integrate(
+  g,
+  lower = 0,
+  upper = Inf
+)$value
+EX
+\end{verbatim}
+ \end{solution}
+
+ \exname{contrv2}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

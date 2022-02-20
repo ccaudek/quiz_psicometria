@@ -1,0 +1,19 @@
+\begin{question}
+Sopponiamo che nella popolazione vi sia una piccola differenza tra due condizioni. Supponiamo inoltre che il ricercatore esamini campioni di piccole dimensioni (tale situazione descrive ciò che accade nella maggioranza degli esperimenti condotti in psicologia). Si scelga l'affermazione corretta.
+\begin{answerlist}
+   \item Negli studi pubblicati, la grandezza dell'effetto viene sistematicamente sovrastimata; in alcuni casi, la direzione dell'effetto che viene riportata è errata.
+   \item Negli studi pubblicati, la grandezza dell'effetto viene sistematicamente sovrastimata; tuttavia, la direzione dell'effetto che viene riportata non è mai errata.
+   \item Negli studi pubblicati, la grandezza dell'effetto viene sistematicamente sottostimata; in alcuni casi, la direzione dell'effetto che viene riportata è errata.
+   \item Negli studi pubblicati, la grandezza dell'effetto viene sistematicamente sottostimata; tuttavia, la direzione dell'effetto che viene riportata non è mai errata.
+   \item Negli studi pubblicati, a grandezza dell'effetto è statisticamente corretta.
+\end{answerlist}
+
+ \end{question}
+
+\begin{solution}
+\end{solution}
+
+\exname{test_ipotesi_12}
+\extype{mchoice}
+\exsolution{10000}
+\exshuffle{TRUE}

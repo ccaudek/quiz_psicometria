@@ -1,0 +1,65 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library("prob")
+sc <- NULL
+while(is.null(sc)) {
+  library("prob")
+
+  S <- rolldie(2, nsides = 6, makespace = TRUE)
+  S <- addrv(S, Y = X1 + X2)
+  YY <- sort(unique(S$Y))
+  p_y <- table(S$Y) / 36
+  
+  d <- tibble(
+    y = YY,
+    p_y = p_y
+  )
+  # sum(d$p_y)
+  
+  entropy <- function(p) {
+    -sum(p * log2(p))
+  }
+  sol <- entropy(d$p_y)
+  sc <- num_to_schoice(sol, range = c(0, 5), delta = 0.05, digits = 4)
+}
+```
+
+Question
+========
+Vengono lanciati due dadi a sei facce. Sia la variabile casuale $Y$ la somma dei punti dei due dadi. Si calcoli l'entropia di $Y$.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+
+Solution
+========
+
+  S <- rolldie(2, nsides = 6, makespace = TRUE)
+  
+  S <- addrv(S, Y = X1 + X2)
+  
+  YY <- sort(unique(S$Y))
+  
+  p_y <- table(S$Y) / 36
+  
+  d <- tibble(
+    y = YY,
+    p_y = p_y
+  )
+
+  entropy <- function(p) {
+    -sum(p * log2(p))
+  }
+  
+  sol <- entropy(d$p_y)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: entropy_01

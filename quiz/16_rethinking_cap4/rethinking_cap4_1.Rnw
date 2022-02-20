@@ -1,0 +1,34 @@
+\begin{question}
+
+Nella seguente definizione del modello statistico
+
+$$
+\begin{align}
+y_i &\sim Normal(\mu, \sigma)\\
+\mu &\sim Normal(0, 10)\\
+\sigma &\sim Uniform(0, 10)
+\end{align}
+$$
+
+la verosimiglianza è rappresentata
+
+
+
+ \begin{answerlist}
+   \item dalla prima linea
+   \item dalla seconda linea
+   \item dalla terza linea
+   \item dal rapporto tra la prima e la seconda linea
+   \item dal rapporto tra la prima e la terza linea
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+la prima linea
+ \end{solution}
+
+ \exname{rethinking_cap4_1}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

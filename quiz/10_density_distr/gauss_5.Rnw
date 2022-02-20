@@ -1,0 +1,28 @@
+\begin{question}
+
+Viene creato un test per misurare il livello di motivazione degli studenti
+delle scuole superiori. I punteggi del test seguono approssimativamente la distribuzione
+normale con media 25 e deviazione standard 6. Maggiore il punteggio nel test,
+maggiore il livello di motivazione dello studente. A Mario Rossi viene detto che
+solo il 35% degli studenti che hanno completato il test ha mostrato un livello di
+motivazione superiore al suo.  Quale punteggio ha ottenuto Mario Rossi nel test?
+
+ \begin{answerlist}
+   \item 14.4
+   \item 27.3
+   \item 29.9
+   \item 32.1
+   \item 34.8
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+ > qnorm(.65, 25, 6)
+[1] 27.31192
+ \end{solution}
+
+ \exname{gauss 5}
+ \extype{mchoice}
+ \exsolution{01000}
+ \exshuffle{TRUE}

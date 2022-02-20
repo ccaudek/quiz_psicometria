@@ -1,0 +1,27 @@
+\begin{question}
+
+Lo Scholastic Aptitude Test (SAT) è un test attitudinale richiesto per
+l'ammissione ai college degli Stati Uniti. I punteggi SAT si distribuiscono normalmente
+con media 500 e deviazione standard 100. Supponiamo che un college ammetta soltanto
+studenti che ottengono dei punteggi che appartengono al 15 percento superiore della
+distribuzione. Qual è il punteggio minimo per potere fare domanda di ammissione?
+
+ \begin{answerlist}
+   \item 580
+   \item 604
+   \item 632
+   \item 644
+   \item 650
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+ > qnorm(.85, 500, 100)
+ [1] 603.6433
+ \end{solution}
+
+ \exname{gauss 1}
+ \extype{mchoice}
+ \exsolution{01000}
+ \exshuffle{TRUE}

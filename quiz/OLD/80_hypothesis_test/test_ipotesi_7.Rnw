@@ -1,0 +1,19 @@
+\begin{question}
+Il ricercatore ha trovato un risultato statisticamente significativo nel test statistico, posto alpha = 0.05. Rigetta pertanto l'ipotesi nulla. Si scelga l'affermazione corretta.
+\begin{answerlist}
+   \item La probabilità che il ricercatore sia giunto alla conclusione sbagliata è di 0.05: i dati osservati sono compatibili con l'ipotesi nulla.
+   \item La probabilità che il ricercatore sia giunto alla conclusione sbagliata è di 0.95: i dati osservati sono compatibili con l'ipotesi nulla.
+   \item La probabilità che il ricercatore sia giunto alla conclusione sbagliata è 0: i dati osservati sono incompatibili con l'ipotesi nulla.
+   \item La probabilità che il ricercatore sia giunto alla conclusione sbagliata è diversa da 0.05, ma non sappiamo quale sia il valore esatto.
+   \item La probabilità che il ricercatore sia giunto alla conclusione sbagliata è di 0.05 / 2.
+\end{answerlist}
+
+ \end{question}
+
+\begin{solution}
+\end{solution}
+
+\exname{test_ipotesi_13}
+\extype{mchoice}
+\exsolution{10000}
+\exshuffle{TRUE}

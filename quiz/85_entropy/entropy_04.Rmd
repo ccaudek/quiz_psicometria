@@ -1,0 +1,49 @@
+```{r data generation, echo = FALSE, results = "hide"}
+
+library("prob")
+sc <- NULL
+while(is.null(sc)) {
+  
+  p_head <- sample(seq(0.1, 0.9, by=0.1), 1)
+  
+  px <- c(p_head, (1 - p_head))
+  
+  entropy <- function(p) {
+    -sum(p * log2(p))
+  }
+  sol <- entropy(px)
+  sc <- num_to_schoice(sol, range = c(0.001, 0.99), delta = 0.05, digits = 4)
+}
+```
+
+Question
+========
+Viene lanciata una moneta nella quale la probabilità dell'evento testa è `r p_head`. Si trovi l'entropia di questa moneta.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+
+Solution
+========
+
+  p_tail <- sample(seq(0.1, 0.9, by=0.1), 1)
+  
+  px <- c(p_tail, (1 - p_tail))
+  
+  entropy <- function(p) {
+    -sum(p * log2(p))
+  }
+  
+  sol <- entropy(px)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: entropy_04

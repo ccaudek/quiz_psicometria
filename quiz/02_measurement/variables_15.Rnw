@@ -1,0 +1,39 @@
+\begin{question}
+Un ricercatore, Mario Rossi, sottopone la Rosenberg Self-Esteem Scale (Rosenberg, 1989) ad due gruppi di soggetti, uno con status socio-economico alto e l'altro con status socio-economico basso. Si chiede se l'autostima sia diversa tra i due gruppi.
+
+Un secondo ricercatore, Guido Bianchi, vuole replicare le analisi precedenti, ma prima di qualsiasi analisi decide di dividere i punteggi ottenuti da Mario Rossi per 100.
+ 
+Il modo di procedere di Guido Bianchi è corretto?
+
+\begin{answerlist}
+  \item Sì
+  \item No
+  \item Sì, ma solo se il campione è molto grande
+  \item No, a meno che i due campioni non siano molto simili
+  \item Sì, ma solo se viene controllato l'effetto di altre variabili, quali genere, età, motivazione, ecc.
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+Le trasformazioni lineari sono trasformazioni possibili per scale ad intervalli.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+\end{answerlist}
+
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_15}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

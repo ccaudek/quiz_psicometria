@@ -1,0 +1,74 @@
+```{r data generation, echo = FALSE, results = "hide"}
+## data
+urn <- 1:10
+x <- sample(urn, 3)
+y <- sample(urn, 3)
+
+## questions/answer
+questions <- character(5)
+solutions <- logical(5)
+explanations <- character(5)
+
+aresp <- x 
+bresp <- x + x
+cresp <- x
+dresp <- x + 1
+
+r1 <- capture.output(cat("(a)", aresp, "(b)", bresp, "(c)", cresp, "(d)", dresp))
+questions[1] <- r1
+solutions[1] <- all(x == aresp & x + x == bresp & x == cresp & x + 1 == dresp)
+explanations[1] <- paste("La soluzione si trova eseguendo i comandi nella console")
+
+r2 <- capture.output(cat("(a)", x+x, "(b)", bresp, "(c)", cresp, "(d)", dresp))
+questions[2] <- r2
+solutions[2] <- all(x == x+x & x + x == bresp & x == cresp & x + 1 == dresp)
+explanations[2] <- paste("La soluzione si trova eseguendo i comandi nella console")
+
+r3 <- capture.output(cat("(a)", aresp, "(b)", bresp, "(c)", x, "(d)", dresp))
+questions[3] <- r3
+solutions[3] <- all(x == aresp & x + x == bresp & 2*x == cresp & x + 1 == dresp)
+explanations[3] <- paste("La soluzione si trova eseguendo i comandi nella console")
+
+r4 <- capture.output(cat("(a)", aresp, "(b)", bresp, "(c)", cresp, "(d)", 1))
+questions[4] <- r4
+solutions[4] <- all(x == aresp & x + x == bresp & x == cresp & x + 1 == 1)
+explanations[4] <- paste("La soluzione si trova eseguendo i comandi nella console")
+
+r5 <- capture.output(cat("(a)", aresp, "(b)", bresp, "(c)", cresp, "(d)", x[1]))
+questions[5] <- r5
+solutions[5] <- all(x == aresp & x + x == bresp & x == cresp & x + 1 == x[1])
+explanations[5] <- paste("La soluzione si trova eseguendo i comandi nella console")
+
+```
+
+Question
+========
+
+Siano x = `r x` e y = `r y`. 
+
+Senza utilizzare R si indovini il valore di `x` dopo le seguenti istruzioni: 
+
+(a) x + x
+
+(b) x <- x + x
+
+(c) y <- x + x
+
+(d) x <- x + 1
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(questions, markup = "markdown")
+```
+
+Solution
+========
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(solutions, "True", "False"), explanations, markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(solutions)`
+exname: intro_r_2

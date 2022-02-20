@@ -1,0 +1,43 @@
+\begin{question}
+
+Sono stati prodotti due tipi di monete. Ognuno ha un diverso bias. Un tipo di monete produce testa con una probabilità di 0.6; l'altro tipo di moneta produce testa con una probabilità di 0.4. Abbiamo una moneta, ma non sappiamo se è del primo o del secondo tipo.
+Sappiamo che il 75 percento delle monete sono del primo tipo (probabilità di testa = theta = 0.6) e il 25 percento delle monete sono del secondo tipo (theta = 0.4). Lanciamo la moneta più volte e osserviamo una certa sequenza di testa e croce.
+
+Sono possibili due ipotesi:
+
+H1: la nostra moneta è il primo tipo, con theta = 0.6;
+
+H2: la nostra moneta è del secondo tipo, con theta = 0.4.
+
+Abbiamo osservato il risultato seguente: testa, testa.
+
+Alla luce del risultato ottenuto, si stabilisca quanto è più probabile l'ipotesi A rispetto all'ipotesi B.
+
+ \begin{answerlist}
+   \item H1 è 6.75 volte più probabile di H2.
+   \item H1 è 5.55 volte più probabile di H2.
+   \item H1 è 4.15 volte più probabile di H2.
+   \item H1 è 3.45 volte più probabile di H2.
+   \item H1 è 2.15 volte più probabile di H2.
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+ 
+Ho usato lo stesso script R spiegato nello Screencast.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+\end{answerlist}
+
+\end{solution}
+
+ \exname{bayes_updating_1}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

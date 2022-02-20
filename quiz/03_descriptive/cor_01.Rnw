@@ -1,0 +1,29 @@
+\begin{question}
+Si scelga l'affermazione più appropriata per descrivere la correlazione.
+
+\begin{answerlist}
+  \item Il coefficiente di correlazione $r$ di Pearson quantifica la relazione lineare tra due variabili.
+  \item Il coefficiente di correlazione $r$ di Pearson quantifica la relazione  tra due variabili.
+  \item Il coefficiente di correlazione $r$ di Pearson ci dice unicamente se esiste o meno un'associazione tra due variabili.
+  \item Il coefficiente di correlazione $r$ di Pearson non può essere calcolato se la relazione tra due variabili è curvilinea.
+  \item Il coefficiente di correlazione $r$ di Pearson quantifica la relazione  tra due variabili ordinali.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item Vero. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\exname{correlation_1}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

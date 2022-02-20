@@ -1,0 +1,66 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+p_value <- round(runif(1, 0.00001, 0.049), 4)
+
+## QUESTION/ANSWER GENERATION
+
+# sol <- round(qt(alpha, df), 3)
+  
+questions    <- character(5)
+solutions    <- logical(5)
+explanations <- character(5)
+
+questions[1] <- "Nessuna delle presenti affermazioni."
+
+questions[2] <- "La probabilità che la vera differenza tra le medie sia diversa da 0 e' almeno 0.95."
+
+questions[3] <- "Se l'esperimento venisse ripetuto un grande numero volte, possiamo avere un livello di confidenza di 0.95 che la vera differenza tra le medie sia maggiore di 0."
+
+questions[4] <- "L'ipotesi nulla che la vera differenza tra le medie sia uguale a zero e' verosimilmente falsa."
+
+questions[5] <- "La probabilità che la vera differenza tra le medie sia uguale a 0 e' minore di 0.05."
+
+
+solutions[1] <- TRUE
+solutions[2:5] <- FALSE
+explanations[1] <- "Nessuna affermazione puo' essere fatta sul vero valore del parametro sconosciuto."
+explanations[2:5] <- "Si veda la spiegazione"
+@
+
+
+\begin{question}
+Uno psicologo esegue un esperimento sulla differenza tra due medie, analizza i dati mediante un test t di Student per due campioni indipendenti e trova un valore-p uguale a \Sexpr{p_value}. Si scelga l'affermazione corretta.
+    
+\begin{answerlist}
+\item \Sexpr{questions[1]}
+\item \Sexpr{questions[2]}
+\item \Sexpr{questions[3]}
+\item \Sexpr{questions[4]}
+\item \Sexpr{questions[5]}
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+
+\end{verbatim}
+
+\begin{answerlist}
+\item \Sexpr{mchoice2text(solutions[1])}. \Sexpr{explanations[1]}
+\item \Sexpr{mchoice2text(solutions[2])}. \Sexpr{explanations[2]}
+\item \Sexpr{mchoice2text(solutions[3])}. \Sexpr{explanations[3]}
+\item \Sexpr{mchoice2text(solutions[4])}. \Sexpr{explanations[4]}
+\item \Sexpr{mchoice2text(solutions[5])}. \Sexpr{explanations[5]}
+\end{answerlist}
+
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{\Sexpr{mchoice2string(solutions, single = TRUE)}}
+\exname{interpretation_p_value_it_1}
+\exshuffle{TRUE}
+  
+  
+  

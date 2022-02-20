@@ -1,0 +1,36 @@
+\begin{question}
+
+Nella seguente definizione del modello statistico
+
+$$
+\begin{align}
+y_i &\sim Normal(\mu_i, \sigma)\\
+\mu_i &= \alpha + \beta x_i\\
+\alpha &\sim Normal(0, 10)\\
+\beta &\sim Normal(0, 10)\\
+\sigma &\sim Uniform(0, 10)
+\end{align}
+$$
+
+quanti parametri caratterizzano la distribuzione a posteriori?
+
+
+
+ \begin{answerlist}
+   \item 3
+   \item 1
+   \item 2
+   \item 4
+   \item 5
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+la linea 3
+ \end{solution}
+
+ \exname{rethinking_cap4_4}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

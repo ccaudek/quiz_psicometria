@@ -1,0 +1,37 @@
+\begin{question}
+Ai soggetti viene chiesto di guardare lo schermo di un computer. A intervalli di 30 secondi, l'immagine di una chiave inglese lampeggia sullo schermo. L'immagine potrebbe apparire in qualsiasi punto dello schermo. A volte la chiave ha un'estremità aperta (curva) e a volte la chiave è un esagono chiuso. Ai soggetti viene chiesto di premere il tasto "Y" sulla tastiera di un computer se la chiave inglese è aperta e il tasto "N" se è chiuso. Il punteggio totale è il numero di risposte corrette.
+ 
+Si scelga la scala di misurazione appropriata.
+
+\begin{answerlist}
+  \item rapporti
+  \item ordinale
+  \item intervalli
+  \item nominale
+  \item approssimativamente ad intervalli
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+Questa scala ha tutte le proprietà del sistema numerico: identità, grandezza, intervalli uguali e zero assoluto.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+\end{answerlist}
+
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_14}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

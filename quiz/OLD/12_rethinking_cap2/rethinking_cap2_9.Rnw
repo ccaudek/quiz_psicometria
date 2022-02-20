@@ -1,0 +1,50 @@
+\begin{question}
+
+Ad un bambino di 5 anni vengono sottoposti 12 problemi. Le sue risposte (C = risposta corretta, S = risposta sbagliata) sono le seguenti: C, C, S, C, S, C, C, C, C, S, S, S. Utilizzando una distribuzione a priori uniforme (Beta di parametri alpha = 1 e beta = 1), si calcoli la distribuzione a posteriori per la probabilità $p$ di rispondere correttamente. Si usi il metodo dell'approssimazione numerica. Si trovi la probabilità che, nella distribuzione a posteriori, il parametro $p$ assuma un valore maggiore di 0.8.
+
+\begin{answerlist}
+ \item 0.03
+ \item 0.12
+ \item 0.32
+ \item 0.41
+ \item 0.53
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+# Packages
+suppressPackageStartupMessages(library("tidyverse")) 
+
+# Grid
+n_points <- 1e4
+p_grid <- seq(from = 0, to = 1, length.out = n_points)
+# Prior
+alpha <- 1
+beta <- 1
+prior <- dbeta(p_grid, alpha, beta) / sum(dbeta(p_grid, alpha, beta))
+# Likelihood
+k <- 7
+n <- 12
+likelihood <- dbinom(k, size = n, prob = p_grid)
+# Unstandardized posterior
+unstd_posterior <- likelihood * prior
+# Posterior distribution
+posterior <- unstd_posterior / sum(unstd_posterior)
+
+samples <- sample(p_grid, prob = posterior, size = 1e5, replace = TRUE)
+
+sum(posterior[p_grid < 0.5])
+sum(samples < 0.5) / 1e5
+
+sum(posterior[p_grid > 0.8])
+sum(samples > 0.8) / 1e5
+
+\end{verbatim}
+\end{solution}
+
+\exname{rethinking_cap2_9}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}

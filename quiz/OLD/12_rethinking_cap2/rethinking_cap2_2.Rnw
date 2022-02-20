@@ -1,0 +1,22 @@
+\begin{question}
+
+Quale delle seguenti proposizioni corrisponde all'espressione: $P(\text{lunedì} \mid \text{piaggia})$?
+
+ \begin{answerlist}
+   \item La probabilita' che sia lunedi', dato che piove.
+   \item La probabilita' di pioggia il lunedi'.
+   \item La probabilita' di pioggia, dato che e' lunedi'.
+   \item La probabilita' che piova e che e' lunedi'.
+   \item La probabilità che sia lunedi' ma che non piova.
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+La probabilita' che sia lunedi', dato che piove.
+ \end{solution}
+
+ \exname{rethinking_cap2_2}
+ \extype{schoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

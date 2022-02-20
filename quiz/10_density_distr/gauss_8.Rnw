@@ -1,0 +1,26 @@
+\begin{question}
+
+L'ammissione alle graduate schools in business negli USA richiede la presentazione del
+punteggio del test GMAT. I punteggi GMAT si distribuiscono normalmente con media
+527 e deviazione standard 112. Qual è la probabilità che un candidato ottenga un
+punteggio maggiore di 500?
+
+ \begin{answerlist}
+   \item 0.184
+   \item 0.293
+   \item 0.372
+   \item 0.467
+   \item 0.595
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+> 1 - pnorm(500, 527, 112)
+[1] 0.5952501
+ \end{solution}
+
+ \exname{gauss 8}
+ \extype{mchoice}
+ \exsolution{00001}
+ \exshuffle{TRUE}

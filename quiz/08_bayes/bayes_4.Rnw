@@ -1,0 +1,29 @@
+\begin{question}
+
+Un gruppo di amici sono soliti frequentare una sala cinematografica, che
+proietta film di prima  visione  per  il  60 percento  e  film  d'essay
+per il  40 percento  della  programmazione.  Il gruppo di amici va al cinema con
+probabilità pari a 0.4 nel caso in cui sia in programma un  film  di  prima
+visione  e  con  probabilità  pari  a  0.7  nel  caso  di  film  d'essay.
+Sapendo che  mercoledì  scorso  il  gruppo  di  amici è andato al cinema,
+con che probabilità il film era di prima visione?
+
+ \begin{answerlist}
+   \item 0.17
+   \item 0.24
+   \item 0.38
+   \item 0.46
+   \item 0.59
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+Applicando il teorema di Bayes, otteniamo:
+P(Prima visione | andare al cinema) = (0.4 * 0.6)/(0.4 * 0.6 + 0.7 * 0.4) = 0.46.
+ \end{solution}
+
+ \exname{bayes 4}
+ \extype{mchoice}
+ \exsolution{00010}
+ \exshuffle{TRUE}

@@ -1,0 +1,53 @@
+\begin{question}
+
+Aldo e Baldo sono due monelli che si divertono a lanciare palline di gomma contro le campane per farle suonare.
+
+Hanno un sacchetto che contiene 4 palline bianche e 6 nere.
+
+Estraggono una pallina a caso: se è bianca, la tira Aldo, se è nera, la tira Baldo.
+
+Si sa che:
+
+Aldo centra il bersaglio con una probabilità di 0.9.
+Baldo centra il bersaglio con una probabilità di 0.2.
+
+Oggi hanno fatto il loro gioco con la campana della chiesa e si è sentito "DONNN".
+
+Quante volte è più probabile che sia stato Aldo, piuttosto che Baldo, a suonare la campana?
+
+ \begin{answerlist}
+   \item 3.0
+   \item 2.5
+   \item 2.0
+   \item 1.5
+   \item 3.5
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+
+La probabilità P(A | DONNN) (ovvero, la probabilità dell'ipotesi Aldo) è
+
+(4/10 * 0.9) / (4/10 * 0.9 + 6/10 * 0.2)
+
+La probabilità P(B | DONNN) (ovvero, la probabilità dell'ipotesi Baldo) è
+
+(6/10 * 0.2) / (4/10 * 0.9 + 6/10 * 0.2)
+
+Quindi: 0.75 / 0.25 = 3
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+\end{answerlist}
+
+\end{solution}
+
+ \exname{bayes_9}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

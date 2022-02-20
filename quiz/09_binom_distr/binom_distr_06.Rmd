@@ -1,0 +1,39 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  p <- round(runif(1, 0.2, 0.8), 2)
+  n_new <- sample(14:20, 1)
+  x_new <- sample(10:(n_new - 3), 1)
+  sol <- 1 - sum(dbinom(0:(x_new - 1), size = n_new, prob = p))
+  sc <- num_to_schoice(sol, range = c(0.01, 0.99), delta = 0.01)
+}
+```
+
+Question
+========
+La probabilità di passare un esame universitario è `r p`. Se `r n_new` studenti si iscrivono all'esame, qual è la probabilità che almeno `r x_new` passino l'esame?
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```
+p <- round(runif(1, 0.2, 0.8), 2)
+n_new <- sample(14:20, 1)
+x_new <- sample(10:(n_new - 3), 1)
+sol <- 1 - sum(dbinom(0:(x_new - 1), size = n_new, prob = p))
+```
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: binom_distr_06

@@ -1,0 +1,31 @@
+\begin{question}
+
+Sia $X$ una variabile aleatoria uniforme nell'intervallo [0, 1]. Si calcoli il valore atteso di $X$.
+
+ \begin{answerlist}
+   \item 0.50
+   \item 1.00
+   \item 0.25
+   \item 0.75
+   \item 0.67
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+\begin{verbatim}
+f <- function(x) 1
+g <- function(x) x * f(x)
+EX <- integrate(
+  g,
+  lower = 0,
+  upper = 1
+)$value
+EX
+\end{verbatim}
+ \end{solution}
+
+ \exname{contrv4}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

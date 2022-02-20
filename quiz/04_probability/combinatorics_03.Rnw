@@ -1,0 +1,19 @@
+\begin{question}
+Da un mazzo di 52 carte (13 carte per ciascuno dei 4 semi) ne vengono estratte 5 in modo casuale. Qual'e' la probabilita' di ottenere un poker (quattro carte con lo stesso valore -- es., quattro 7)?
+
+\begin{answerlist}
+  \item 0.00004
+  \item 0.00024
+  \item 0.00044
+  \item 0.00064
+  \item 0.00084
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Al denominatore abbiamo il numero di casi possibili. Calcolando il coefficiente binomiale con la sintassi di R, abbiamo choose(20, 5). Un poker si ottiene con quattro 1, oppure con quattro 2, ... Quante possibilità diversi ci sono? Ce ne sono 13. Resta ancora da stabilire in quanti modi diversi si può ottenere l'ultima carta che manca.  Ne abbiamo usate quattro, per cui ne restano 48.  Il primo evento (poker) si può dunque ottenere in 13 modi, il secondo evento (carta mancante) in 48. Insieme i due eventi hanno dunque (per la regola del prodotto) 13 x 48 possibilità.  La probabilità cercata è dunque (13 * 48) / choose(52, 5) = 0.000240096
+\end{solution}
+\exname{due_die_pd_2}
+\extype{mchoice}
+\exsolution{01000}
+\exshuffle{TRUE}

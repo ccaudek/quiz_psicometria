@@ -1,0 +1,45 @@
+\begin{question}
+
+Un ricercatore osserva il campione di dati indicato sotto. Sottoporre a verifica l'ipotesi nulla H_0: mu = 105 con un test bilaterale e fissato alpha = 0.05.
+
+Possiamo simulare i dati con le seguenti istruzioni R:
+
+set.seed(123)
+y <- rnorm(60, 112, 60)
+
+\begin{answerlist}
+   \item Non si può rifiutare H_0 perché la statistica test T(59) = 1.55 non cade nella regione di rifiuto con un test bidirezionale.
+   \item Si può rifiutare H_0 perché la statistica test T(59) = 1.55 cade nella regione di rifiuto con un test bidirezionale.
+   \item Non si può rifiutare H_0 perché la statistica test T(59) = 1.55 cade nella regione di rifiuto con un test bidirezionale.
+   \item Si può rifiutare H_0 perché la statistica test T(59) = 1.55 non cade nella regione di rifiuto con un test bidirezionale.
+   \item Non si può rifiutare H_0 perché il valore-p è maggiore dell'intervallo di confidenza.
+\end{answerlist}
+
+ \end{question}
+
+\begin{solution}
+> set.seed(123)
+> y <- rnorm(60, 112, 60)
+> T <- (mean(y) - 105) / (sd(y) / sqrt(length(y)))
+> T
+[1] 1.550969
+> 2 * (1 - pt(T, length(y) - 1))
+[1] 0.126257
+> t.test(y, mu = 105)
+
+	One Sample t-test
+
+data:  y
+t = 1.551, df = 59, p-value = 0.1263
+alternative hypothesis: true mean is not equal to 105
+95 percent confidence interval:
+ 101.8265 130.0475
+sample estimates:
+mean of x
+  115.937
+\end{solution}
+
+\exname{test_ipotesi 5}
+\extype{mchoice}
+\exsolution{10000}
+\exshuffle{TRUE}

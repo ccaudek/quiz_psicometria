@@ -1,0 +1,26 @@
+\begin{question}
+
+Tra i villeggianti di una località di mare, il 75 percento trascorre le vacanze sempre nello stesso posto, il 25 percento solo saltuariamente. Il 60 percento dei villeggianti abitudinari possiede una casa e così il 10 percento percento dei villeggianti saltuari.  Sapendo che un villeggiante scelto a caso possiede una casa, con che probabilità si tratta di un abitudinario?
+
+ \begin{answerlist}
+   \item 0.57
+   \item 0.17
+   \item 0.36
+   \item 0.72
+   \item 0.95
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+
+   A={villeggianti abitudinari} S={villeggianti saltuari} C={villeggianti che posseggono una casa} NC={villeggianti che non posseggono una casa}
+   P(A)=0.75; P(S)=0.25; P(C|A)=0.60; P(C|S)=0.10.
+   P(C|A)P(A) / (P(C|A)P(A) + P(C|S)P(S)) = 0.95.
+
+ \end{solution}
+
+ \exname{bayes 3}
+ \extype{mchoice}
+ \exsolution{00001}
+ \exshuffle{TRUE}

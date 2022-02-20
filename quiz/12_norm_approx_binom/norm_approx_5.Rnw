@@ -1,0 +1,27 @@
+\begin{question}
+
+Un dado equilibrato viene lanciato 500 volte. Sia X il numero di volte che esce il sei. Utilizzando l'approssimazione normale della binomiale calcolare P(X > 100).
+
+ \begin{answerlist}
+   \item 0.02
+   \item 0.04
+   \item 0.09
+   \item 0.13
+   \item 0.19
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+p <- 1 / 6
+1 - pnorm(100.5, 500*p, sqrt(500*p*(1-p)))
+[1] 0.01969927
+
+1 - pbinom(100, 500, 1/6)
+[1] 0.02164406
+ \end{solution}
+
+ \exname{norm bino 5}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

@@ -1,0 +1,87 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+d <- 1:50
+x <- sample(d, 11, replace = FALSE)
+
+
+## SOLUTION
+
+k <- 0.75 * length(x)
+x_s <- sort(x)
+sol <- (x_s[k] + x_s[k+1]) / 2 
+# sol
+# round(quantile(x, probs = 0.75), 2)
+
+questions    <- character(5)
+solutions    <- logical(5)
+explanations <- character(5)
+
+questions[1] <- paste(sol)
+
+newsol1 <- round(
+  sol + 0.25, digits = 2
+)
+questions[2] <- paste(newsol1)
+
+newsol2 <- round(
+  sol + 0.50, digits = 2
+) 
+questions[3] <- paste(newsol2)
+
+newsol3 <- round(
+  sol + 0.75, digits = 2
+) 
+questions[4] <- paste(newsol3)
+
+newsol4 <- round(
+  sol - 0.25, digits = 2
+)  
+questions[5] <- paste(newsol4)
+
+solutions[1] <- TRUE
+solutions[2:5] <- FALSE
+explanations[1] <- "Si utilizzi la formula per il calcolo dei quantili non interpolati"
+explanations[2:5] <- "Si veda la spiegazione"
+@
+    
+\begin{question}
+Sia $X$  = \Sexpr{x[1]}, \Sexpr{x[2]}, \Sexpr{x[3]}, \Sexpr{x[4]}, \Sexpr{x[5]}, \Sexpr{x[6]}, \Sexpr{x[7]}, \Sexpr{x[8]},
+\Sexpr{x[9]}, \Sexpr{x[10]}, \Sexpr{x[11]}. Si calcoli il terzo quartile di $X$.
+
+\begin{answerlist}
+\item \Sexpr{questions[1]}
+\item \Sexpr{questions[2]}
+\item \Sexpr{questions[3]}
+\item \Sexpr{questions[4]}
+\item \Sexpr{questions[5]}
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+k <- 0.75 * length(x)
+x_s <- sort(x)
+sol <- (x_s[k] + x_s[k+1]) / 2 
+sol
+\end{verbatim}
+
+\Sexpr{sol}
+
+\begin{answerlist}
+\item \Sexpr{mchoice2text(solutions[1])}. \Sexpr{explanations[1]}
+\item \Sexpr{mchoice2text(solutions[2])}. \Sexpr{explanations[2]}
+\item \Sexpr{mchoice2text(solutions[3])}. \Sexpr{explanations[3]}
+\item \Sexpr{mchoice2text(solutions[4])}. \Sexpr{explanations[4]}
+\item \Sexpr{mchoice2text(solutions[5])}. \Sexpr{explanations[5]}
+\end{answerlist}
+
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{\Sexpr{mchoice2string(solutions, single = TRUE)}}
+\exname{quantile_1}
+\exshuffle{TRUE}
+
+  
+  

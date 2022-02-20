@@ -1,0 +1,26 @@
+\begin{question}
+
+In ciascun anno, in media 4300 acri di foresta vengono bruciati ogni anno in New Mexico.
+Il numero di acri vittime di incendi segue approssimativamente la distribuzione normale
+con una deviazione standard di 750 acri. Qual è la probabilità che in un dato anno
+venga bruciata una superficie compresa tra 2500 e 4200 acri?
+
+ \begin{answerlist}
+   \item 0.27
+   \item 0.31
+   \item 0.37
+   \item 0.41
+   \item 0.44
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+   > pnorm(4200, 4300, 750) - pnorm(2500, 4300, 750)
+   [1] 0.4387673
+ \end{solution}
+
+ \exname{gauss 12}
+ \extype{mchoice}
+ \exsolution{00001}
+ \exshuffle{TRUE}

@@ -1,0 +1,26 @@
+\begin{question}
+
+L'ammissione alle graduate schools in business negli USA richiede la presentazione del
+punteggio del test GMAT. I punteggi GMAT si distribuiscono normalmente con media
+527 e deviazione standard 112. Qual è il punteggio che deve essere ottenuto da un
+candidato per far parte del 5% superiore della distribuzione?
+
+ \begin{answerlist}
+   \item 675
+   \item 711
+   \item 776
+   \item 834
+   \item 879
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+   > qnorm(.95, 527, 112)
+   [1] 711.2236
+ \end{solution}
+
+ \exname{gauss 9}
+ \extype{mchoice}
+ \exsolution{01000}
+ \exshuffle{TRUE}

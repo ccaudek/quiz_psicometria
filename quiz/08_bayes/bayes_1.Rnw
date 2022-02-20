@@ -1,0 +1,32 @@
+\begin{question}
+
+In uno studio sulla psicologia del ragionamento, nel suo articolo su Frontiers in
+Psychology, Mantel (2014) riporta il seguente problema. La probabilità che una
+donna abbia un cancro alla mammella a
+quarant'anni è dell'1 percento. Se una
+ donna ha un cancro alla mammella, la probabilità di ottenere un risultato
+ positivo al test è di 0.80. Se una  donna non ha un cancro alla mammella la probabilità di 
+ ottenere un risultato positivo al test è di 0.096. Si quantifichi la
+ probabilità che un test positivo sia realmente indice di cancro al seno.
+
+ \begin{answerlist}
+   \item 0.078
+   \item 0.892
+   \item 0.236
+   \item 0.360
+   \item 0.165
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+
+   Applicando il teorema di Bayes, otteniamo:
+   (0.80 * 0.01) / (0.80 * 0.01 + 0.096 * 0.99) = 0.07763975
+
+ \end{solution}
+
+ \exname{bayes 1}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

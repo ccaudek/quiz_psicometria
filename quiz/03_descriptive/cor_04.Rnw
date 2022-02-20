@@ -1,0 +1,29 @@
+\begin{question}
+Si scelga l'affermazione più appropriata per descrivere la correlazione.
+
+\begin{answerlist}
+  \item Il valore del coefficiente di correlazione $r$ di Pearson non cambia se viene cambiata l'unità di misura delle variabili $X$ e $Y$.
+  \item Il valore del coefficiente di correlazione $r$ di Pearson cambia se viene cambiata l'unità di misura delle variabili $X$ e $Y$.
+    \item Il valore del coefficiente di correlazione $r$ di Pearson non cambia se prendiamo il logaritmo di una delle due variabili.
+  \item Il valore del coefficiente di correlazione $r$ di Pearson non cambia se prendiamo il logaritmo di entrambe le variabili.
+    \item Il valore del coefficiente di correlazione $r$ di Pearson non cambia se moltiplichiamo per 0 una delle due variabili.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item Vero. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\exname{correlation_4}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

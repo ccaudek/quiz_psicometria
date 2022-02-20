@@ -1,0 +1,27 @@
+\begin{question}
+
+Si estrae a caso 725 volte un numero compreso tra 1 e 5. Calcolare la probabilità che il numero 3 si presenti fra 100 e 150 volte.
+
+\begin{answerlist}
+   \item 0.70
+   \item 0.80
+   \item 0.60
+   \item 0.50
+   \item 0.40
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+p <- 1 / 5
+pnorm(150.5, 725*p, sqrt(725*p*(1-p))) - pnorm(99.5, 725*p, sqrt(725*p*(1-p)))
+[1] 0.6951942
+
+pbinom(150, 725, 1/5) - pbinom(99, 725, 1/5)
+[1] 0.6975829
+\end{solution}
+
+\exname{norm bino 8}
+\extype{mchoice}
+\exsolution{10000}
+\exshuffle{TRUE}

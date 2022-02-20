@@ -1,0 +1,50 @@
+\begin{question}
+
+Si legga in R il file parenthood.csv fornito su Moodle nella cartella Risorse > data. Il significato delle variabili è il seguente:
+
+dan.sleep: ore di sonno della psicologa che ha fornito i dati (Danielle Navarro);
+
+dan.grump: irritabilità della psicologa il giorno dopo, misurata su una scala da 0 a 100;
+
+baby.sleep: ore di sonno del figlio (o figlia) di Danielle;
+
+day: giorno della misurazione delle variabili;
+
+X: indice da 1 a 100 (si può ignorare).
+
+Si calcoli il primo quantile delle ore di sonno di Danielle.
+
+\begin{answerlist}
+  \item 6.2925
+  \item 7.2414
+  \item 7.7791
+  \item 5.2113
+  \item 5.9824
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+\begin{verbatim}
+df <- read.csv("parenthood.csv")
+quantile(df$dan.sleep, 0.25)
+\end{verbatim}
+
+\begin{answerlist}
+  \item Vero. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+\end{answerlist}
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{parenthood_q25}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

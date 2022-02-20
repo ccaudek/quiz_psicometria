@@ -1,0 +1,29 @@
+\begin{question}
+Si scelga l'affermazione più appropriata per descrivere la correlazione.
+
+\begin{answerlist}
+  \item Tanto più il coefficiente di correlazione $r$ di Pearson si avvicina a -1 o a +1 tanto più forte è l'associazione lineare tra $X$ e $Y$.
+  \item Tanto più il coefficiente di correlazione $r$ di Pearson si avvicina a -1 tanto più forte è l'associazione lineare tra $X$ e $Y$.
+  \item Tanto più il coefficiente di correlazione $r$ di Pearson si avvicina a +1 tanto più forte è l'associazione lineare tra $X$ e $Y$.
+  \item Tanto più il coefficiente di correlazione $r$ di Pearson si avvicina a 0 tanto più forte è l'associazione lineare tra $X$ e $Y$.
+  \item Tanto più il coefficiente di correlazione $r$ di Pearson si avvicina a 0.5 tanto più forte è l'associazione lineare tra $X$ e $Y$.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item Vero. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\exname{correlation_2}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

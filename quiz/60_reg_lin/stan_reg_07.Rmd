@@ -1,0 +1,117 @@
+```{r data generation, echo = FALSE, results = "hide"}
+# bivariate regression with dichotomous x.
+# credibility interval.
+sc <- NULL
+while(is.null(sc)) {
+
+  library("tidyverse")
+  library("rstan")
+  library("cmdstanr")
+  library("rio")
+  library("here")
+  library("posterior")
+  
+  rstan_options(auto_write = TRUE) # avoid recompilation of models
+  options(mc.cores = parallel::detectCores()) # parallelize across all CPUs
+  Sys.setenv(LOCAL_CPPFLAGS = "-march=native") # improve execution time
+
+  d <- rio::import(here::here("quiz", "60_reg_lin", "data", "MehrSongSpelke_exp_1.csv"))
+  
+  d2 <- d %>%
+    dplyr::filter(exp1 == 1 | exp2 == 1) %>%
+    dplyr::select(exp1, babylike5)
+
+  d2_clean <- na.omit(d2)
+  # summary(
+  #   lm(babylike5 ~ exp1, data = d2_clean)
+  # )
+
+  data_list <- list(
+    N = length(d2_clean$babylike5),
+    y = d2_clean$babylike5,
+    x = d2_clean$exp1
+  )
+  
+  modelString <- "
+  data {
+    int<lower=0> N;
+    vector[N] y;
+    vector[N] x;
+  }
+  parameters {
+    real alpha;
+    real beta;
+    real<lower=0> sigma;
+  }
+  model {
+    // priors
+    alpha ~ normal(0, 5);
+    beta ~ normal(0, 2.0);
+    sigma ~ exponential(1);
+    y ~ normal(alpha + beta * x, sigma);
+  }
+  "
+  writeLines(modelString, con = "simplereg2.stan")
+
+  file <- file.path("simplereg2.stan")
+
+  mod <- cmdstan_model(file)
+ 
+  fit <- mod$sample(
+    data = data_list,
+    iter_sampling = 4000L,
+    iter_warmup = 2000L,
+    seed = 123,
+    chains = 4L,
+    parallel_chains = 2L,
+    refresh = 0,
+    thin = 1
+  )
+  
+  # create object stanfit
+  stanfit <- rstan::read_stan_csv(fit$output_files())
+
+  prob_credint <- sample(seq(0.5, 0.95, by=0.01), 1)
+  
+  out <- rstantools::posterior_interval(
+    as.matrix(stanfit),
+    prob = prob_credint
+  )
+  out
+  out[2, 1]
+
+  lim_low <- out[2, 1]
+ 
+  sol <- as.numeric(lim_low)
+  sc <- num_to_schoice(sol, range = c(0.05, 2), delta = 0.1, digits = 3)
+
+}
+```
+
+Question
+========
+
+Si leggano i dati `MehrSongSpelke_exp_1.csv`. Si considerino solo i dati degli esperimenti 1 e 2 (`exp1 == 1` e `exp2 == 1`). Esamineremo qui la variabile `babylike5`. Vogliamo trovare la media a posteriori della differenza tra le medie del primo e del secondo esperimento (laddove un valore positivo indica una media maggiore nel primo esperimento). A questo fine adattiamo ai dati un modello bayesiano usando Stan, con le seguenti specifiche, `iter_sampling = 4000L`, `iter_warmup = 2000L`, `seed = 123`. Per trovare la differenza tra le medie useremo un modello di regressione lineare in cui la variabile indipendente è una variabile dicotomica che assume valore 1 per il primo esperimento e valore 0 per l'esperimento 2.
+
+Si noti che la variabile `babylike5` contiene un valore mancante, per cui prima di svolgere l'analisi statistica è necessario rimuovere l'osservazione mancante dai dati.
+
+Si utilizzi un modello bayesiano che adotta `normal(0, 5)` quale distribuzione a priori per il parameto alpha, `normal(0, 2.0)` quale distribuzione a priori per il parametro beta e `exponential(1)` per il parametro sigma.
+
+Si trovi il limite inferiore dell'intervallo di credibilità di ordine `r prob_credint` per la differenza tra le medie dei due gruppi.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: stan_reg_07

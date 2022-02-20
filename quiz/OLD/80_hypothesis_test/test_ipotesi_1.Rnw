@@ -1,0 +1,33 @@
+\begin{question}
+
+In  un  campione  di  15  bambini  di una scuola  di  Firenze  il  tempo  medio  passato  a guardare  la  televisione è di 27.50  ore  a  settimana,  con  varianza  campionaria  di  16  ore. Supponiamo che l'Ordine degli Psicologi raccomandi un massimo di 25 ore  per  settimana.  Il  preside della scuola  assicura che  i  suoi  bambini  non  superano questo  limite.  Usando  un  livello  di  significatività  dell'uno percento,  si  può  concludere  che  il preside abbia ragione? Si assuma che il tempo speso a guardare la TV dai bambini sia distribuito secondo una normale.
+
+\begin{answerlist}
+   \item Non si può rifiutare $H_0$ perché la statistica test non cade nella regione di rifiuto. L'affermazione del preside è coerente con i dati, fissato $\alpha$ = 0.01.
+   \item Si può rifiutare $H_0$ perché la statistica test cade nella regione di rifiuto. L'affermazione del preside non è coerente con i dati, fissato $\alpha$ = 0.01.
+   \item Non si può rifiutare $H_0$ perché la statistica test cade nella regione di rifiuto. L'affermazione del preside è coerente con i dati, fissato $\alpha$ = 0.01.
+   \item Si può rifiutare $H_0$ perché la statistica test non cade nella regione di rifiuto. L'affermazione del preside non è coerente con i dati, fissato $\alpha$ = 0.01.
+   \item Si può rifiutare $H_0$ perché il valore-p è maggiore dell'intervallo di confidenza. L'affermazione del preside non è coerente con i dati, fissato $\alpha$ = 0.01.
+\end{answerlist}
+
+ \end{question}
+
+\begin{solution}
+Il test è unidirezionale. H_0: mu <= 25; H_1: mu > 25
+Tutta la regione di rifiuto di H_0 è nella coda destra della distribuzione della statistica test.  Il valore critico della regione di rifiuto è
+qt(.99, 15-1)
+[1] 2.624494
+Il valore della statistica test è
+T <- (27.5 - 25) / sqrt(16/15)
+T
+[1] 2.420615
+Dato che la statistica test non cade nella regione di rifiuto di H_0, non possiamo rifiutare H_0. Concludiamo che le evidenze empiriche sono compatibili con le affermazioni del preside.  In maniera equivalente, calcoliamo il valore-p:
+1 - pt(T, 15-1)
+[1] 0.01483639
+Il fatto che il valore-p sia maggiore di alpha = 0.01 non ci consente di rifiutare H_0.
+\end{solution}
+
+\exname{test_ipotesi 1}
+\extype{mchoice}
+\exsolution{10000}
+\exshuffle{TRUE}

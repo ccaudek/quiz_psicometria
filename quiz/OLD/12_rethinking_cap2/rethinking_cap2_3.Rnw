@@ -1,0 +1,22 @@
+\begin{question}
+
+Quale delle espressioni elencate sotto corrisponde alla proposizione: "la probabilita' che sia lunedi' dato che piove"?
+
+ \begin{answerlist}
+   \item Pr(pioggia | lunedi') Pr(lunedi') / Pr(pioggia)
+   \item Pr(lunedi' | non pioggia)
+   \item Pr(pioggia | lunedi') Pr(lunedi')
+   \item Pr(lunedi' | pioggia) Pr(pioggia) / Pr(lunedi')
+   \item P(lunedi' | pioggia) Pr(pioggia)
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+\item Pr(pioggia | lunedi') Pr(lunedi') / Pr(pioggia)
+ \end{solution}
+
+ \exname{rethinking_cap2_3}
+ \extype{schoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

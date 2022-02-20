@@ -1,0 +1,22 @@
+\begin{question}
+
+Quale delle espressioni elencate sotto corrisponde alla proposizione: "la probabilita' di pioggia lunedi'"?
+
+ \begin{answerlist}
+   \item P(pioggia | lunedi')
+   \item P(pioggia)
+   \item P(lunedi')
+   \item P(lunedi' | pioggia)
+   \item P(pioggia $\cap$ lunedi')
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+P(pioggia | lunedi')
+ \end{solution}
+
+ \exname{rethinking_cap2_1}
+ \extype{schoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

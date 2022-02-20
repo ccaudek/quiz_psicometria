@@ -1,0 +1,32 @@
+\begin{question}
+Eseguiamo un test t di Student per due campioni indipendenti. Sia $alpha$ = 0.01.
+Si interpreti l'output fornito da R.
+
+	Two Sample t-test
+
+data:  x1 and x2
+t = 1.7701, df = 30, p-value = 0.08688
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.362348 19.081583
+sample estimates:
+mean of x mean of y
+ 82.39235  73.53273
+
+\begin{answerlist}
+   \item Possiamo rigettare $H_0$ perché il valore-p è minore di alpha = 0.01.
+   \item Non possiamo rigettare $H_0$ perché il valore-p è maggiore di alpha = 0.01.
+   \item Possiamo rigettare $H_0$ perché il valore-p è maggiore di alpha = 0.01.
+   \item Non possiamo rigettare $H_0$ perché il valore-p è minore di alpha = 0.01.
+   \item Non possiamo giungere ad una conlusionde su $H_0$ perché l'output di R non ci fornire il valore critico della regione di rifiuto.
+\end{answerlist}
+
+ \end{question}
+
+\begin{solution}
+\end{solution}
+
+\exname{test_ipotesi_15}
+\extype{mchoice}
+\exsolution{01000}
+\exshuffle{TRUE}

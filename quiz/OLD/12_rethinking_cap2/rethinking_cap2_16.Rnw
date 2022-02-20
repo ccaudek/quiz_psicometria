@@ -1,0 +1,71 @@
+\begin{question}
+
+Questi dati indicano il genere (maschio=1, femmina=0) del primo nato e del secondo nato in 100 famiglie che hanno due figli.
+
+birth1 <- c(1,0,0,0,1,1,0,1,0,1,0,0,1,1,0,1,1,0,0,0,1,0,0,0,1,0,
+0,0,0,1,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,0,0,1,1,0,1,0,0,0,0,0,0,0,
+1,1,0,1,0,0,1,0,0,0,1,0,0,1,1,1,1,0,1,0,1,1,1,1,1,0,0,1,0,1,1,0,
+1,0,1,1,1,0,1,1,1,1)
+
+birth2 <- c(0,1,0,1,0,1,1,1,0,0,1,1,1,1,1,0,0,1,1,1,0,0,1,1,1,0,
+1,1,1,0,1,1,1,0,1,0,0,1,1,1,1,0,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,0,1,1,0,1,1,0,1,1,1,0,0,0,0,0,0,1,0,0,0,1,1,0,0,1,0,0,1,1,
+0,0,0,1,1,1,0,0,0,0)
+
+Si usi il metodo dell'approssimazione numerica. Si assuma una distribuzione a priori uniforme (Beta di parametri alpha = 1 e beta = 1) e si trovi la distribuzione a posteriori per il parametro $p$ (probabilità di figlio maschio). 
+Usando la funzione sample(), si estraggano 10000 campioni casuali dalla distribuzione a posteriori del parametro $p$. Si usino tali campioni per stimare l'intervallo di credibilità a densità a posteriori più alta dell'89 percento.
+
+
+\begin{answerlist}
+ \item [0.50, 0.61]
+ \item [0.45, 0.58]
+ \item [0.56, 0.64]
+ \item [0.41, 0.68]
+ \item [0.49, 0.56]
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+# Packages
+library("tidyverse")
+library("rethinking")
+
+birth1 <- c(1,0,0,0,1,1,0,1,0,1,0,0,1,1,0,1,1,0,0,0,1,0,0,0,1,0,
+            0,0,0,1,1,1,0,1,0,1,1,1,0,1,0,1,1,0,1,0,0,1,1,0,1,0,0,0,0,0,0,0,
+            1,1,0,1,0,0,1,0,0,0,1,0,0,1,1,1,1,0,1,0,1,1,1,1,1,0,0,1,0,1,1,0,
+            1,0,1,1,1,0,1,1,1,1)
+
+birth2 <- c(0,1,0,1,0,1,1,1,0,0,1,1,1,1,1,0,0,1,1,1,0,0,1,1,1,0,
+            1,1,1,0,1,1,1,0,1,0,0,1,1,1,1,0,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,
+            1,1,1,0,1,1,0,1,1,0,1,1,1,0,0,0,0,0,0,1,0,0,0,1,1,0,0,1,0,0,1,1,
+            0,0,0,1,1,1,0,0,0,0)
+
+# Grid
+n_points <- 1e4
+p_grid <- seq(from = 0, to = 1, length.out = n_points)
+# Prior
+alpha <- 1
+beta <- 1
+prior <- dbeta(p_grid, alpha, beta) / sum(dbeta(p_grid, alpha, beta))
+# Likelihood
+k <- sum(birth1 + birth2)
+n <- length(birth1) + length(birth2)
+likelihood <- dbinom(k, size = n, prob = p_grid)
+# Unstandardized posterior
+unstd_posterior <- likelihood * prior
+# Posterior distribution
+posterior <- unstd_posterior / sum(unstd_posterior)
+
+n_samples <- 1e6
+samples <- sample(p_grid, prob = posterior, size = n_samples, replace = TRUE)
+
+HPDI(samples, prob = 0.89)
+\end{verbatim}
+\end{solution}
+
+\exname{rethinking_cap2_16}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}

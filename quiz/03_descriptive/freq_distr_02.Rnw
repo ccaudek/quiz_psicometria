@@ -1,0 +1,86 @@
+<<echo=FALSE, results=hide>>=
+
+options(digits = 4)
+
+## DATA GENERATION
+d <- 2:49
+x <- sample(d, 15, replace = FALSE)
+
+## SOLUTION
+breaks <- seq(0, 50, by = 10)
+h <- hist(x, breaks, right = TRUE, plot = FALSE)
+sol <- round(h$counts / length(x), 3)
+
+questions    <- character(5)
+solutions    <- logical(5)
+explanations <- character(5)
+
+questions[1] <- paste(sol, collapse = " ")
+
+newsol1 <- sol
+newsol1[1] <- sol[1] + .1
+newsol1[2] <- sol[2] - .1
+questions[2] <- paste(newsol1, collapse = " ")
+
+newsol2 <- sol
+newsol2[2] <- sol[2] + .1
+newsol2[3] <- sol[3] - .1
+questions[3] <- paste(newsol2, collapse = " ")
+
+newsol3 <- sol
+newsol3[3] <- sol[3] + .1
+newsol3[4] <- sol[4] - .1
+questions[4] <- paste(newsol3, collapse = " ")
+
+newsol4 <- sol
+newsol4[4] <- sol[4] + .1
+newsol4[1] <- sol[1] - .1
+questions[5] <- paste(newsol4, collapse = " ")
+
+solutions[1] <- TRUE
+solutions[2:5] <- FALSE
+explanations[1] <- "Utilizzando intervalli chiusi a destra e aperti a sinistra, si calcola la proporzione di dati che cadono in ciascun intervallo"
+explanations[2:5] <- "Si veda la spiegazione"
+@
+    
+\begin{question}
+Sia $X$  = $\{$\Sexpr{x[1]}, \Sexpr{x[2]}, \Sexpr{x[3]}, \Sexpr{x[4]}, \Sexpr{x[5]}, \Sexpr{x[6]}, \Sexpr{x[7]}, \Sexpr{x[8]}, 
+\Sexpr{x[9]}, \Sexpr{x[10]}, \Sexpr{x[11]}, \Sexpr{x[12]}, \Sexpr{x[13]},
+\Sexpr{x[14]}, \Sexpr{x[15]}$\}$. Si trovi la distribuzione di frequenze relative per la partizione di $X$ in 5 classi di eguale ampiezza (0-10, 10-20, \dots, 40-50). Si utilizzino intervalli chiusi a destra e aperti a sinistra. Nelle alternative di risposta, i numeri sono ordinati in modo tale che il primo valore corrisponde alla frequenza relativa della classe (0, 10], il secondo valore alla frequenza relativa della classe (10, 20], ecc.
+
+\begin{answerlist}
+\item \Sexpr{questions[1]}
+\item \Sexpr{questions[2]}
+\item \Sexpr{questions[3]}
+\item \Sexpr{questions[4]}
+\item \Sexpr{questions[5]}
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+breaks <- seq(0, 50, by = 10)
+h <- hist(x, breaks, right = TRUE, plot = FALSE)
+round(h$counts / length(x), 3)
+\end{verbatim}
+
+\Sexpr{sol}
+
+\begin{answerlist}
+\item \Sexpr{mchoice2text(solutions[1])}. \Sexpr{explanations[1]}
+\item \Sexpr{mchoice2text(solutions[2])}. \Sexpr{explanations[2]}
+\item \Sexpr{mchoice2text(solutions[3])}. \Sexpr{explanations[3]}
+\item \Sexpr{mchoice2text(solutions[4])}. \Sexpr{explanations[4]}
+\item \Sexpr{mchoice2text(solutions[5])}. \Sexpr{explanations[5]}
+\end{answerlist}
+
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{\Sexpr{mchoice2string(solutions, single = TRUE)}}
+\exname{freq_distribution_2}
+\exshuffle{TRUE}
+
+  
+  

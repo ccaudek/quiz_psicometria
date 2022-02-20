@@ -1,0 +1,47 @@
+\begin{question}
+
+Ad un bambino di 5 anni vengono sottoposti 12 problemi. Le sue risposte (C = risposta corretta, S = risposta sbagliata) sono le seguenti: C, C, C, C, C, C, C, C, C, C, S, S. Utilizzando una distribuzione a priori uniforme (Beta di parametri alpha = 1 e beta = 1), si calcoli la distribuzione a posteriori per la probabilità $p$ di rispondere correttamente. Si usi il metodo dell'approssimazione numerica. Qual e' intervallo di valori $p$ che corrisponde al 66 percento della distribuzione a posteriori e che lascia un'area uguale in ciascuna coda?
+
+\begin{answerlist}
+ \item [0.68, 0.89]
+ \item [0.61, 0.96]
+ \item [0.51, 0.84]
+ \item [0.63, 0.94]
+ \item [0.51, 0.74]
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+# Packages
+library("tidyverse")
+library("rethinking")
+
+# Grid
+n_points <- 1e4
+p_grid <- seq(from = 0, to = 1, length.out = n_points)
+# Prior
+alpha <- 1
+beta <- 1
+prior <- dbeta(p_grid, alpha, beta) / sum(dbeta(p_grid, alpha, beta))
+# Likelihood
+k <- 10
+n <- 12
+likelihood <- dbinom(k, size = n, prob = p_grid)
+# Unstandardized posterior
+unstd_posterior <- likelihood * prior
+# Posterior distribution
+posterior <- unstd_posterior / sum(unstd_posterior)
+
+n_samples <- 1e5
+samples <- sample(p_grid, prob = posterior, size = n_samples, replace = TRUE)
+
+PI(samples, prob = 0.66)
+\end{verbatim}
+\end{solution}
+
+\exname{rethinking_cap2_14}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}

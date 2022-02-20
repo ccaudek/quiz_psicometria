@@ -1,0 +1,92 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+n <- sample(16:26, 1)
+
+xx <- rnorm(n, 0.2, 0.4) 
+x <- round(xx, 1)
+
+out <- t.test(x, alternative = "two.sided", var.equal = TRUE)
+
+sol <- round(out$p.value, digits = 4)
+
+conclusion    <- character(2)
+conclusion[1] <- "Dunque rifiuto l'ipotesi nulla" 
+conclusion[2] <- "Dunque non e' possibile rifiutare l'ipotesi nulla" 
+
+correct_decision <- ifelse(
+  out$p.value < 0.05, conclusion[1], conclusion[2]
+  )
+
+wrong_decision <- ifelse(
+  out$p.value < 0.05, conclusion[2], conclusion[1]
+  )
+  
+questions    <- character(5)
+solutions    <- logical(5)
+explanations <- character(5)
+
+questions[1] <- paste(sol)
+
+newsol2 <- abs(round(ifelse((sol - 0.1) < 0, 0.0192, (sol - 0.1234)), 4))
+questions[2] <- paste(newsol2)
+
+newsol3 <-  abs(round(ifelse((sol - 0.2) < 0, 0.3434, (sol - 0.2145)), 4))
+questions[3] <- paste(newsol3)
+
+newsol4 <- abs(round(ifelse((sol + 0.1) > 1, 0.4393, (sol + 0.1445)), 4))
+questions[4] <- paste(newsol4)
+
+newsol5 <- abs(round(ifelse((sol + 0.2) > 1, 0.5314, (sol + 0.2354)), 4))
+questions[5] <- paste(newsol5)
+
+solutions[1] <- TRUE
+solutions[2:5] <- FALSE
+explanations[1] <- "Si applichi la formula del test t di Student per dati appaiati"
+explanations[2:5] <- "Si veda la spiegazione"
+@
+
+
+\begin{question}
+Uno psicologo vuole valutare l'efficacia di un intervento psicologico. 
+Viene misurato il livello di ansia sociale tramite il test psicometrico ABC (punteggi alti corrispondono a valori maggiori di ansia sociale). 
+La variabile dipendente Y è la differenza tra i livelli di ansia sociale di ciascun individuo prima e dopo l'intervento psicologico (Y = ABC prima - ABC dopo). 
+Valori positivi di Y indicano dunque una diminuzione del livello di ansia sociale dopo l'intervento psicologico. 
+Vengono osservati \Sexpr{n} soggetti con Y = [\Sexpr{paste(x, collapse=", ")}]. 
+Si verifichi l'ipotesi nulla bidirezionale $H_0: \mu = 0$ contro l'alternativa $H_1: \mu \neq 0$. 
+Si scelga l'affermazione corretta.
+
+\begin{answerlist}
+\item Il valore-$p$ e' \Sexpr{questions[1]}. \Sexpr{correct_decision}.
+\item Il valore-$p$ e' \Sexpr{questions[2]}. \Sexpr{wrong_decision}.
+\item Il valore-$p$ e' \Sexpr{questions[3]}. \Sexpr{correct_decision}.
+\item Il valore-$p$ e' \Sexpr{questions[4]}. \Sexpr{wrong_decision}.
+\item Il valore-$p$ e' \Sexpr{questions[5]}. \Sexpr{wrong_decision}
+\end{answerlist}
+\end{question}
+Si usi la funzione t.test()
+\begin{solution}
+\begin{verbatim}
+ 
+\end{verbatim}
+
+\Sexpr{sol}
+
+\begin{answerlist}
+\item \Sexpr{mchoice2text(solutions[1])}. \Sexpr{explanations[1]}
+\item \Sexpr{mchoice2text(solutions[2])}. \Sexpr{explanations[2]}
+\item \Sexpr{mchoice2text(solutions[3])}. \Sexpr{explanations[3]}
+\item \Sexpr{mchoice2text(solutions[4])}. \Sexpr{explanations[4]}
+\item \Sexpr{mchoice2text(solutions[5])}. \Sexpr{explanations[5]}
+\end{answerlist}
+
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{\Sexpr{mchoice2string(solutions, single = TRUE)}}
+\exname{ttest_it_3}
+\exshuffle{TRUE}
+  
+  
+  

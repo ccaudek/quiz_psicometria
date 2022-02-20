@@ -1,0 +1,94 @@
+```{r data generation, echo = FALSE, results = "hide"}
+# posterior predictive distribution
+sc <- NULL
+while(is.null(sc)) {
+  ## parameters
+  a <- sample(1:5, 1)
+  b <- sample(4:10, 1)
+  n <- 20
+  y <- sample(2:n, 1)
+  
+  out <- bayesrules::summarize_beta_binomial(
+    alpha = a, 
+    beta = b, 
+    y = y, 
+    n = n
+  )
+  
+  shape1_post <- out[2, 2]
+  shape2_post <- out[2, 3]
+  
+  ## solution
+  m <- sample(15:30, 1)
+  prob <- extraDistr::dbbinom(0:m, m, alpha = shape1_post, beta = shape2_post)
+  
+  d <- tibble(
+  y_tilde = 0:m,
+  p_y_tilde = prob
+  )
+  
+  ev <- sum(d$y_tilde * d$p_y_tilde)
+  
+  var <- sum(d$y_tilde^2 * d$p_y_tilde) - ev^2
+  
+  res <- sqrt(var)
+
+  ## schoice
+  sc <- num_to_schoice(res, range = c(0.1, 4), delta = 0.5, digits = 4)
+}
+```
+
+Question
+========
+Supponiamo di avere osservato `r y` successi in `r n` prove Bernoulliane.  Si ponga su theta (probabilità di successo in ciascuna prova) una distibuzione a priori Beta di parametri alpha = `r a` e beta = `r b`. Si trovi la distribuzione predittiva a posteriori per il numero di successi in `r m` prove. In tale distribuzione predittiva a posteriori, si trovi la deviazione standard del numero di successi.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+  a <- sample(1:5, 1)
+  
+  b <- sample(4:10, 1)
+  
+  n <- 20
+  
+  y <- sample(2:n, 1)
+  
+  out <- bayesrules::summarize_beta_binomial(
+    alpha = a, 
+    beta = b, 
+    y = y, 
+    n = n
+  )
+  
+  shape1_post <- out[2, 2]
+  
+  shape2_post <- out[2, 3]
+  
+  m <- sample(15:30, 1)
+  
+  prob <- extraDistr::dbbinom(0:m, m, alpha = shape1_post, beta = shape2_post)
+  
+  d <- tibble(
+  y_tilde = 0:m,
+  p_y_tilde = prob
+  )
+  
+  ev <- sum(d\$y_tilde * d\$p_y_tilde)
+  
+  var <- sum(d\$y_tilde^2 * d\$p_y_tilde) - ev^2
+  
+  res <- sqrt(var)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: beta-binom_02

@@ -1,0 +1,31 @@
+\begin{question}
+In    un    lavoro    sulla    testimonianza giudiziaria, ad un gruppo di soggetti adulti viene chiesto di dare una previsione più accurata  possibile  sulla  loro  prestazione in una prova di riconoscimento di volti (scala da 1 a 7, 1=pessima, 7= ottima). Alla  metà  di  loro  era  stato  detto  che avrebbero    poi    svolto    la    prova    di riconoscimento,  all'altra  meta  che  non l'avrebbero svolta. Indicare la variabile dipendente precisandone la scala di misura.
+
+
+\begin{answerlist}
+  \item Valutazione = da pessima a ottima (1, dots, 7). Scala ordinale: le differenze su una scala di questo tipo non sono quantitative ma qualitative.
+  \item Valutazione = da pessima a ottima (1, dots, 7). Scala ad intervalli:  una scala di questo tipo non consente di specificare uno zero assoluto.
+  \item Valutazione = da pessima a ottima (1, dots, 7). Scala nominale: le differenze su una scala di questo tipo non descrivono neppure una relazione d'ordine.
+  \item Svolgimento prova (sì/no). Il livello di misura è quello della scala nominale dicotomica.
+  
+  \item Svolgimento prova (sì/no).  Il livello di misura è quello della scala ordinale dicotomica.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item Vero. Valutazione = da pessima a ottima (1, dots, 7). Scala ordinale.
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\exname{var_indip_4}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

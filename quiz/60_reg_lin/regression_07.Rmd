@@ -1,0 +1,29 @@
+Question
+========
+Non ha senso utilizzare l'indice di correlazione di Pearson quale misura di associazione tra le variabili $x$ e $y$ in un campione di oservazioni se
+
+Answerlist
+----------
+* la relazione tra $x$ e $y$ non è lineare.
+* la relazione tra $x$ e $y$ è lineare.
+* i residui del modello di regressione $\hat{y} = \hat{\alpha} + \hat{\beta} x$ sono esattamente uguali a zero.
+* i residui del modello di regressione $\hat{y} = \hat{\alpha} + \hat{\beta} x$ sono esattamente uguali a uno.
+* vi è una perfetta associazione lineare tra le variabili $x$ e $y$ nella popolazione.
+
+Solution
+========
+
+Answerlist
+----------
+* True. 
+* False. 
+* False. 
+* False. 
+* False. 
+
+Meta-information
+================
+exname: regression_07
+extype: schoice
+exsolution: 10000
+exshuffle: 5

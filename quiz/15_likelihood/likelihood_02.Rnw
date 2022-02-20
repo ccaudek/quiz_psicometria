@@ -1,0 +1,56 @@
+\begin{question}
+
+Nel loro articolo dal titolo "The Benefits of Forgiving: Young Children Respond Positively to Those Who Forgive", Oostenbroek e Vaish (2019) considerano la relazione tra perdono e cooperazione nei bambini di età 4 e 5 anni. La ricerca esamina due gruppi di 20 bambini per ciascun gruppo d'età. Uno dei risultati discussi dagli autori riguarda il fatto che, nel gruppo dei 20 bambini di 5 anni, 16 bambini fanno una scelta di "perdono" (come contrapposta al non perdono) rispetto ad una domanda proposta dallo sperimentatore. Si costruisca la funzione di log-verosimiglianza per la proporzione di scelte di tipo "perdono" sulla base dei dati forniti da Oostenbroek e Vaish (2019). Si valuti il valore di log-verosimiglianza (l'ordinata della curva) in corrispondenza di un valore della proporzione pari a 0.6.
+
+ \begin{answerlist}
+   \item -3.35
+   \item -0.172
+   \item 0.079
+   \item 0.383
+   \item 1.282
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+
+\begin{verbatim}
+
+library("tidyverse")
+library("bayesplot")
+theme_set(bayesplot::theme_default(base_size=16))
+
+N <- 20
+k <- 16
+
+p <- seq(0, 1, length.out = 1e4)
+p
+
+ll <- dbinom(k, N, p, log = TRUE)
+
+p1 <- data.frame(p, ll) %>%
+  ggplot(
+    aes(x = p, y = ll)
+  ) +
+  geom_line(color = "#8184FC", size = 1) +
+  vline_at(16 / 20, color = "gray", linetype = "dashed", size = 1) +
+  labs(
+    y = "Verosimiglianza",
+    x = c("Parametro p")
+  )
+p1
+
+dat <- data.frame(p, ll)
+
+dat %>% 
+  dplyr::filter(
+    p > 0.599 & p < 0.601
+  )
+\end{verbatim}
+
+ \end{solution}
+
+ \exname{likelihood_2}
+ \extype{schoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

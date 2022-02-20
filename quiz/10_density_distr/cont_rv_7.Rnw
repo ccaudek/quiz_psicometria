@@ -1,0 +1,44 @@
+\begin{question}
+
+Sia $X$ una variabile aleatoria definita nell'intervallo [0, 2] con densità
+
+$$
+f(x) = 3/8x^2.
+$$
+
+Si calcoli la varianza di $X$.
+
+ \begin{answerlist}
+   \item 0.015
+   \item 0.125
+   \item 0.250
+   \item 0.500
+   \item 0.750
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+\begin{verbatim}
+f <- function(x) 3/8 * x^2
+g <- function(x) x * f(x)
+EX <- integrate(
+  g,
+  lower = 0,
+  upper = 2
+)$value
+EX
+h <- function(x) x^2 * f(x)
+VarX <- integrate(
+  h,
+  lower = 0,
+  upper = 2
+)$value - EX^2 
+VarX
+\end{verbatim}
+ \end{solution}
+
+ \exname{contrv7}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

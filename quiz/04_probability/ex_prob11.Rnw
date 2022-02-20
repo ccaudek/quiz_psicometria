@@ -1,0 +1,38 @@
+\begin{question}
+Siano A e B due eventi dello spazio campionario tali che $P(A) = 0.7$ e
+$P(A \cup B) = 0.8$. Si determini $P(B)$ nel caso in cui $P(A \mid B) = 0.6$.
+\begin{answerlist}
+  \item 0.15
+  \item 0.25
+  \item 0.33
+  \item 0.52
+  \item 0.66
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Poiché 
+
+P(A∪B) = P(A) + P(B) − P(A∩B) = P(A) + P(B) − P(A|B)P(B) == P(A) + (1 − P(A|B)) P(B)
+
+se 
+
+P(A|B) = 0.6 
+
+otteniamo che: 
+
+0.8 = 0.7 + (1 − 0.6) P(B) ⇒ P(B) = 0.25.
+
+\begin{answerlist}
+  \item Risposta errata.
+  \item Risposta corretta.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+\end{answerlist}
+\end{solution}
+
+\exname{A e B cond 3}
+\extype{mchoice}
+\exsolution{01000}
+\exshuffle{TRUE}

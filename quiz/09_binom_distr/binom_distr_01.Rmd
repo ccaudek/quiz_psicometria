@@ -1,0 +1,38 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  p <- sample(10:30, size = 1) / 100
+  n <- sample(7:15, size = 1)
+  k <- sample(2:5, 1)
+  sol <- 100 * (1 - sum(dbinom(0:(k-1), size = n, prob = p)))
+  sc <- num_to_schoice(sol, range = c(2, 98), delta = 0.5)
+}
+```
+
+Question
+========
+In base ad una recente indagine, in un follow-up di un mese, il $`r p`$ per cento degli adulti che superano la positività al virus COVID-19 dimostrano di sviluppare almeno un disturbo mentale (depressione, ansia, ...) -- si noti che, benché i dati di questo esercizio siano fittizi, il problema è reale. Supponiamo che, tra gli studenti di psicologia dell'Università di Firenze, ci siano stati, alla data attuale, $`r n`$ studenti che hanno superato la positività al virus COVID-19. Qual è la probabilità, in percetuale, che $`r k`$ o più di tali studenti abbiano sviluppato (dopo un mese) almeno un disturbo mentale?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```
+  p <- sample(10:30, size = 1) / 100
+  n <- sample(7:15, size = 1)
+  k <- sample(2:5, 1)
+  sol <- 100 * (1 - sum(dbinom(0:(k-1), size = n, prob = p)))
+```
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: binom_distr_01

@@ -1,0 +1,31 @@
+\begin{question}
+
+Le statistiche degli anni passati ci dicono che si laurea solo il 43 percento
+degli immatricolati al Corso di Laurea in Scienze e Tecniche Psicologiche
+dell'Università di Firenze. Se consideriamo un campione casuale di 240
+immatricolati al corso di laurea in Scienze e Tecniche Psicologiche, usando
+l'approssimazione normale alla binomiale si calcoli la probabilità che la laurea venga conseguita da più della metà di essi.
+
+ \begin{answerlist}
+   \item 1 percento
+   \item 7 percento
+   \item 14 percento
+   \item 21 percento
+   \item 29 pecento
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+ 
+1 - pnorm(120.5, 240*0.43, sqrt(240*0.43*(1 - 0.43)))
+[1] 0.01204675
+
+1 - pbinom(121, 240, 0.43)
+[1] 0.008756364
+\end{solution}
+
+ \exname{norm bino 2}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

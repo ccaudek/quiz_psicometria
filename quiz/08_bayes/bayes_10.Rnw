@@ -1,0 +1,60 @@
+\begin{question}
+
+Un sacchetto che contiene 4 palline. Ci sono alcune palline bianche e alcune nere, ma non sappiamo quante di ogni colore. Non ci sono palline di altri colori. Possiamo fare 3 estrazioni, rimettendo ogni volta la pallina estratta nel sacchetto. Dobbiamo scoprire la composizione delle palline nel sacchetto, cioè quante palline nere e quante bianche ci sono. Facciamo le tre estrazioni ed escono due palline bianche e una nera (b, b, n).
+
+Riguardo alla composizione del sacchetto, a priori, possiamo formulare tre ipotesi egualmente plausibili:
+
+Ipotesi A:	3 bianche + 1 nera
+
+Ipotesi B:	2 bianche + 2 nere
+
+Ipotesi C:	1 bianca + 3 nere
+
+Alla luce dei risultati delle tre estrazioni, si determinino le probabilità a posteriori di ciascuna delle tre ipotesi.
+
+ \begin{answerlist}
+   \item P(A | risultati) = 0.45, P(A | risultati) = 0.40, P(A | risultati) = 0.15
+   \item P(A | risultati) = 0.40, P(A | risultati) = 0.45, P(A | risultati) = 0.15
+   \item P(A | risultati) = 0.15, P(A | risultati) = 0.40, P(A | risultati) = 0.45
+   \item P(A | risultati) = 0.15, P(A | risultati) = 0.45, P(A | risultati) = 0.40
+   \item P(A | risultati) = 0.35, P(A | risultati) = 0.40, P(A | risultati) = 0.25
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+ 
+L'ipotesi A dice che ci sono 3 palline bianche e 1 nera.  Se l'ipotesi A è vera, allora P(bianco) = 3/4 e P(nero) = 1/4.
+ 
+L'ipotesi B dice che ci sono 2 palline bianche e 2 nere.  Se l'ipotesi B è vera, allora P(bianco) = 2/4 e P(nero) = 2/4.
+
+L'ipotesi C dice che ci sono 1 pallina bianca e 3 nere.  Se l'ipotesi C è vera, allora P(bianco) = 1/4 e P(nero) = 3/4.
+
+A priori ciascuna delle tre ipotesi ha la stessa probabilità, ovvero 1/3.
+
+Abbiamo estratto (con rimessa) una pallina bianca, una pallina bianca, una pallina nera.  Il problema non ci dice in che ordine.  Sono possibili tre sequenze diverse: (b, b, n), (b, n, b) e (n, b, b). Tutte e tre le sequenze hanno la stessa probabilità di verificarsi.  Se è vera l'ipotesi A, la probabilità della sequenza $P(b, b, n| A)$ è uguale a 3/4 * 3/4 * 1/4. Ma noi vogliamo la probabilità che si osservi (b, b, n) oppure (b, n, b) oppure (n, b, b).  Dunque, $P(b \cap b \cap n| A)$ = 3 * (3/4 * 3/4 * 1/4) = 27/64. 
+
+In maniera analoga calcoliamo $P(b \cap b \cap n| B)$ = 24/64 e $P(b \cap b \cap n| C)$ = 9/64.
+
+A questo punto possiamo utilizzare il teorema di Bayes per trovare le tre probabilità a posteriori:
+
+(27/64 * 1/3) / (27/64 * 1/3 + 24/64 * 1/3 + 9/64 * 1/3)
+
+(24/64 * 1/3) / (27/64 * 1/3 + 24/64 * 1/3 + 9/64 * 1/3)
+
+(9/64 * 1/3) / (27/64 * 1/3 + 24/64 * 1/3 + 9/64 * 1/3)
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+\end{answerlist}
+
+\end{solution}
+
+ \exname{bayes_10}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

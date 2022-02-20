@@ -1,0 +1,63 @@
+```{r data generation, echo = FALSE, results = "hide"}
+## data
+urn <- 1:10
+x <- sample(urn, 3)
+y <- sample(urn, 3)
+
+## questions/answer
+questions <- character(5)
+solutions <- logical(5)
+explanations <- character(5)
+
+aresp <- x * 2
+bresp <- x * y
+cresp <- x[1] * y[2]
+
+r1 <- capture.output(cat("(a)", aresp, "(b)", bresp, "(c)", cresp))
+questions[1] <- r1
+solutions[1] <- all(aresp == x * 2 & bresp == x * y & cresp == x[1] * y[2])
+explanations[1] <- paste("La soluzione si trova eseguendo i comandi nella console")
+
+r2 <- capture.output(cat("(a)", aresp, "(b)", y, "(c)", cresp))
+questions[2] <- r2
+solutions[2] <- all(aresp == x * 2 & y == x * y & cresp == x[1] * y[2])
+explanations[2] <- paste("La soluzione si trova eseguendo i comandi nella console")
+
+r3 <- capture.output(cat("(a)", x, "(b)", bresp, "(c)", cresp))
+questions[3] <- r3
+solutions[3] <- all(aresp == x & bresp == x * y & cresp == x[1] * y[2])
+explanations[3] <- paste("La soluzione si trova eseguendo i comandi nella console")
+
+r4 <- capture.output(cat("(a)", aresp, "(b)", y, "(c)", cresp))
+questions[4] <- r4
+solutions[4] <- all(aresp == x * 2 & x == x * y & cresp == x[1] * y[2])
+explanations[4] <- paste("La soluzione si trova eseguendo i comandi nella console")
+
+r5 <- capture.output(cat("(a)", aresp, "(b)", y, "(c)", cresp + 1))
+questions[5] <- r5
+solutions[5] <- all(aresp == x * 2 & x == x * y & cresp + 1 == x[1] * y[2])
+explanations[5] <- paste("La soluzione si trova eseguendo i comandi nella console")
+```
+
+Question
+========
+
+Siano x = `r x` e y = `r y`. Ponendo (a) x * 2; (b) x * y; (c) x[1] + y[2], senza utilizzare R si indovini quali delle seguenti affermazioni è corretta?
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(questions, markup = "markdown")
+```
+
+Solution
+========
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(solutions, "True", "False"), explanations, markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(solutions)`
+exname: intro_r_1

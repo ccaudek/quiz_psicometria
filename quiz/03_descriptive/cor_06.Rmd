@@ -1,0 +1,43 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  x <- round(rchisq(n = 10, df = 3), 1)
+  y <- round(1.5 * x + rnorm(10, 0, 4), 1)
+  sol <- cor(x, y)
+  sc <- num_to_schoice(sol, range = c(0.1, 1), delta = 0.05, digits = 3)
+}
+```
+
+Question
+========
+Per i seguenti valori x
+
+`r x`
+
+e i corrispondenti valori y
+
+`r y`
+
+si calcoli la correlazione.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```{r distplot, echo = FALSE, results = "hide", fig.path = "", fig.cap = ""}
+cor(x, y)
+```
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: cor_01
+

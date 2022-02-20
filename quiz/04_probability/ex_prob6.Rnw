@@ -1,0 +1,30 @@
+\begin{question}
+In un certo collegio, il 25\% degli studenti è stato bocciato in matematica, il 15\% è stato bocciato in chimica e il 10\% è stato bocciato sia in matematica che in chimica. Viene scelto a caso uno studente. Se egli è stato  bocciato in chimica, qual è la probabilità che sia stato bocciato in matematica?
+\begin{answerlist}
+  \item 2/3
+  \item 2/4
+  \item 3/4
+  \item 1/6
+  \item 2/6
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Sia M = {studenti bocciati in matematica} e C = {studenti bocciati in chimica},
+allora: P(M) = 0.25, P(C) = 0.15, P(M∩C) = 0.10.
+La probabilità che uno studente sia stato bocciato in matematica, se si sa
+che è stato bocciato in chimica, è P(M|C) = P(M∩C) / P(C) = 0.10 / 0.15 = 2/3.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+  \item Risposta errata.
+\end{answerlist}
+\end{solution}
+
+\exname{condizionale mat chimica}
+\extype{mchoice}
+\exsolution{10000}
+\exshuffle{TRUE}

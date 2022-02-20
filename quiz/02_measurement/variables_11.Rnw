@@ -1,0 +1,37 @@
+\begin{question}
+Gli intervistatori chiedono ai soggetti della ricerca di descrivere in dettaglio le loro relazioni con persone importanti della loro vita. Utilizzando criteri stabiliti, i valutatori codificano queste descrizioni e assegnano ad esse una delle seguenti categorie di attaccamento (Sicuro - 1, Preoccupato - 2, Pauroso - 3, Respingente - 4).
+ 
+Si scelga la scala di misurazione appropriata.
+
+\begin{answerlist}
+  \item nominale
+  \item rapporti
+  \item ordinale
+  \item intervalli
+  \item approssimativamente ad intervalli
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+I numeri su questa scala di classificazione identificano lo stile di attaccamento. Questa scala ha solo la proprietà numerica dell'identità.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+\end{answerlist}
+
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_11}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

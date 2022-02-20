@@ -1,0 +1,38 @@
+\begin{question}
+
+Sia $X$ una variabile aleatoria uniforme nell'intervallo [0, 1]. Si calcoli la varianza di $X$.
+
+ \begin{answerlist}
+   \item 0.083
+   \item 0.124
+   \item 0.192
+   \item 0.441
+   \item 0.681
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+\begin{verbatim}
+f <- function(x) 1
+g <- function(x) x * f(x)
+EX <- integrate(
+  g,
+  lower = 0,
+  upper = 1
+)$value
+EX
+h <- function(x) x^2 * f(x)
+VarX <- integrate(
+  h,
+  lower = 0,
+  upper = 1
+)$value - EX^2 
+VarX
+\end{verbatim}
+ \end{solution}
+
+ \exname{contrv5}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

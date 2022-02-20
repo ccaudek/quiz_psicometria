@@ -1,0 +1,36 @@
+\begin{question}
+
+Sia $X$ una variabile aleatoria definita nell'intervallo [0, 2] con densità
+
+$$
+f(x) = 3/8x^2.
+$$
+
+Si calcoli il valore atteso di $X$.
+ \begin{answerlist}
+   \item 1.5
+   \item 0.0.75
+   \item 0.25
+   \item 0.50
+   \item 1.0
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+\begin{verbatim}
+f <- function(x) 3/8 * x^2
+g <- function(x) x * f(x)
+EX <- integrate(
+  g,
+  lower = 0,
+  upper = 2
+)$value
+EX
+\end{verbatim}
+ \end{solution}
+
+ \exname{contrv6}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

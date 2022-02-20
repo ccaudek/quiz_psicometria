@@ -1,0 +1,46 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  # numero di dadi
+  n <- sample(6:15, 1)
+  # x = numero di successi
+  x <- sample(3:(n-2), size = 3)
+  # prob successo
+  p <- 1/6
+  # P(x)
+  sol <- sum(dbinom(x, size = n, prob = p))
+  sc <- num_to_schoice(sol, range = c(0.01, 0.98), delta = 0.01)
+}
+```
+
+Question
+========
+Lanciando `r n` dadi contemporaneamente, si trovi la probabilità che il "6" si presenti `r x[1]`, `r x[2]` o `r x[3]` volte.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```
+  # numero di dadi
+  n <- sample(6:15, 1)
+  # x = numero di successi
+  x <- sample(3:(n-2), size = 3)
+  # prob successo
+  p <- 1/6
+  # P(x)
+  sol <- sum(dbinom(x, size = n, prob = p))
+```
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: binom_distr_02

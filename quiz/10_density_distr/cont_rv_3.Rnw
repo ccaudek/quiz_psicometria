@@ -1,0 +1,46 @@
+\begin{question}
+
+Si consideri la seguente funzione definita per $x \geq 0$:
+
+$$
+f(x) = x/4 \cdot e^{-x^2/8}
+$$
+
+Si calcoli la varianza.
+
+ \begin{answerlist}
+   \item 1.72
+   \item 0.23
+   \item 0.94
+   \item 1.46
+   \item 2.36
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+\begin{verbatim}
+f <- function(x) {
+  x/4 * exp(-x^2/8)
+}
+g <- function(x) x * f(x)
+EX <- integrate(
+  g,
+  lower = 0,
+  upper = Inf
+)$value
+EX
+h <- function(x) x^2 * f(x)
+VarX <- integrate(
+  h,
+  lower = 0,
+  upper = Inf
+)$value - EX^2 
+VarX
+\end{verbatim}
+ \end{solution}
+
+ \exname{contrv3}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

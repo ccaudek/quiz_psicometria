@@ -1,0 +1,105 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+
+  library("tidyverse")
+  library("rstan")
+  library("cmdstanr")
+  library("rio")
+  library("here")
+  library("posterior")
+  
+  rstan_options(auto_write = TRUE) # avoid recompilation of models
+  options(mc.cores = parallel::detectCores()) # parallelize across all CPUs
+  Sys.setenv(LOCAL_CPPFLAGS = "-march=native") # improve execution time
+
+  d <- rio::import(here::here("quiz", "60_reg_lin", "data", "MehrSongSpelke_exp_1.csv"))
+  
+  d1 <- d %>% 
+    dplyr::filter(exp1 == 1 & Familiarization_Gaze_to_Unfamiliar > 100)
+  
+  d1$fam_c <- 
+  d1$Familiarization_Gaze_to_Familiar - mean(d1$Familiarization_Gaze_to_Familiar)
+  
+  data_list <- list(
+    N = length(d1$fam_c),
+    y = d1$Familiarization_Gaze_to_Unfamiliar,
+    x = d1$fam_c
+  )
+
+  modelString <- "
+  data {
+    int<lower=0> N;
+    vector[N] y;
+    vector[N] x;
+  }
+  parameters {
+    real alpha;
+    real beta;
+    real<lower=0> sigma;
+  }
+  model {
+    // priors
+    alpha ~ normal(100, 500);
+    beta ~ normal(-2, 0.5);
+    sigma ~ normal(100, 500);
+    y ~ normal(alpha + beta * x, sigma);
+  }
+  "
+  writeLines(modelString, con = "simplereg1.stan")
+  
+  file <- file.path("simplereg1.stan")
+  
+  mod <- cmdstan_model(file)
+  
+  fit <- mod$sample(
+    data = data_list,
+    iter_sampling = 4000L,
+    iter_warmup = 2000L,
+    seed = 123,
+    chains = 4L,
+    parallel_chains = 2L,
+    refresh = 0,
+    thin = 1
+  )
+  
+  out <- fit$summary(c("alpha", "beta", "sigma"))
+  
+  beta <- round(out[2, 2], 3)
+
+  sol <- as.numeric(beta)
+  sc <- num_to_schoice(sol, range = c(0.05, 1.2), delta = 0.1, digits = 3)
+
+}
+```
+
+Question
+========
+
+Si leggano i dati `MehrSongSpelke_exp_1.csv`. Si considerino solo i dati del primo esperimento (`exp1 == 1`) tali per cui `Familiarization_Gaze_to_Unfamiliar > 100`. 
+
+Utilizzando Stan con le seguenti specifiche, `iter_sampling = 4000L`, `iter_warmup = 2000L`, `seed = 123`, si adatti un modello di regressione lineare ai seguenti dati:
+
+- variabile dipendente: `Familiarization_Gaze_to_Unfamiliar`,
+- variabile indipendente: la variabile centrata `Familiarization_Gaze_to_Familiar`.
+
+Si utilizzi un modello bayesiano che adotta `normal(100, 500)` quale distribuzione a priori per il parameto alpha e `normal(-2, 0.5)` quale distribuzione a priori per il parametro beta -- si noti che tale la distribuzione a priori per beta, in generale, non è giustificata: la utilizziamo qui solo per fare un esercizio. Per sigma si usi `sigma ~ normal(100, 500)`.
+
+Si trovi la media a posteriori del parametro beta del modello di regressione.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: stan_reg_01

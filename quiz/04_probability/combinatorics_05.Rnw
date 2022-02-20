@@ -1,0 +1,19 @@
+\begin{question}
+Da un mazzo di 52 carte (13 carte per ciascuno dei 4 semi) ne vengono estratte 5 in modo casuale. Qual'e' la probabilita' di ottenere un tris (tre carte con lo stesso valore -- es., tre 7)?
+
+\begin{answerlist}
+  \item 0.0611
+  \item 0.0511
+  \item 0.0411
+  \item 0.0311
+  \item 0.0211
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Al denominatore abbiamo il numero di casi possibili. Calcolando il coefficiente binomiale con la sintassi di R, abbiamo choose(20, 5). Al numeratore abbiamo il numero di casi favorevoli. Per il tris, il valore si può scegliere in 13 modi possibili (es., tre 1, oppure tre 2, ...) e i tre semi del tris si possono scegliere in choose(4, 3) modi possibili.  Per le due carte rimanenti, abbiamo choose(12, 2) modi possibili per scegliere le due carte, che moltiplica per choose(4, 1) modi possibili di scegliere il seme della prima carta e choose(4, 1) modi possibili di scegliere il seme della seconda carta. Insieme abbiamo (13 * choose(4, 3) * choose(12, 2) * choose(4, 1) * choose(4, 1)) / choose(52, 5) = 0.0211.
+\end{solution}
+\exname{due_die_pd_2}
+\extype{mchoice}
+\exsolution{00001}
+\exshuffle{TRUE}

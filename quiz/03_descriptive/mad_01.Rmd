@@ -1,0 +1,38 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  y <- round(rnorm(n = 20, 10, 2), 1)
+  sol <- mad(y)
+  sc <- num_to_schoice(sol, range = c(0.2, 4), delta = 0.1, digits = 3)
+}
+```
+
+Question
+========
+Per i seguenti dati
+
+`r y`
+
+si calcoli la deviazione mediana assoluta usando un fattore di scala pari a 1.4826.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```{r distplot, echo = FALSE, results = "hide", fig.path = "", fig.cap = ""}
+mad(y)
+```
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: mad_01
+

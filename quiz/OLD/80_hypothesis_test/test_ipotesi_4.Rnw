@@ -1,0 +1,38 @@
+\begin{question}
+
+Nello studio di Caudek (2014), in una variante dell'effetto Stroop, è stato trovato che la presenza di parole irrilevanti per il compito rallenta il giudizio dell'espressione dei volti di 38.5 ms, in media. La deviazione standard dell'effetto Stroop è risultata essere pari a 65 ms. Nello studio considerato sono stati esaminati 58 soggetti. Supponiamo che una meta-analisi riporti che il valore medio dell'effetto Stroop, nei compiti che utilizzano immagini di volti, sia pari a 55 ms. Utilizzando alpha = 0.01, possiamo concludere che l'effetto Stroop trovato nello studio di Caudek (2014) sia diverso da quello che si trova generalmente nella letteratura?
+
+\begin{answerlist}
+   \item Non si può rifiutare H0 perché la statistica test non cade nella regione di rifiuto. I dati osservati sono coerenti con ciò che è riportato nella meta-analisi, fissato alpha = 0.05.
+   \item Si può rifiutare H0 perché la statistica test cade nella regione di rifiuto. I dati osservati non sono coerenti con ciò che è riportato nella meta-analisi, fissato alpha = 0.05.
+   \item Non si può rifiutare H0 perché la statistica test cade nella regione di rifiuto. I dati osservati sono coerenti con ciò che è riportato nella meta-analisi, fissato alpha = 0.05.
+   \item Si può rifiutare H0 perché la statistica test non cade nella regione di rifiuto. I dati osservati non sono coerenti con ciò che è riportato nella meta-analisi, fissato alpha = 0.05.
+   \item Si può rifiutare H0 perché il valore-p è maggiore dell'intervallo di confidenza. I dati osservati non sono coerenti con ciò che è riportato nella meta-analisi, fissato alpha = 0.05.
+\end{answerlist}
+
+ \end{question}
+
+\begin{solution}
+\begin{verbatim}
+Il test è bidirezionale. H_0: mu <= 55; H_1: mu diverso da 55
+La regione di rifiuto di H_0 è nelle due code della distribuzione della statistica test.  Il valore critico della regione di rifiuto nella coda destra è
+qt(.975, 58-1)
+[1] 2.002465
+nella coda sinistra è
+qt(.025, 58-1)
+[1] -2.002465
+Il valore della statistica test è
+T <- (38.5 - 55) / (65/sqrt(58))
+T
+[1] -1.933235
+Dato che la statistica test non cade nella regione di rifiuto di H_0, non possiamo rifiutare H_0. Concludiamo che le evidenze empiriche sono compatibili il valore della media dell'effetto Stroop riportato nella meta-analisi.  In maniera equivalente, calcoliamo il valore-p:
+2 * pt(T, 58-1)
+[1] 0.05817972
+Il fatto che il valore-p sia maggiore di alpha = 0.05, test bilaterale, non ci consente di rifiutare H_0: mu = 55.
+\end{verbatim}
+\end{solution}
+
+\exname{test_ipotesi 4}
+\extype{mchoice}
+\exsolution{10000}
+\exshuffle{TRUE}

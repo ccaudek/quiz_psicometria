@@ -1,0 +1,29 @@
+\begin{question}
+Si scelga l'affermazione più appropriata per descrivere la correlazione.
+
+\begin{answerlist}
+  \item Se il coefficiente di correlazione $r$ di Pearson è 0 allora non vi è associazione lineare tra $X$ e $Y$.
+  \item Se il coefficiente di correlazione $r$ di Pearson è 0 allora non vi è associazione tra $X$ e $Y$.
+    \item Se il coefficiente di correlazione $r$ di Pearson è 0 allora $X$ e $Y$ sono perfettamente associate.
+  \item Se il coefficiente di correlazione $r$ di Pearson è 0 allora c'è un'associazione curvilinea tra $X$ e $Y$.
+    \item Se il coefficiente di correlazione $r$ di Pearson è 0 allora $X$ e $Y$ sono due grandezze incommensurabili.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item Vero. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\exname{correlation_3}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

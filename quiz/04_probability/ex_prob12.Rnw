@@ -1,0 +1,19 @@
+\begin{question}
+Anna,  Beatrice  e  Carla  fanno  una  gara  di  corsa.  Stimo  che  Anna  e Carla  siano ugualmente  veloci  e  che  Beatrice  abbia  probabilità  doppia delle  altre  due  divincere la gara. Quale probabilità attribuisco alla vittoria di ciascuna?
+\begin{answerlist}
+  \item A B C: 0.25; 0.5; 0.25
+  \item A B C: 0.33; 0.33; 0.33
+  \item A B C: 0.50; 0.25; 0.25
+  \item A B C: 0.25; 0.25; 0.50
+  \item A B C: 0.25; 0.25; 0.25
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Anna 0.25; Beatrice 0.5; Carla 0.25
+\end{solution}
+
+\exname{Anna Beatrice Carla}
+\extype{mchoice}
+\exsolution{10000}
+\exshuffle{TRUE}

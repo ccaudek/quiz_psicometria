@@ -1,0 +1,47 @@
+\begin{question}
+
+Ad un bambino di 5 anni vengono sottoposti 12 problemi. Le sue risposte (C = risposta corretta, S = risposta sbagliata) sono le seguenti: C, C, S, C, C, C, C, C, S, S, S, S. Utilizzando una distribuzione a priori uniforme (Beta di parametri alpha = 1 e beta = 1), si calcoli la distribuzione a posteriori per la probabilità $p$ di rispondere correttamente. Si usi il metodo dell'approssimazione numerica. Qual e' intervallo più stretto di valori $p$ che corrisponde al 66 percento della distribuzione a posteriori?
+
+\begin{answerlist}
+ \item [0.45, 0.71]
+ \item [0.32, 0.76]
+ \item [0.51, 0.84]
+ \item [0.53, 0.64]
+ \item [0.52, 0.74]
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+# Packages
+library("tidyverse")
+library("rethinking")
+
+# Grid
+n_points <- 1e4
+p_grid <- seq(from = 0, to = 1, length.out = n_points)
+# Prior
+alpha <- 1
+beta <- 1
+prior <- dbeta(p_grid, alpha, beta) / sum(dbeta(p_grid, alpha, beta))
+# Likelihood
+k <- 7
+n <- 12
+likelihood <- dbinom(k, size = n, prob = p_grid)
+# Unstandardized posterior
+unstd_posterior <- likelihood * prior
+# Posterior distribution
+posterior <- unstd_posterior / sum(unstd_posterior)
+
+n_samples <- 1e5
+samples <- sample(p_grid, prob = posterior, size = n_samples, replace = TRUE)
+
+HPDI(samples, prob = 0.66)
+\end{verbatim}
+\end{solution}
+
+\exname{rethinking_cap2_13}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}

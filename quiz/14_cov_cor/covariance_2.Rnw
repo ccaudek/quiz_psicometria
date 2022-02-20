@@ -1,0 +1,104 @@
+<<echo=FALSE, results=hide>>=
+## DATA GENERATION
+
+X <- c(1, 1, 1, 1, 1, 2, 2, 3, 3, 3, 3, 3)
+flag <- 1
+while(flag) {
+  xsample <- sample(X, 7, replace = FALSE)
+  if (length(unique(xsample)) < 3) {
+    flag <- 1
+  } else {
+    flag <- 0
+  }
+}
+# x_sample
+
+Y <- c(1, 1, 1, 1, 2, 5, 5, 5, 5, 5, 5)
+flag <- 1
+while(flag) {
+  ysample <- sample(Y, 7, replace = FALSE)
+  if (length(unique(ysample)) < 3) {
+    flag <- 1
+  } else {
+    flag <- 0
+  }
+}
+# y_sample
+
+df = data.frame(
+  x = xsample,
+  y = ysample
+)
+# df
+
+Cov <- function(x, y) {
+  cov(x, y) * (length(x) - 1) / (length(x))
+}
+
+df$z <- 2 * df$y
+
+## QUESTION/ANSWER GENERATION
+
+sxz <- Cov(df$x, df$z)
+
+sol <- round(sxz, digits = 3)
+  
+questions    <- character(5)
+solutions    <- logical(5)
+explanations <- character(5)
+
+questions[1] <- paste(sol)
+
+newsol1 <- ifelse((sol - 0.1) < 0, 0.029, (sol - 0.1))
+questions[2] <- paste(newsol1)
+
+newsol2 <-  ifelse((sol - 0.2) < 0, 0.233, (sol - 0.2))
+questions[3] <- paste(newsol2)
+
+newsol3 <- ifelse((sol + 0.1) > 1, 0.339, (sol + 0.1))
+questions[4] <- paste(newsol3)
+
+newsol4 <- ifelse((sol + 0.2) > 1, 0.531, (sol + 0.2))
+questions[5] <- paste(newsol4)
+
+solutions[1] <- TRUE
+solutions[2:5] <- FALSE
+explanations[1] <- "Si applichino le proprieta' della covarianza"
+explanations[2:5] <- "Si veda la spiegazione"
+@
+
+
+\begin{question}
+Si considerino le variabili aleatorie $X$ e $Y$. La covarianza tra $X$ e $Y$ e' \Sexpr{round(Cov(df$x, df$y), 4)}. Posto $Z = 2 * X$, si trovi la covarianza tra $X$ e $Z$.
+    
+\begin{answerlist}
+\item \Sexpr{questions[1]}
+\item \Sexpr{questions[2]}
+\item \Sexpr{questions[3]}
+\item \Sexpr{questions[4]}
+\item \Sexpr{questions[5]}
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+Sxz = 2 * Sxy
+\Sexpr{sol}
+
+\begin{answerlist}
+\item \Sexpr{mchoice2text(solutions[1])}. \Sexpr{explanations[1]}
+\item \Sexpr{mchoice2text(solutions[2])}. \Sexpr{explanations[2]}
+\item \Sexpr{mchoice2text(solutions[3])}. \Sexpr{explanations[3]}
+\item \Sexpr{mchoice2text(solutions[4])}. \Sexpr{explanations[4]}
+\item \Sexpr{mchoice2text(solutions[5])}. \Sexpr{explanations[5]}
+\end{answerlist}
+
+\end{solution}
+
+%% META-INFORMATION
+\extype{schoice}
+\exsolution{\Sexpr{mchoice2string(solutions, single = TRUE)}}
+\exname{covariance_it_2}
+\exshuffle{TRUE}
+  
+  
+  

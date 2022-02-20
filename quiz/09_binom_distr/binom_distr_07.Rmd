@@ -1,0 +1,40 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  n_item <- sample(20:40, 1)
+  n_resp <- sample(3:8, 1)
+  p <- 1 / n_resp
+  n_corr <- sample(5:(n_item-7), 1)
+  sol <- 1 - sum(dbinom(0:(n_corr - 1), size = n_item, prob = p))
+  sc <- num_to_schoice(sol, range = c(0.01, 0.99), delta = 0.01)
+}
+```
+
+Question
+========
+Un esame a scelta multipla è costituito da `r n_item` item ciascuno dei quali con `r n_resp` alternative di risposta. Supponiamo che un rispondente si limiti a tirare ad indovinare. Qual è la probabilità di osservare almento `r n_corr` risposte corrette?
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+```
+n_item <- sample(20:40, 1)
+n_resp <- sample(3:8, 1)
+p <- 1 / n_resp
+n_corr <- sample(5:(n_item-7), 1)
+sol <- 1 - sum(dbinom(0:(n_corr - 1), size = n_item, prob = p))
+```
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: binom_distr_07

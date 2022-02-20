@@ -1,0 +1,27 @@
+\begin{question}
+
+Uno studio sulla trasmissione del virus HIV indica che il rischio che una donna HIV-negativa diventi infetta dopo un rapporto sessuale non protetto è circa pari a 1 trasmissione in 1250 esposizioni. Se consideriamo un campione casuale di 400 donne HIV-negative, qual è la probabilità che, dopo un tale comportamento sessuale, il virus HIV si trasmetta ad almeno una di esse? Si usi l'approssimazione normale alla binomiale (si noti che, in questo caso, l'approssimazione normale non è molto accurata).
+
+ \begin{answerlist}
+   \item 0.37
+   \item 0.49
+   \item 0.58
+   \item 0.64
+   \item 0.71
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+p <- 1 / 1250
+1 - pnorm(0.5, 400*p, sqrt(400*p*(1-p)))
+[1] 0.3751191
+
+1 - dbinom(0, 400, p)
+[1] 0.273944
+\end{solution}
+
+ \exname{norm bino 4}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

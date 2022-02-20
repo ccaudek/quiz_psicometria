@@ -1,0 +1,30 @@
+\begin{question}
+
+Le procedure di test dell'ipotesi nulla, usate nella ricerca scientifica,
+consentono un tasso di errore del 5 percento (ovvero, nel 5 percento dei casi
+i risultati riportati dai ricercatori sono falsi). Se consideriamo un campione
+casuale di 400 pubblicazioni scientifiche di psicologia, qual è la probabilità
+che un numero compreso tra 20 e 40 di esse riportino delle conclusioni sbagliate? Si usi l'approssimazione normale alla binomiale.
+
+ \begin{answerlist}
+   \item 0.55
+   \item 0.40
+   \item 0.31
+   \item 0.23
+   \item 0.12
+ \end{answerlist}
+
+ \end{question}
+
+ \begin{solution}
+pnorm(40.5, 400*0.05, sqrt(400*0.05*(1-0.05))) - pnorm(19.5, 400*0.05, sqrt(400*0.05*(1-0.05)))
+[1] 0.5456604
+
+pbinom(40, 400, 0.05) - pbinom(19, 400, 0.05)
+[1] 0.5320159
+ \end{solution}
+
+ \exname{norm bino 3}
+ \extype{mchoice}
+ \exsolution{10000}
+ \exshuffle{TRUE}

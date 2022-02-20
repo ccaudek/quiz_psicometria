@@ -1,0 +1,31 @@
+Question
+========
+In uno studio sugli anziani viene riportata la seguente relazione tra la percentuale di individui che esibiscono _Mild Cognitive Impairment_ ($Y$) e l'età ($X$): $\hat{Y} = 30.5 + 0.4 X$. Si trovi la percentuale predetta di individui con MCI nel caso di età pari a 70 anni. 
+
+Answerlist
+----------
+* 58.5.
+* 12.3.
+* 23.2.
+* 62.7.
+* 6.5.
+
+Solution
+========
+
+30.5 + 0.4 * 70 = 58.5
+
+Answerlist
+----------
+* True. 
+* False. 
+* False. 
+* False. 
+* False. 
+
+Meta-information
+================
+exname: regression_09
+extype: schoice
+exsolution: 10000
+exshuffle: 5

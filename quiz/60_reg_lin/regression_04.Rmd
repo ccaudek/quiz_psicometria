@@ -1,0 +1,66 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  
+  b0 <- 474
+  b1 <- 0.309
+  sigma <- 117
+  
+  x <- round(runif(1, -2, 2), 1)
+  
+  prob <- sample(seq(0.1, 0.9, by=0.1), 1)
+  
+  yhat <- b0 + b1 * x 
+
+  sol <- round(qnorm(prob, yhat, 117), 1)
+  sc <- num_to_schoice(sol, range = c(50, 1200), delta = 50, digits = 1)
+}
+```
+
+Question
+========
+
+Si consideri il seguente output relativo ad un modello di regressione che è stato adattato usando Stan:
+
+````
+> fit$summary(c("alpha", "beta", "sigma"))
+  variable    mean  median     sd    mad       q5     q95  rhat ess_bulk ess_tail
+  <chr>      <dbl>   <dbl>  <dbl>  <dbl>    <dbl>   <dbl> <dbl>    <dbl>    <dbl>
+1 alpha    474.    474.    21.1   20.4   439.     508.     1.00   12093.    9976.
+2 beta       0.309   0.315  0.145  0.139   0.0640   0.536  1.00   11148.    9048.
+3 sigma    117.    115.    17.6   16.1    92.4    149.     1.00   10085.    9068.
+````
+
+Supponiamo che il modello ipotizzi una distribuzione gaussiana di possibili valori $y$ centrati su $\hat{y}$. Si consideri una tale distribuzione in corrispondenza di $X$ pari a `r x`; si trovi il valore $Y$ che lascia sotto di sè una probabilità pari a `r prob`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+
+Solution
+========
+
+````
+  b0 <- 474
+  b1 <- 0.309
+  sigma <- 117
+  
+  x <- round(runif(1, -2, 2), 1)
+  
+  prob <- sample(seq(0.1, 0.9, by=0.1), 1)
+  
+  yhat <- b0 + b1 * x 
+
+  sol <- round(qnorm(prob, yhat, 117), 1)
+````
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: regression_04

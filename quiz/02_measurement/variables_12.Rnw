@@ -1,0 +1,37 @@
+\begin{question}
+Un ricercatore vuole determinare se il ciclo della temperatura circadiana è meno stabile per gli anziani rispetto agli adulti di mezza età. La temperatura corporea in gradi centigradi viene misurata ogni 15 minuti per un periodo di 3 giorni.
+ 
+Si scelga la scala di misurazione appropriata.
+
+\begin{answerlist}
+  \item intervalli
+  \item nominale
+  \item rapporti
+  \item ordinale
+  \item approssimativamente ad intervalli
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+La temperatura in gradi centigradi in  ha le proprietà dell'identità, dell'intensità e consente di identificare intervalli uguali tra punti della scala.  Non c'è uno zero assoluto.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+\end{answerlist}
+
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_12}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

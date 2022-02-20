@@ -1,0 +1,48 @@
+\begin{question}
+
+Ad un bambino di 8 anni vengono sottoposti 7 problemi. Le sue risposte (C = risposta corretta, S = risposta sbagliata) sono le seguenti: C, C, S, C, S, C, C. Utilizzando una distribuzione a priori uniforme, si calcoli la moda della distribuzione a posteriori per la probabilità di rispondere correttamente. Si usi il metodo dell'approssimazione numerica.
+
+\begin{answerlist}
+ \item 0.71
+ \item 0.63
+ \item 0.54
+ \item 0.41
+ \item 0.89
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+\begin{verbatim}
+ 5 / 7
+ 
+oppure in maniera equivalente
+
+# Grid
+n_points <- 1e4
+p_grid <- seq(from = 0, to = 1, length.out = n_points)
+
+# Prior
+prior1 <- dbeta(p_grid, 1, 1) / sum(dbeta(p_grid, 1, 1))
+sum(prior1)
+
+# Likelihood
+k <- 5
+n <- 7
+likelihood <- dbinom(k, size = n, prob = p_grid)
+
+# Unstandardized posterior
+unstd_posterior <- likelihood * prior1
+
+# Posterior distribution
+posterior <- unstd_posterior / sum(unstd_posterior)
+
+df <- data.frame(p_grid, posterior)
+df[which.max(df$posterior), ]$p_grid
+\end{verbatim}
+\end{solution}
+
+\exname{rethinking_cap2_4}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
