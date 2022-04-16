@@ -1,0 +1,41 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+  d <- read.csv(url)
+
+  sol <- cor(d$kid_score, d$mom_iq)
+  sc <- num_to_schoice(sol, range = c(0.01, 1), delta = 0.05, digits = 3)
+}
+```
+
+Question
+========
+Si calcoli la correlazione tra le variabili `kid_score` e `mom_iq` contenute nel file 
+
+https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+
+d <- read.csv(url)
+
+sol <- cor(d$kid_score, d$mom_iq)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_cor_01
+

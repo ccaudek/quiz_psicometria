@@ -1,0 +1,50 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+  d <- read.csv(url)
+  
+  prop <- round(runif(1, 0.2, 0.8), 2)
+  prop_inf <- 1 - prop
+  sol <- quantile(d$kid_score, prop_inf)
+  
+  ks_min <- min(d$kid_score)
+  ks_max <- max(d$kid_score)
+
+  sc <- num_to_schoice(sol, range = c(ks_min, ks_max), delta = 0.5, digits = 0)
+}
+```
+
+Question
+========
+Si consideri la variabile `kid_score` contenuta nel file 
+
+https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv
+
+Si trovi il punteggio dell'intelligenza (ovvero, `kid_score`) tale per cui, in questo particolare campione, solo il `r prop`% dei bambini mostra un valore uguale a superiore ad esso.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+
+prop <- round(runif(1, 0.2, 0.8), 2)
+
+prop_inf <- 1 - prop
+  
+sol <- quantile(d$kid_score, prop_inf)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_quant_01
+

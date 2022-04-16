@@ -1,0 +1,40 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library("prob")
+sc <- NULL
+while(is.null(sc)) {
+  alpha <- sample(2:5, 1)
+  beta <- sample(6:10, 1)
+  sol <- 100 * beta(alpha, beta)
+  sc <- num_to_schoice(sol, range = c(0, 0.4), delta = 0.01)
+}
+```
+
+Question
+========
+Si consideri una distribuzione Beta di parametri alpha = `r alpha` e beta = `r beta`. Supponiamo di ridurre la formula della distribuzione Beta della variabile casuale $X \in [0, 1]$ a questa forma: 
+
+$$
+x^{\alpha-1} (1-x)^{\beta-1}.
+$$
+Si calcoli l'area della funzione così generata. Per evitare problemi di arrotondamento, si moltiplichi tale area per 100.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+\begin{verbatim}
+  sol <- 100 * beta(alpha, beta)
+\end{verbatim}
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: beta_distribution_03

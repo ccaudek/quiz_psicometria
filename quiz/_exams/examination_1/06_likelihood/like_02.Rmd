@@ -1,0 +1,68 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  
+  url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+  d <- read.csv(url)
+  
+  gifted <- ifelse(d$mom_iq > 120, 1, 0)
+  
+  y <- sum(gifted)
+  
+  n <- nrow(d)
+  
+  prop <- y / n
+  
+  theta <- round(runif(1, (prop - 0.05), (prop + 0.05)), 2)
+  
+  sol <- dbinom(y, n, theta)
+
+  sc <- num_to_schoice(sol, range = c(0.001, 0.2), delta = 0.002, digits = 3)
+}
+```
+
+Question
+========
+Si consideri la variabile `mom_iq` contenute nel file 
+
+https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv
+
+Consideriamo "gifted" un QI maggiore di 120. Supponiamo che il file contenga i dati di un campione casuale di madri.
+
+Il problema chiede di costruire la funzione di verosimiglianza per la probabilità $\theta$ di essere "gifted", avendo osservato il presente campione di dati.
+
+Si trovi l'ordinata della funzione di verosimiglianza in corrispondenza del valore $\theta$ =  `r theta`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+  url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+  
+  d <- read.csv(url)
+  
+  gifted <- ifelse(d$mom_iq > 120, 1, 0)
+  
+  y <- sum(gifted)
+  
+  n <- nrow(d)
+  
+  prop <- y / n
+  
+  theta <- round(runif(1, (prop - 0.05), (prop + 0.05)), 2)
+  
+  sol <- dbinom(y, n, theta)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_like_02
+

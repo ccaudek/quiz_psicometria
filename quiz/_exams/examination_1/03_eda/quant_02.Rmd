@@ -1,0 +1,43 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+  d <- read.csv(url)
+  
+  sol <- IQR(d$kid_score)
+  
+  ks_min <- min(d$kid_score)
+  ks_max <- max(d$kid_score)
+
+  sc <- num_to_schoice(sol, range = c(ks_min, ks_max), delta = 0.5, digits = 0)
+}
+```
+
+Question
+========
+Si trovi la gamma interquartile per la variabile `kid_score` contenuta nel file 
+
+https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+
+IQR(d$kid_score)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_quant_02
+

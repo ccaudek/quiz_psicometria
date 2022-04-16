@@ -1,0 +1,39 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library("prob")
+library("bayesrules")
+sc <- NULL
+while(is.null(sc)) {
+  alpha <- sample(2:5, 1)
+  beta <- sample(6:10, 1)
+  threshold <- round(runif(1, 0.3, 0.7), 2)
+  p <- pbeta(threshold, alpha, beta, lower.tail = FALSE)
+  sol <- p
+  sc <- num_to_schoice(sol, range = c(0, 0.99), delta = 0.03)
+}
+```
+
+Question
+========
+
+Sia $X$ una variabile casuale che segue la distribuzione Beta di parametri alpha = `r alpha` e beta = `r beta`. Si trovi la probabilità di osservare un valore $X >$ `r threshold`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+\begin{verbatim}
+  p <- pbeta(threshold, alpha, beta, lower.tail = FALSE)
+\end{verbatim}
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: beta_distribution_06

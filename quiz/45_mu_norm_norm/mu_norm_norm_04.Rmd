@@ -1,0 +1,97 @@
+```{r data generation, echo = FALSE, results = "hide"}
+
+  suppressPackageStartupMessages({
+    library("here")
+    library("tidyverse")
+    library("bayesplot")
+    library("rstan")
+    library("cmdstanr")
+    library("bayesrules")
+  })
+
+sc <- NULL
+while(is.null(sc)) {
+
+  ## parameters
+  
+  mu_prior <- sample(seq(5, 25, by=0.1), 1)
+  sd_prior <- sample(seq(0.5, 5, by=0.1), 1)
+  
+  sigma <- sample(seq(2.5, 7, by=0.1), 1)
+  n <- sample(20:40, 1)
+  y <- round(rnorm(n, mu_prior + 3, sd_prior + 0.5), 1)
+  y_bar <- round(mean(y), 3)
+  
+ out <- bayesrules::summarize_normal_normal(
+    mean = mu_prior, # media della distribuzione a priori per mu 
+    sd = sd_prior, # sd della distribuzione a priori per mu
+    sigma = sd(y), # sd del campione
+    y_bar = round(mean(y), 3), # media del campione
+    n = length(y) # ampiezza campionaria
+  )
+ 
+   mu_post <- out[2, 2]
+   sd_post <- out[2, 5]
+   
+  ## solution
+  res <- round(dnorm(mu_post, mu_post, sd_post), 2)
+  
+  ## schoice
+  sc <- num_to_schoice(res, range = c(0.01, 2.0), delta = 0.1, digits = 2)
+}
+```
+
+Question
+========
+Supponiamo di avere osservato il campione `r y`. Ipotizziamo che provenga da una popolazione che segue la legge Normale. Vogliamo fare inferenza sulla media $\mu$ della popolazione. Supponiamo che la deviazione standard $\sigma$ della popolazione sia nota e sia identica alla deviazione standard del campione (calcolata con $n-1$ al denominatore). Imponiamo su $\mu$ una distribuzione a priori Normale di media `r mu_prior` e deviazione standard `r sd_prior`.
+
+Si trovi il valore massimo della densità della distribuzione a posteriori $p(\mu \mid y, \sigma)$.
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+Questa è la descrizione del procedimento. I numeri sono diversi da quelli
+del problema presente.
+
+  mu_prior <- sample(seq(5, 25, by=0.1), 1)
+
+  sd_prior <- sample(seq(0.5, 5, by=0.1), 1)
+  
+  sigma <- sample(seq(2.5, 7, by=0.1), 1)
+  
+  n <- sample(20:40, 1)
+  
+  y <- round(rnorm(n, mu_prior + 3, sd_prior + 0.5), 1)
+  
+  y_bar <- round(mean(y), 3)
+  
+ out <- bayesrules::summarize_normal_normal(
+    mean = mu_prior, # media della distribuzione a priori per mu 
+    sd = sd_prior, # sd della distribuzione a priori per mu
+    sigma = sd(y), # sd del campione
+    y_bar = round(mean(y), 3), # media del campione
+    n = length(y) # ampiezza campionaria
+  )
+ 
+   mu_post <- out[2, 2]
+   
+   sd_post <- out[2, 5]
+   
+  ## solution
+  res <- round(dnorm(mu_post, mu_post, sd_post), 2)
+  
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: mu_norm_norm_04

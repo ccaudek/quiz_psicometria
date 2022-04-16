@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+
+
+<question type="category">
+<category>
+<text>$course$/moodlequiz/Exercise 1</text>
+</category>
+</question>
+
+
+<question type="multichoice">
+<name>
+<text> Q1 : _Users_corrado__repositories_quiz_psicometria_quiz_45_mu_norm_norm_mu_norm_norm_04 </text>
+</name>
+<questiontext format="html">
+<text><![CDATA[
+<p>
+<p>Supponiamo di avere osservato il campione 16, 16.9, 14.5, 15.3, 16.8,
+15.5, 9.9, 14.1, 16.1, 14.1, 15, 14.4, 17, 15.3, 15, 16.9, 16.1, 13.6,
+14.2, 14.3, 16.3, 15.3, 15.1, 14.9. Ipotizziamo che provenga da una
+popolazione che segue la legge Normale. Vogliamo fare inferenza sulla
+media <span class="math inline">\(\mu\)</span> della popolazione.
+Supponiamo che la deviazione standard <span
+class="math inline">\(\sigma\)</span> della popolazione sia nota e sia
+identica alla deviazione standard del campione (calcolata con <span
+class="math inline">\(n-1\)</span> al denominatore). Imponiamo su <span
+class="math inline">\(\mu\)</span> una distribuzione a priori Normale di
+media 12.7 e deviazione standard 0.9.</p>
+<p>Si trovi il valore massimo della densità della distribuzione a
+posteriori <span class="math inline">\(p(\mu \mid y,
+\sigma)\)</span>.</p>
+</p>]]></text>
+</questiontext>
+<generalfeedback format="html">
+<text><![CDATA[<p>
+<p>Questa è la descrizione del procedimento. I numeri sono diversi da
+quelli del problema presente.</p>
+<p>mu_prior &lt;- sample(seq(5, 25, by=0.1), 1)</p>
+<p>sd_prior &lt;- sample(seq(0.5, 5, by=0.1), 1)</p>
+<p>sigma &lt;- sample(seq(2.5, 7, by=0.1), 1)</p>
+<p>n &lt;- sample(20:40, 1)</p>
+<p>y &lt;- round(rnorm(n, mu_prior + 3, sd_prior + 0.5), 1)</p>
+<p>y_bar &lt;- round(mean(y), 3)</p>
+<p>out &lt;- bayesrules::summarize_normal_normal( mean = mu_prior, #
+media della distribuzione a priori per mu sd = sd_prior, # sd della
+distribuzione a priori per mu sigma = sd(y), # sd del campione y_bar =
+round(mean(y), 3), # media del campione n = length(y) # ampiezza
+campionaria )</p>
+<p>mu_post &lt;- out[2, 2]</p>
+<p>sd_post &lt;- out[2, 5]</p>
+<p>## solution res &lt;- round(dnorm(mu_post, mu_post, sd_post), 2)</p>
+<ol type = "a">
+<li> False </li>
+<li> False </li>
+<li> False </li>
+<li> False </li>
+<li> True </li>
+</ol>
+</p>]]></text>
+</generalfeedback>
+<penalty>0</penalty>
+<defaultgrade>1</defaultgrade>
+<shuffleanswers>false</shuffleanswers>
+<single>true</single>
+<answernumbering>abc</answernumbering>
+<answer fraction="-25" format="html">
+<text><![CDATA[<p>
+<span class="math inline">\(0.32\)</span>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+False
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-25" format="html">
+<text><![CDATA[<p>
+<span class="math inline">\(1.73\)</span>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+False
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-25" format="html">
+<text><![CDATA[<p>
+<span class="math inline">\(1.61\)</span>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+False
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="-25" format="html">
+<text><![CDATA[<p>
+<span class="math inline">\(1.98\)</span>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+False
+</p>]]></text>
+</feedback>
+</answer>
+<answer fraction="100" format="html">
+<text><![CDATA[<p>
+<span class="math inline">\(1.38\)</span>
+</p>]]></text>
+<feedback format="html">
+<text><![CDATA[<p>
+True
+</p>]]></text>
+</feedback>
+</answer>
+</question>
+
+</quiz>

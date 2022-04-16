@@ -1,0 +1,44 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  x <- round(runif(10, 1, 100), 0)
+  
+  a <- sample(1:10, 1)
+
+  sol <- sum(a * (x - mean(x)))
+  sc <- num_to_schoice(sol, range = c(1, 30), delta = 1, digits = 0)
+}
+```
+
+Question
+========
+Siano $a$ = `r a` e X = `r x`. Si sviluppi la sommatoria
+
+$$
+\sum_{i=1}^{n=10} a (X_i - \bar{X})
+$$
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+  x <- round(runif(10, 1, 100), 0)
+  
+  a <- sample(1:10, 1)
+
+  sum(a * (x - mean(x)))
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_sum_04
+

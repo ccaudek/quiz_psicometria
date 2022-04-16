@@ -1,0 +1,55 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+## parameters
+  # prior
+  a <- sample(2:10, 1)
+  b <- sample(12:20, 1)
+  # likelihood
+  y <- sample(10:20, 1)
+  n <- sample(24:30, 1)
+  
+  out <- bayesrules::summarize_beta_binomial(
+    alpha = a, 
+    beta = b, 
+    y = y, 
+    n = n
+    )
+  
+  ## solution
+  res <- round(out[2, 4], 4)
+
+  ## schoice
+  sc <- num_to_schoice(res, range = c(0.01, 0.99), delta = 0.05, digits = 4)
+}
+```
+
+Question
+========
+Supponiamo di avere osservato `r y` successi in `r n` prove Bernoulliane.  Si supponga di utilizzare una distibuzione a priori Beta di parametri alpha = `r a` e beta = `r b`. Si calcoli la media della distribuzione a posteriori per il parametro theta (probabilità di successo).
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+  out <- bayesrules::summarize_beta_binomial(
+    alpha = a, 
+    beta = b, 
+    y = y, 
+    n = n
+    )
+    
+   res <- round(out[2, 4], 4)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: beta-binom_05

@@ -1,0 +1,58 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+  d <- read.csv(url)
+  
+  y <- sum(d$mom_hs)
+  n <- nrow(d)
+  
+  theta <- round(runif(1, 0.75, 0.8), 2)
+  
+  sol <- dbinom(y, n, theta)
+
+  sc <- num_to_schoice(sol, range = c(0.001, 0.2), delta = 0.002, digits = 3)
+}
+```
+
+Question
+========
+Si consideri la variabile `mom_hs` contenute nel file 
+
+https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv
+
+Il valore 1 significa che la madre ha ottenuto il diploma di scuola superiore; 0 significa che non l'ha ottenuto. Supponiamo che il file contenga i dati di un campione casuale di madri.
+
+Il problema chiede di costruire la funzione di verosimiglianza per la probabilità $\theta$ di avere ottenuto il diploma di scuola superiore, avendo osservato il presente campione di dati.
+
+Si trovi l'ordinata della funzione di verosimiglianza in corrispondenza del valore $\theta$ =  `r theta`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+
+d <- read.csv(url)
+
+y <- sum(d$mom_hs)
+  
+n <- nrow(d)
+  
+theta <- round(runif(1, 0.75, 0.8), 2)
+  
+sol <- dbinom(y, n, theta)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_cor_01
+

@@ -1,0 +1,66 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+library("tidyverse")
+library("prob")
+
+while(is.null(sc)) {
+  
+  nsides <- sample(4:12, 1)
+  
+  ntimes <- sample(2:4, 1)
+  
+  S <- rolldie(times = ntimes, nsides = nsides, makespace = TRUE)
+  
+  A <- subset(S, X1 != X2)
+  
+  nmin <- sample(4:9, 1)
+  
+  B <- subset(S, X1 + X2 >= nmin)
+  
+  sol <- Prob(A, given = B)
+  
+  sc <- num_to_schoice(sol, range = c(0.01, 1), delta = 0.05, digits = 2)
+}
+```
+
+Question
+========
+Un dado a `r nsides` facce viene lanciato `r ntimes` volte. Siano 
+
+A = i due lanci producono un numero diverso
+
+B = la somma dei risultati è almeno `r nmin`
+
+Si trovi la probabilità $P(A \mid B)$.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+  nsides <- sample(4:12, 1)
+  
+  ntimes <- sample(2:4, 1)
+  
+  S <- rolldie(times = ntimes, nsides = nsides, makespace = TRUE)
+  
+  A <- subset(S, X1 != X2)
+  
+  nmin <- sample(4:9, 1)
+  
+  B <- subset(S, X1 + X2 >= nmin)
+  
+  sol <- Prob(A, given = B)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_prob_01
+

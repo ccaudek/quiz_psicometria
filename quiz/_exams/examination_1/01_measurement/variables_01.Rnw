@@ -1,0 +1,31 @@
+\begin{question}
+Vengono misurate le ore di sonno dei partecipanti ad uno studio sperimentale.
+I partecipanti vengono suddivisi in tre gruppi: gruppo di controllo, gruppo sottoposto a stress nella giornata precedente, gruppo sottoposto a stress nella giornata precedente i cui partecipanti completano una sessione di meditazione prima di coricarsi.
+Indicare la variabile indipendente precisandone la scala di misura.
+
+\begin{answerlist}
+\item Il gruppo è la variabile indipendente. È una variabile manipolabile. La scala di misura è nominale.
+  \item Il gruppo è la variabile indipendente. È una variabile non manipolabile. La scala di misura è nominale.
+  \item Il gruppo è la variabile indipendente. È una variabile manipolabile. La scala di misura è ordinale.
+  \item Le ore di sonno sono la variabile indipendente. È una variabile non manipolabile. La scala di misura è a rapporti.
+  \item Le ore di sonno sono la variabile indipendente. È una variabile non manipolabile. La scala di misura è ad intervalli.
+\end{answerlist}
+\end{question}
+
+\begin{solution}
+\begin{answerlist}
+  \item Vero. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+  \item Falso. 
+\end{answerlist}
+\end{solution}
+
+%% META-INFORMATION
+\exname{var_indip_1}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

@@ -1,0 +1,36 @@
+```{r data generation, echo = FALSE, results = "hide"}
+library("prob")
+sc <- NULL
+while(is.null(sc)) {
+  
+  alpha <- sample(2:5, 1)
+  beta <- sample(6:10, 1)
+  sol <- alpha / (alpha + beta)
+  sc <- num_to_schoice(sol, range = c(0, 1), delta = 0.03)
+}
+```
+
+Question
+========
+Per una distribuzione Beta di parametri alpha = `r alpha` e beta = `r beta` si trovi il valore atteso:
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+\begin{verbatim}
+alpha / (alpha + beta)
+\end{verbatim}
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$sol)`
+exname: beta_distribution_01

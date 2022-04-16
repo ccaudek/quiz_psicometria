@@ -1,0 +1,41 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+  d <- read.csv(url)
+  sol <- var(d$kid_score) * (nrow(d) - 1) / (nrow(d))
+  sc <- num_to_schoice(sol, range = c(410, 450), delta = 0.5, digits = 3)
+}
+```
+
+Question
+========
+Si calcoli la varianza della variabile `kid_score` contenuta nel file 
+
+https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv
+
+Nella formula della varianza, si usi $n$ al denominatore.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+
+d <- read.csv(url)
+
+sol <- var(d$kid_score) * (nrow(d) - 1) / (nrow(d))
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_var_01
+

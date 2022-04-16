@@ -1,0 +1,42 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+  url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+  d <- read.csv(url)
+  
+  sol <- cov(d$mom_age, d$mom_iq)
+  
+  sc <- num_to_schoice(sol, range = c(0.5, 8), delta = 0.5, digits = 2)
+}
+```
+
+Question
+========
+Si calcoli la covarianza tra le variabili `mom_age` e `mom_iq` contenute nel file 
+
+https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv
+
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+url <- "https://raw.githubusercontent.com/storopoli/Bayesian-Julia/master/datasets/kidiq.csv"
+
+d <- read.csv(url)
+
+sol <- cov(d$mom_age, d$mom_iq)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_cov_01
+

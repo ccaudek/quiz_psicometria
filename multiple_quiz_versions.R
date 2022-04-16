@@ -1,9 +1,9 @@
-# Script name: master.R
+# Script name: multiple_quiz_versions.R
 # Project: teaching
-# Script purpose: generate quiz for Moodle
+# Script purpose: generate multiple versions of a quiz for Moodle
 # @author: Corrado Caudek <corrado.caudek@unifi.it>
 # Date Created: Fri Dec 17 07:23:51 2021
-# Last Modified Date: Fri Dec 17 07:23:51 2021
+# Last Modified Date: Fri Mar 25 14:27:22 2022
 #
 # 👉 When importing the xml file in Moodle do the following:
 #    1) import the .xml file by chosing the xml format, 
@@ -30,7 +30,7 @@ options(device.ask.default = FALSE)
 
 # Turn a single exercise into a HTML file (shown in browser)
 exams2html(
-  here::here("quiz", "45_mu_norm_norm", "mu_norm_norm_04.Rmd"),
+  here::here("quiz", "07_random_vars", "e_rand_vars_01.Rmd"),
   encoding = "UTF-8",
   mathjax = TRUE,
   converter = "pandoc-mathjax"
@@ -38,7 +38,7 @@ exams2html(
 
 # Convert a single quiz into Moodle format ----
 exams2moodle(
-  here::here("quiz", "45_mu_norm_norm", "mu_norm_norm_04.Rmd"),
+  here::here("quiz", "07_random_vars", "e_rand_vars_01.Rmd"),
 )
 
 
@@ -57,13 +57,13 @@ exams2moodle(
 
 
 elearn_exam <- c(
-  here::here("quiz", "01_sums", "sums_01.Rnw")
+  here::here("quiz", "07_random_vars", "e_rand_vars_01.Rmd")
 )
 
 xm <- exams::exams2moodle(
   elearn_exam,
   n = 4,
-  name = "001_sums",
+  name = "rand_var",
   encoding = "UTF-8",
   converter = "pandoc-mathjax"
 )
@@ -217,5 +217,4 @@ selected_version$exercise01$metainfo$solution
 
 # Select each version of the exam
 c1 <- metainfo$"19060300001"
-
 

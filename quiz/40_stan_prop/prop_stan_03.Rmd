@@ -1,0 +1,158 @@
+```{r data generation, echo = FALSE, results = "hide"}
+
+  suppressPackageStartupMessages({
+    library("here")
+    library("tidyverse")
+    library("bayesplot")
+    library("rstan")
+    library("cmdstanr")
+    library("bayesrules")
+  })
+
+sc <- NULL
+while(is.null(sc)) {
+## parameters
+  y_sim <- sample(2:19, 1)
+  n_sim <- sample(20:40, 1)
+  mu_grid <- seq(0.1, 0.9, length.out = 9)
+  mu <- sample(mu_grid, 1)
+  sigma_grid <- seq(0.05, 0.20, by = 0.01)
+  sigma <- sample(sigma_grid, 1)
+  prob_int_grid <- seq(0.5, 0.99, by = 0.01)
+  prob_int <- sample(prob_int_grid, 1)
+  
+  data_list <- list(
+    N = n_sim,
+    y = c(rep(1, y_sim), rep(0, (n_sim - y_sim))),
+    MU = mu,
+    SIGMA = sigma
+  )
+
+  model_string <- "
+  data {
+    int<lower=0> N;
+    array[N] int<lower=0, upper=1> y;
+    real MU;
+    real<lower=0> SIGMA;
+  }
+  parameters {
+    real<lower=0, upper=1> theta;
+  }
+  model {
+    theta ~ normal(MU, SIGMA);
+    y ~ bernoulli(theta);
+  }
+  "
+  
+  writeLines(model_string, con = "oneprop_1.stan")
+  
+  file <- file.path("oneprop_1.stan")
+  
+  mod <- cmdstan_model(file)
+  
+  fit <- mod$sample(
+    data = data_list,
+    iter_sampling = 10000L,
+    iter_warmup = 2000L,
+    seed = 84735,
+    chains = 4L,
+    refresh = 0,
+    thin = 1
+  )
+  
+  fit_stanfit <- rstan::read_stan_csv(fit$output_files())
+  
+  out <- fit$summary()
+  post_mean <- as.numeric(out[2, 2])
+  ## solution
+  res <- round(post_mean, 3)
+  
+  ## schoice
+  sc <- num_to_schoice(res, range = c(0.001, 0.99), delta = 0.1, digits = 3)
+}
+```
+
+Question
+========
+Supponiamo di avere osservato `r y_sim` successi in `r n_sim` prove Bernoulliane.  Si supponga di imporre al parametro ignoto $\theta$ (probabilità di successo in una singola prova) una distribuzione a priori descritta da una gaussiana troncata di media `r mu` e deviazione standard `r sigma`. 
+
+Si calcoli la media della distribuzione a posteriori del parametro $\theta$ (si utilizzino 10000 iterazioni con un warmup di 2000. Per la riproducibilità dei risultati, si usi `seed = 84735`).
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+  y_sim <- sample(2:19, 1)
+  
+  n_sim <- sample(20:40, 1)
+  
+  mu_grid <- seq(0.1, 0.9, length.out = 9)
+  
+  mu <- sample(mu_grid, 1)
+  
+  sigma_grid <- seq(0.05, 0.20, by = 0.01)
+  
+  sigma <- sample(sigma_grid, 1)
+  
+  prob_int_grid <- seq(0.5, 0.99, by = 0.01)
+  
+  prob_int <- sample(prob_int_grid, 1)
+  
+  data_list <- list(
+  N = n_sim,
+  y = c(rep(1, y_sim), rep(0, (n_sim - y_sim))),
+  MU = mu,
+  SIGMA = sigma
+  )
+
+  model_string <- "
+  data {
+    int<lower=0> N;
+    array[N] int<lower=0, upper=1> y;
+    real MU;
+    real<lower=0> SIGMA;
+  }
+  parameters {
+    real<lower=0, upper=1> theta;
+  }
+  model {
+    theta ~ normal(MU, SIGMA);
+    y ~ bernoulli(theta);
+  }
+  "
+  
+  writeLines(model_string, con = "oneprop_1.stan")
+  
+  file <- file.path("oneprop_1.stan")
+  
+  mod <- cmdstan_model(file)
+  
+  fit <- mod$sample(
+    data = data_list,
+    iter_sampling = 10000L,
+    iter_warmup = 2000L,
+    seed = 84735,
+    chains = 4L,
+    refresh = 0,
+    thin = 1
+  )
+  
+  fit_stanfit <- rstan::read_stan_csv(fit$output_files())
+  
+  out <- rstantools::posterior_interval(
+    as.matrix(fit_stanfit),
+    prob = prob_int
+  )
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: prop_stan_01

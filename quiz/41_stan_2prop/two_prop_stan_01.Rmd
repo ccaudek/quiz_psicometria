@@ -1,0 +1,173 @@
+```{r data generation, echo = FALSE, results = "hide"}
+
+  suppressPackageStartupMessages({
+    library("here")
+    library("tidyverse")
+    library("bayesplot")
+    library("rstan")
+    library("cmdstanr")
+    library("bayesrules")
+  })
+
+sc <- NULL
+while(is.null(sc)) {
+
+  ## parameters
+  y1_sim <- sample(2:15, 1)
+  n1_sim <- sample(20:40, 1)
+  
+  y2_sim <- sample(7:19, 1)
+  n2_sim <- sample(20:40, 1)
+  
+  prob_level <- sample(seq(0.5, 0.99, by=0.01), 1)
+  
+  data_bin2 <- list(
+    N1 = n1_sim, 
+    y1 = y1_sim, 
+    N2 = n2_sim, 
+    y2 = y2_sim
+  )
+  
+  model_string <- "
+  //  Comparison of two groups with Binomial
+  data {
+    int<lower=0> N1;              // number of experiments in group 1
+    int<lower=0> y1;              // number of survivers in group 1
+    int<lower=0> N2;              // number of experiments in group 2
+    int<lower=0> y2;              // number of survivers in group 2
+  }
+  parameters {
+    real<lower=0,upper=1> theta1; // probability of surviving in group 1
+    real<lower=0,upper=1> theta2; // probability of surviving in group 2
+  }
+  model {
+    theta1 ~ beta(1, 1);          // prior
+    theta2 ~ beta(1, 1);          // prior
+    y1 ~ binomial(N1, theta1);    // observation model / likelihood
+    y2 ~ binomial(N2, theta2);    // observation model / likelihood
+  }
+  generated quantities {
+    // generated quantities are computed after sampling
+    real oddsratio = (theta2/(1-theta2))/(theta1/(1-theta1));
+  }
+  "
+
+  writeLines(model_string, con = "twoprop_1.stan")
+  
+  file <- file.path("twoprop_1.stan")
+  
+  mod <- cmdstan_model(file)
+  
+  fit <- mod$sample(
+    data = data_bin2,
+    iter_sampling = 10000L,
+    iter_warmup = 2000L,
+    seed = 84735,
+    chains = 4L,
+    refresh = 0
+  )
+  
+  fit_stanfit <- rstan::read_stan_csv(fit$output_files())
+  
+  out <- rstantools::posterior_interval(
+  as.matrix(fit_stanfit),
+  prob = prob_level
+  )
+
+  ## solution
+  res <- round(out[3, 1], 3)
+  
+  ## schoice
+  sc <- num_to_schoice(res, range = c(0.001, 0.99), delta = 0.1, digits = 3)
+}
+```
+
+Question
+========
+Supponiamo di volere confrontare il numero di "successi" in due gruppi. Ad esempio, l'efficacia di un trattamento o di un intervento psicologico rispetto ad un gruppo di controllo. Nel gruppo "trattamento" abbiamo osservato `r y2_sim` successi in `r n2_sim` prove Bernoulliane iid.  Nel gruppo di controllo abbiamo osservato `r y1_sim` successi in `r n1_sim` prove Bernoulliane iid.
+
+Si supponga di imporre ai parametri ignoti $\theta_t$ (probabilità di successo in una singola prova nel gruppo "trattamento") e $\theta_c$ (probabilità di successo in una singola prova nel gruppo "controllo") una distribuzione a priori uniforme. 
+
+Si calcoli il limite inferiore dell'intervallo di credibilità di ordine `r prob_level` per l'odds-ratio
+
+$$
+OR =  (\theta_t / (1 - \theta_t)) / (\theta_c / (1 - \theta_c)).
+$$
+
+Si utilizzino 10000 iterazioni con un warmup di 2000. Per la riproducibilità dei risultati, si usi `seed = 84735`.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+Questa è la descrizione del procedimento. I numeri sono diversi da quelli
+del problema assegnato.
+
+  prob_level <- 0.91
+
+data_bin2 <- list(
+  N1 = 25, 
+  y1 = 10, 
+  N2 = 38, 
+  y2 = 18
+)
+
+model_string <- "
+  //  Comparison of two groups with Binomial
+  data {
+    int<lower=0> N1;              // number of experiments in group 1
+    int<lower=0> y1;              // number of survivers in group 1
+    int<lower=0> N2;              // number of experiments in group 2
+    int<lower=0> y2;              // number of survivers in group 2
+  }
+  parameters {
+    real<lower=0,upper=1> theta1; // probability of surviving in group 1
+    real<lower=0,upper=1> theta2; // probability of surviving in group 2
+  }
+  model {
+    theta1 ~ beta(1, 1);          // prior
+    theta2 ~ beta(1, 1);          // prior
+    y1 ~ binomial(N1, theta1);    // control
+    y2 ~ binomial(N2, theta2);    // tratment
+  }
+  generated quantities {
+    // generated quantities are computed after sampling
+    real oddsratio = (theta2/(1-theta2))/(theta1/(1-theta1));
+  }
+  "
+
+writeLines(model_string, con = "twoprop_1.stan")
+
+file <- file.path("twoprop_1.stan")
+
+mod <- cmdstan_model(file)
+
+fit <- mod$sample(
+  data = data_bin2,
+  iter_sampling = 10000L,
+  iter_warmup = 2000L,
+  seed = 84735,
+  chains = 4L,
+  refresh = 0
+)
+
+fit_stanfit <- rstan::read_stan_csv(fit$output_files())
+
+out <- rstantools::posterior_interval(
+  as.matrix(fit_stanfit),
+  prob = prob_level
+)
+
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: two_prop_stan_01

@@ -1,0 +1,37 @@
+\begin{question}
+In uno studio clinico sul Disturbo Ossessivo-Compulsivo (OCD) ai partecipanti viene chiesto di dichiarare "no" o "sì" se, nella settimana precedente, hanno manifestato alcuni sintomi specifici (elencati dallo sperimentatore). Il numero "0" è assegnato a "no" e il numero "1" è assegnato a "sì".
+
+Si scelga la scala di misurazione appropriata.
+
+\begin{answerlist}
+  \item nominale
+  \item ordinale
+  \item intervalli
+  \item approssimativamente ad intervalli
+  \item rapporti
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+I numeri in questo sistema di classificazione identificano la presenza o l'assenza di un sintomo nella settimana passata. L'unica proprietà numerica di questa scala è l'identità.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+\end{answerlist}
+
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_3}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

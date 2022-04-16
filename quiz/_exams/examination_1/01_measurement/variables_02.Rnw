@@ -1,0 +1,35 @@
+\begin{question}
+In uno studio sulle abilità di lettura, i bambini di 6 anni vengono classificati nei seguenti gruppi: non lettori (0), lettori principianti (1), lettori di livello elementare (2) o lettori avanzati (3). Si scelga la scala di misurazione appropriata.
+
+\begin{answerlist}
+  \item ordinale
+  \item intervalli
+  \item approssimativamente ad intervalli
+  \item nominale
+  \item rapporti
+\end{answerlist}
+
+\end{question}
+
+\begin{solution}
+
+I numeri identificano e ordinano il livello di abilità di lettura.
+
+\begin{answerlist}
+  \item Risposta corretta.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+  \item Risposta sbagliata.
+\end{answerlist}
+
+
+\end{solution}
+
+%% META-INFORMATION
+\exname{measurement_2}
+\extype{schoice}
+\exsolution{10000}
+\exshuffle{TRUE}
+
+

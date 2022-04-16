@@ -1,0 +1,55 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+while(is.null(sc)) {
+## parameters
+  shape1 <- sample(2:10, 1)
+  shape2 <- sample(12:20, 1)
+  y <- sample(10:20, 1)
+  n <- sample(24:30, 1)
+  
+  out <- bayesrules::summarize_beta_binomial(
+    alpha = shape1, 
+    beta = shape2, 
+    y = y, 
+    n = n
+    )
+
+  ## solution
+  res <- round(
+    pbeta(0.75, out[2, 2], out[2, 3]) - pbeta(0.5, out[2, 2], out[2, 3]),
+    4)
+  
+  ## schoice
+  sc <- num_to_schoice(res, range = c(0.01, 0.99), delta = 0.05, digits = 4)
+}
+```
+
+Question
+========
+Supponiamo di avere osservato `r y` successi in `r n` prove Bernoulliane.  Si supponga di utilizzare una distibuzione a priori Beta di parametri alpha = `r shape1` e beta = `r shape2`. Si calcoli la probabilità che, nella distribuzione a posteriori, theta (probabilità di successo) assuma un valore compreso nell'intervallo tra 0.5 e 0.75.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+  out <- bayesrules::summarize_beta_binomial(
+    alpha = shape1, 
+    beta = shape2, 
+    y = y, 
+    n = n
+    )
+    
+  pbeta(0.75, out[2, 2], out[2, 3]) - pbeta(0.5, out[2, 2], out[2, 3])
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: beta-binom_03

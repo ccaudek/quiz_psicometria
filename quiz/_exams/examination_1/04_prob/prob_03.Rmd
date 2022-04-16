@@ -1,0 +1,57 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+library("tidyverse")
+library("prob")
+library("distrEx")
+
+while(is.null(sc)) {
+  
+  nsides <- sample(4:12, 1)
+  
+  S <- rolldie(times = 3, nsides = nsides, makespace = TRUE)
+  
+  S <- addrv(S, U = (X1 + X2 + X3)/3)
+  
+  pu <- marginal(S, vars = "U")
+  
+  discr_distr <- DiscreteDistribution(supp = pu$U, prob = pu$probs)
+
+  sol <- E(discr_distr)
+  
+  sc <- num_to_schoice(sol, range = c(1, 10), delta = 0.5, digits = 2)
+}
+```
+
+Question
+========
+Un dado a `r nsides` facce viene lanciato 3 volte. Sia $U$ la variabile casuale che corrisponde alla media dei punti ottenuti nei tre lanci. Si trovi il valore atteso di $U$.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+  nsides <- sample(4:12, 1)
+  
+  S <- rolldie(times = 3, nsides = nsides, makespace = TRUE)
+  
+  S <- addrv(S, U = (X1 + X2 + X3)/3)
+  
+  pu <- marginal(S, vars = "U")
+  
+  discr_distr <- DiscreteDistribution(supp = pu$U, prob = pu$probs)
+
+  sol <- E(discr_distr)
+
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_prob_03
+

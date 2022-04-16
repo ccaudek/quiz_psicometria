@@ -1,0 +1,77 @@
+```{r data generation, echo = FALSE, results = "hide"}
+sc <- NULL
+library("tidyverse")
+library("prob")
+library("distrEx")
+
+while(is.null(sc)) {
+  
+  nsides <- sample(4:12, 1)
+  
+  S <- rolldie(times = 2, nsides = nsides, makespace = TRUE)
+  
+  S <- addrv(S, U = X1 + X2, V = ifelse(X1 < 4, 1, 0))
+  
+  pu <- marginal(S, vars = "U")
+  
+  pv <- marginal(S, vars = "V")
+  
+  UV <- marginal(S, vars = c("U", "V"))
+
+  U <- DiscreteDistribution(supp = pu$U, prob = pu$probs)
+  mu_u <- E(U)
+  
+  V <- DiscreteDistribution(supp = pv$V, prob = pv$probs)
+  mu_v <- E(V)
+
+  sol <- sum((UV$U - mu_u) * (UV$V - mu_v) * UV$probs)
+
+  #sum((UV$U * UV$V) * UV$probs) - mu_u * mu_v
+  
+  sc <- num_to_schoice(sol, range = c(-5, 5), delta = 0.5, digits = 2)
+}
+```
+
+Question
+========
+Un dado a `r nsides` facce viene lanciato 2 volte. Sia $U$ la variabile casuale che corrisponde alla somma dei punti ottenuti nei due lanci; sia $V$ la variabile casuale che assume valore 1 per punteggi minori a 4 nel primo lancio e zero altrimenti. Si trovi la covarianza tra $U$ e $V$.
+
+```{r questionlist, echo = FALSE, results = "asis"}
+answerlist(sc$questions, markup = "markdown")
+```
+
+Solution
+========
+
+  nsides <- sample(4:12, 1)
+  
+  S <- rolldie(times = 2, nsides = nsides, makespace = TRUE)
+  
+  S <- addrv(S, U = X1 + X2, V = ifelse(X1 < 4, 1, 0))
+  
+  pu <- marginal(S, vars = "U")
+  
+  pv <- marginal(S, vars = "V")
+  
+  UV <- marginal(S, vars = c("U", "V"))
+
+  U <- DiscreteDistribution(supp = pu$U, prob = pu$probs)
+  mu_u <- E(U)
+  
+  V <- DiscreteDistribution(supp = pv$V, prob = pv$probs)
+  mu_v <- E(V)
+
+  sol <- sum((UV$U - mu_u) * (UV$V - mu_v) * UV$probs)
+
+  #sum((UV$U * UV$V) * UV$probs) - mu_u * mu_v
+  
+```{r solutionlist, echo = FALSE, results = "asis"}
+answerlist(ifelse(sc$solutions, "True", "False"), markup = "markdown")
+```
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(sc$solutions)`
+exname: e_prob_05
+
